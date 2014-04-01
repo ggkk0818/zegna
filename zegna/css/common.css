@@ -1,3 +1,26 @@
 ﻿body {
-
+    background: url("../img/bg.jpg") 0 0 repeat;
+    font-family:"宋体";
+    font-size:12px;
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+.invisible {
+  visibility: hidden;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
 }
