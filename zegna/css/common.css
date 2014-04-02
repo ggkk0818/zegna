@@ -24,3 +24,50 @@
 .clearfix {
   *zoom: 1;
 }
+/* ==========================================================================
+   Navigator
+   ========================================================================== */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:30px;
+    background-color:#333333;
+}
+header .locationInfo{
+    float:left;
+    margin-left:40px;
+    color:#cccccc;
+    line-height:30px;
+    max-width:50%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+header .locationInfo span{
+    color:#ffffff;
+}
+header .links{
+    display:block;
+    float:right;
+    list-style:none;
+    margin: 0 40px 0 0;
+    padding:0;
+    height:30px;
+}
+header .links li{
+    float:left;
+}
+header .links li a{
+    display:block;
+}
+header .links li a.weibo{
+    width:20px;
+    height:20px;
+    margin:5px 0 5px 10px;
+    background:url(../img/weibo.jpg) no-repeat 0 0;
+}
+header .links li a.weibo:hover{
+    background-position-y:-20px;
+}
