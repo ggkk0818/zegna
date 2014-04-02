@@ -2,6 +2,25 @@
     background: url("../img/bg.jpg") 0 0 repeat;
     font-family:"宋体";
     font-size:12px;
+    margin:0;
+    padding:0;
+}
+a{
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:underline;
+}
+a img{
+    border:none;
+}
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
 }
 /* ==========================================================================
    Helper classes
@@ -70,4 +89,46 @@ header .links li a.weibo{
 }
 header .links li a.weibo:hover{
     background-position-y:-20px;
+}
+/* ==========================================================================
+   Aside Menu
+   ========================================================================== */
+.aside-menu{
+    position:fixed;
+    top:30px;
+    left:0;
+    width:250px;
+    display:block;
+    background-color:#ffffff;
+    overflow:visible;
+}
+.aside-menu .menu-container{
+    position:relative;
+    width:100%;
+}
+.aside-menu .menu-container .main-menu{
+    width:100%;
+    position:relative;
+    box-shadow: 0 0 5px #000;
+    -webkit-box-shadow: 0 0 5px #000;
+    -moz-box-shadow: 0 0 5px #000;
+}
+.aside-menu .menu-container .main-menu .logo{
+    display:block;
+    padding:27px 31px 33px 32px;
+}
+.aside-menu .menu-container .main-menu .home{
+    display:block;
+    background-color:#3366cc;
+    padding:20px;
+    line-height:20px;
+    color:white;
+    text-align:center;
+}
+/* ==========================================================================
+   Main Container
+   ========================================================================== */
+.container{
+    margin:30px 0 0 250px;
+    background-color:white;
 }
