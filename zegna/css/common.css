@@ -1,6 +1,6 @@
 ﻿body {
     background: url("../img/bg.jpg") 0 0 repeat;
-    font-family:"宋体";
+    font-family: Arial,"宋体";
     font-size:12px;
     margin:0;
     padding:0;
@@ -124,6 +124,96 @@ header .links li a.weibo:hover{
     line-height:20px;
     color:white;
     text-align:center;
+}
+.aside-menu .menu-container .main-menu .brand.vicutu{
+    display:block;
+    width:100px;
+    height:22px;
+    background:url(../img/vicutu.png) no-repeat 0 -22px;
+    margin:30px auto;
+}
+.aside-menu .menu-container .main-menu .brand.vicutu.active,
+.aside-menu .menu-container .main-menu .brand.vicutu:hover{
+    background-position-y:0;
+}
+.aside-menu .menu-container .main-menu .brand.gornia{
+    display:block;
+    width:100px;
+    height:10px;
+    background:url(../img/gornia.png) no-repeat 0 0;
+    margin:20px auto;
+}
+.aside-menu .menu-container .main-menu .brand.gornia.active,
+.aside-menu .menu-container .main-menu .brand.gornia:hover{
+    background-position-y:-10px;
+}
+.aside-menu .menu-container .main-menu ul.aside-nav{
+    display:block;
+    list-style:none;
+    margin:0 0 20px;
+    padding:0;
+}
+.aside-menu .menu-container .main-menu ul.aside-nav li a{
+    display:block;
+    text-align:center;
+    color:#666666;
+    line-height:20px;
+    padding:10px;
+    text-transform:uppercase;
+}
+.aside-menu .menu-container .main-menu ul.aside-nav li a:hover{
+    color:#000;
+}
+.aside-menu .menu-container .main-menu ul.aside-nav li:first-child a{
+    padding-top:0;
+}
+.aside-menu .menu-container .main-menu .separator{
+    width:100px;
+    height:0;
+    margin:0 auto;
+    line-height:0;
+    font-size:0;
+    border:none;
+    border-bottom:1px solid #cccccc;
+}
+.aside-menu .menu-container .main-menu .separator.up{
+    height:7px;
+    border-bottom-color:#666666;
+    cursor:pointer;
+}
+.aside-menu .menu-container .main-menu .separator.up:before{
+    content:"";
+    display:block;
+    width:10px;
+    height:5px;
+    margin:0 auto;
+    background:url(../img/arrow.png) no-repeat 0 0;
+}
+.aside-menu .menu-container .main-menu .separator.up:hover{
+    border-bottom-color:#000;
+}
+.aside-menu .menu-container .main-menu .separator.up:hover:before{
+    background-position-y:-5px;
+}
+.aside-menu .menu-container .main-menu .separator.down{
+    height:7px;
+    border:none;
+    border-top: 1px solid #666666;
+    cursor:pointer;
+}
+.aside-menu .menu-container .main-menu .separator.down:before{
+    content:"";
+    display:block;
+    width:10px;
+    height:5px;
+    margin:2px auto 0;
+    background:url(../img/arrow.png) no-repeat -10px 0;
+}
+.aside-menu .menu-container .main-menu .separator.down:hover{
+    border-top-color:#000;
+}
+.aside-menu .menu-container .main-menu .separator.down:hover:before{
+    background-position-y:-5px;
 }
 /* ==========================================================================
    Main Container
