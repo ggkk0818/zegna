@@ -4,9 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="css/jquery.jscrollpane.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
     <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.jscrollpane.js"></script>
 </head>
 <body>
     <header>
@@ -19,13 +22,13 @@
     </header>
     <aside class="aside-menu">
         <div class="menu-container">
-            <div class="main-menu">
+            <div class="main-menu menu">
                 <img class="logo" src="img/logo.png" />
                 <a class="home" href="javascript:void(0);">HOME 首页</a>
                 <a class="brand vicutu active" href="javascript:void(0);"></a>
                 <ul class="aside-nav">
-                    <li><a href="javascript:void(0);">AD Campaign 广告大片</a></li>
-                    <li><a href="javascript:void(0);">READ TO WEAR 产品展示</a></li>
+                    <li><a href="javascript:void(0);" data-mid="1">AD Campaign 广告大片</a></li>
+                    <li><a href="javascript:void(0);" data-mid="2">READ TO WEAR 产品展示</a></li>
                     <li><a href="javascript:void(0);">Couture  高级定制</a></li>
                     <li><a href="javascript:void(0);">Members  会员专区</a></li>
                     <li><a href="javascript:void(0);">news  新闻资讯</a></li>
@@ -59,10 +62,94 @@
                 </ul>
                 <br class="clearfix" />
             </div>
+            <div class="sub-menu-container">
+                <div class="sub-menu menu" data-mid="1">
+                    <h2>READ TO WEAR  产品展示</h2>
+                    <h3>2014年秋冬</h3>
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <li><a href="javascript:void(0);">All  全部</a></li>
+                        <li><a href="javascript:void(0);">Clothes  服装</a></li>
+                        <li><a href="javascript:void(0);">Shoes  鞋履</a></li>
+                        <li><a href="javascript:void(0);">Bags  箱包</a></li>
+                        <li><a href="javascript:void(0);">ACCESSORIES  配件</a></li>
+                    </ul>
+                </div>
+                <div class="sub-menu menu" data-mid="2">
+                    <h2>READ TO WEAR  产品展示</h2>
+                </div>
+            </div>
+            <div class="sub-menu-close-btn">x</div>
         </div>
     </aside>
-    <div class="container" style="height:1000px;">
-        
+    <div class="container">
+        <img src="img/content.jpg" style="width:100%;" />
     </div>
+    <script type="text/javascript">
+        //计算左边栏高度
+        var initAsideHeight = function () {
+            $(".menu-container").height($(window).height() - $(".aside-menu").position().top);
+            $(".menu-container .menu").each(function (i, e) {
+                if ($(e).data("jsp"))
+                    $(e).data("jsp").reinitialise();
+            });
+        };
+        $(window).resize(initAsideHeight);
+        initAsideHeight();
+        //左边栏滚动条
+        $(".menu-container .main-menu").jScrollPane();
+        //左边栏导航菜单点击
+        $(".aside-menu .menu-container .main-menu ul.aside-nav li a").click(function () {
+            var mid = $(this).attr("data-mid");
+            if (mid) {
+                var subMenu = $(".aside-menu .menu-container .sub-menu[data-mid=" + mid + "]");
+                if (subMenu.length == 0)
+                    return;
+                if (!$(".aside-menu .menu-container .sub-menu-container").hasClass("active")) {
+                    $(".aside-menu .menu-container .sub-menu.active").hide().removeClass("active");
+                    $(".aside-menu .menu-container .sub-menu-container").addClass("active");
+                    $(".aside-menu .menu-container .sub-menu-close-btn").addClass("active");
+                    $(".aside-menu").hover(subMenuContainerIn, subMenuContainerOut)
+                    subMenu.show().fadeTo(0, 1).addClass("active");
+                    if (subMenu.data("jsp"))
+                        subMenu.data("jsp").reinitialise();
+                    else
+                        subMenu.jScrollPane();
+                }
+                else if(!subMenu.hasClass("active")) {
+                    $(".aside-menu .menu-container .sub-menu.active").fadeTo("normal", 0, "easeInOutCubic", function () {
+                        $(this).removeClass("active").hide();
+                        subMenu.addClass("active").show().fadeTo("normal", 1, "easeInOutCubic", function () {
+                            if ($(this).data("jsp"))
+                                $(this).data("jsp").reinitialise();
+                            else
+                                subMenu.jScrollPane();
+                        });
+                    });
+                }
+                else {
+                    hideSubMenu();
+                }
+            }
+        });
+        //二级菜单隐藏
+        var hideSubMenuTimer = null;
+        var hideSubMenu = function () {
+            $(".aside-menu .menu-container .sub-menu-close-btn").removeClass("active");
+            $(".aside-menu .menu-container .sub-menu-container").removeClass("active");
+            $(".aside-menu").off();
+        };
+        $(".aside-menu .menu-container .sub-menu-close-btn").click(hideSubMenu);
+        var subMenuContainerIn = function () {
+            if (hideSubMenuTimer) {
+                clearTimeout(hideSubMenuTimer);
+                hideSubMenuTimer = null;
+            }
+        };
+        var subMenuContainerOut = function () {
+            if (!hideSubMenuTimer) {
+                hideSubMenuTimer = setTimeout(hideSubMenu, 2000);
+            }
+        };
+    </script>
 </body>
 </html>
