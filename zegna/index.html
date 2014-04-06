@@ -85,6 +85,7 @@
         <img src="img/content.jpg" style="width:100%;" />
     </div>
     <script type="text/javascript">
+        var EASING_NAME = "easeInOutCubic";
         //计算左边栏高度
         var initAsideHeight = function () {
             $(".menu-container").height($(window).height() - $(".aside-menu").position().top);
@@ -116,9 +117,9 @@
                         subMenu.jScrollPane();
                 }
                 else if(!subMenu.hasClass("active")) {
-                    $(".aside-menu .menu-container .sub-menu.active").fadeTo("normal", 0, "easeInOutCubic", function () {
+                    $(".aside-menu .menu-container .sub-menu.active").fadeTo("normal", 0, EASING_NAME, function () {
                         $(this).removeClass("active").hide();
-                        subMenu.addClass("active").show().fadeTo("normal", 1, "easeInOutCubic", function () {
+                        subMenu.addClass("active").show().fadeTo("normal", 1, EASING_NAME, function () {
                             if ($(this).data("jsp"))
                                 $(this).data("jsp").reinitialise();
                             else
@@ -150,6 +151,34 @@
                 hideSubMenuTimer = setTimeout(hideSubMenu, 2000);
             }
         };
+        //品牌菜单切换
+        $(".aside-menu .menu-container .main-menu a.brand").click(function () {
+            if ($(this).hasClass("active"))
+                return;
+            $(this).addClass("active");
+            //收起其他菜单
+            $(".aside-menu .menu-container .main-menu a.brand").not(this).removeClass("active").next("ul.aside-nav").stop(true, false).slideUp("slow", EASING_NAME, function () {
+                if ($(".aside-menu .menu-container .main-menu").data("jsp"))
+                    $(".aside-menu .menu-container .main-menu").data("jsp").reinitialise();
+            });
+            //展开
+            $(this).next("ul.aside-nav").stop(true, false).slideDown("slow", EASING_NAME, function () {
+                if ($(".aside-menu .menu-container .main-menu").data("jsp"))
+                    $(".aside-menu .menu-container .main-menu").data("jsp").reinitialise();
+            });
+            //设置分割线
+            if ($(this).prev(".separator").hasClass("up"))
+                $(this).prev(".separator").removeClass("up").addClass("down");
+            if ($(this).next("ul.aside-nav").next(".separator").hasClass("down"))
+                $(this).next("ul.aside-nav").next(".separator").removeClass("down").addClass("up");
+        });
+        //点击分割线切换附近品牌菜单
+        $(".aside-menu .menu-container .main-menu .separator").click(function () {
+            if ($(this).hasClass("up"))
+                $(this).next("a.brand").click();
+            else if ($(this).hasClass("down"))
+                $(this).prev("ul.aside-nav").prev("a.brand").click();
+        });
     </script>
 </body>
 </html>
