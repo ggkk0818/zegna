@@ -12,15 +12,15 @@
     <script src="js/jquery.jscrollpane.js"></script>
 </head>
 <body>
-    <header>
+    <div class="header">
         <div class="locationInfo">您的所在位置:<span>中国</span></div>
         <ul class="links clearfix">
             <li><a href="javascript:void(0);" class="weibo"></a></li>
             <li><a href="javascript:void(0);" class="weibo"></a></li>
             <li><a href="javascript:void(0);" class="weibo"></a></li>
         </ul>
-    </header>
-    <aside class="aside-menu">
+    </div>
+    <div class="aside-menu">
         <div class="menu-container">
             <div class="main-menu menu">
                 <img class="logo" src="img/logo.png" />
@@ -80,9 +80,54 @@
             </div>
             <div class="sub-menu-close-btn">x</div>
         </div>
-    </aside>
+    </div>
     <div class="container">
-        <img src="img/content.jpg" style="width:100%;" />
+        <div class="row">
+            <div class="grid grid-3x1 clearfix">
+                <a href="javascript:void(0);"><img src="img/content1.jpg" /></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);">
+                    <img src="img/content_1x1.png" />
+                    <div class="text">
+                        <h1>VICUTU</h1>
+                        <h2>2014SS Collection</h2>
+                        <span class="link">了解更多内容</span>
+                    </div>
+                </a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);">
+                    <img src="img/content3.jpg" />
+                    <div class="text back-color-white">
+                        <h2>盛夏的惬意</h2>
+                        <h3>2014春夏皮具大片</h3>
+                        <p>为迎接充满生机的季节，全新的Eddie露跟鞋披上彩蝶印花图案，以亮眼色调点缀春夏，同时配上今季大热的粗中跟。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="grid grid-2x1">
+                <a href="javascript:void(0);"><img src="img/content4.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);" style="background-color: #3366cc;">
+                    <img src="img/content_1x1.png" />
+                    <div class="text">
+                        <h1>VIP</h1>
+                        <h2>春季会员专享礼遇</h2>
+                        <h3>2014春季会员日会员专享更多折扣、更多好礼</h3>
+                        <p>为迎接充满生机的季节，全新的Eddie露跟鞋披上彩蝶印花图案，以亮眼色调点缀春夏，同时配上今季大热的粗中跟。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
         var EASING_NAME = "easeInOutCubic";
