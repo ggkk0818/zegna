@@ -122,6 +122,7 @@ a img{
     box-shadow: 0 0 5px #000;
     -webkit-box-shadow: 0 0 5px #000;
     -moz-box-shadow: 0 0 5px #000;
+    outline:none;
 }
 .aside-menu .menu-container .main-menu .logo{
     display:block;
@@ -230,7 +231,7 @@ a img{
     margin:20px 10px 13px;
     padding:0;
     text-align:center;
-    font-size:17px;
+    font-size:18px;
     font-weight:normal;
     line-height:20px;
 }
@@ -462,24 +463,24 @@ a img{
     color:#fff;
 }
 .container .row .grid > a .text h1{
-    margin:40px auto 0;
+    margin:30px auto 0;
     padding:0 10%;
-    line-height:1em;
+    line-height:1.1em;
     font-size:3.666em;
     font-weight:normal;
 }
 .container .row .grid > a .text h2{
-    margin:40px auto 0;
+    margin:30px auto 0;
     padding:0 10%;
-    line-height:1em;
+    line-height:1.1em;
     font-size:1.888em;
     font-weight:normal;
 }
 .container .row .grid > a .text h3{
     margin:20px auto 0;
     padding:0 10%;
-    line-height:1em;
-    font-size:1.333em;
+    line-height:1.2em;
+    font-size:1em;
     font-weight:normal;
 }
 .container .row .grid > a .text p{
@@ -489,7 +490,7 @@ a img{
     font-size:1em;*/
     line-height:20px;
     font-size:12px;
-    font-family:Arial,"宋体";
+    font-family:Arial,"微软雅黑";
     font-weight:normal;
 }
 .container .row .grid > a .link{
@@ -499,7 +500,8 @@ a img{
     margin:40px auto 0;
     line-height:60px;
     color:#fff;
-    font-size:16px;
+    font-size:12px;
+    font-family:Arial,"宋体";
     background-color:#3366cc;
 }
 @media screen and (min-width: 1440px) and (max-width: 1850px){
