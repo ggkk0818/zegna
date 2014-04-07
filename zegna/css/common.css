@@ -285,7 +285,8 @@ a img{
     left:230px;
     width: 20px;
     height: 20px;
-    background-color: #c69c6d;
+    background-color: #3366cc;
+    background:url(../img/aside-menu-close-btn.jpg) no-repeat 0 0;
     text-align: center;
     display: block;
     color: #FFFFFF;
@@ -407,8 +408,22 @@ a img{
 .container .row .grid > a > img{
     width:100%;
 }
+.container .row .auto-cover > a,
+.container .row .manual-cover > a{
+    background-color:#000;
+}
+.container .row .auto-cover:hover > a > img,
+.container .row .cover > a > img{
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70) !important;
+    opacity: 0.7 !important;
+}
 .container .row .grid > a .text{
     color:#000;
+    font-size:12px;
     font-family:Arial,"微软雅黑";
     text-align: center;
     left: 50%;
@@ -417,6 +432,16 @@ a img{
     width: 100%;
     margin-left: -50%;
     margin-top: -150px;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+}
+.container .row .grid > a .text.hover-show{
+    opacity:0;
+}
+.container .row .grid:hover > a .text.hover-show{
+    opacity:1;
 }
 .container .row .grid > a .text.back-color-white{
     width:60%;
@@ -425,41 +450,59 @@ a img{
     padding-bottom:40px;
     background-color:rgba(255, 255, 255, 0.6);
 }
+.container .row .grid > a .text.font-color-white{
+    color:#fff;
+}
 .container .row .grid > a .text h1{
     margin:40px auto 0;
     padding:0 10%;
-    line-height:80px;
-    font-size:80px;
+    line-height:1em;
+    font-size:3.666em;
     font-weight:normal;
 }
 .container .row .grid > a .text h2{
     margin:40px auto 0;
     padding:0 10%;
-    line-height:40px;
-    font-size:40px;
+    line-height:1em;
+    font-size:2.333em;
     font-weight:normal;
 }
 .container .row .grid > a .text h3{
     margin:20px auto 0;
     padding:0 10%;
-    line-height:20px;
-    font-size:20px;
+    line-height:1em;
+    font-size:1.333em;
     font-weight:normal;
 }
 .container .row .grid > a .text p{
     margin:20px auto 0;
     padding:0 10%;
-    line-height:20px;
-    font-size:12px;
-    font-weight:bold;
+    line-height:1.666em;
+    font-size:1em;
+    font-weight:normal;
 }
 .container .row .grid > a .link{
     display:block;
-    width:26.78%;
+    width:30%;
     height:60px;
     margin:40px auto 0;
     line-height:60px;
     color:#fff;
     font-size:16px;
     background-color:#3366cc;
+}
+@media screen and (min-width: 1441px) and (max-width: 1800px){
+    .container .row .grid > a .text {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 1801px) and (max-width: 2200px){
+    .container .row .grid > a .text {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 2201px){
+    .container .row .grid > a .text {
+        font-size: 24px;
+    }
 }

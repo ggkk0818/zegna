@@ -78,7 +78,7 @@
                     <h2>READ TO WEAR  产品展示</h2>
                 </div>
             </div>
-            <div class="sub-menu-close-btn">x</div>
+            <div class="sub-menu-close-btn"></div>
         </div>
     </div>
     <div class="container">
@@ -88,10 +88,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="grid grid-1x1">
+            <div id="manualCover1" class="grid grid-1x1 manual-cover">
                 <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
             </div>
-            <div class="grid grid-1x1">
+            <div class="grid grid-1x1" data-mid="manualCover1">
                 <a href="javascript:void(0);">
                     <img src="img/content_1x1.png" />
                     <div class="text">
@@ -101,7 +101,7 @@
                     </div>
                 </a>
             </div>
-            <div class="grid grid-1x1">
+            <div class="grid grid-1x1 auto-cover">
                 <a href="javascript:void(0);">
                     <img src="img/content3.jpg" />
                     <div class="text back-color-white">
@@ -113,8 +113,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="grid grid-2x1">
-                <a href="javascript:void(0);"><img src="img/content4.jpg" /></a>
+            <div class="grid grid-2x1 auto-cover">
+                <a href="javascript:void(0);">
+                    <img src="img/content4.jpg" />
+                    <div class="text hover-show font-color-white">
+                        <h1>2014SS AD Campaign</h1>
+                        <h2>014年春夏广告大片</h2>
+                    </div>
+                </a>
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);" style="background-color: #3366cc;">
@@ -223,6 +229,15 @@
                 $(this).next("a.brand").click();
             else if ($(this).hasClass("down"))
                 $(this).prev("ul.aside-nav").prev("a.brand").click();
+        });
+    </script>
+    <script type="text/javascript">
+        $(".container .grid[data-mid]").hover(function () {
+            var mid = $(this).attr("data-mid");
+            $("#" + mid).addClass("cover");
+        }, function () {
+            var mid = $(this).attr("data-mid");
+            $("#" + mid).removeClass("cover");
         });
     </script>
 </body>
