@@ -106,6 +106,7 @@ a img{
     display:block;
     background-color:#ffffff;
     overflow:visible;
+    z-index:1;
 }
 .aside-menu .menu-container{
     position:relative;
@@ -412,12 +413,17 @@ a img{
 .container .row .manual-cover > a{
     background-color:#000;
 }
+.container .row .auto-cover > a > img,
+.container .row .manual-cover > a > img{
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+    -webkit-transform-style:preserve-3d;
+    -webkit-backface-visibility:hidden;
+}
 .container .row .auto-cover:hover > a > img,
 .container .row .cover > a > img{
-    -webkit-transition: all 0.5s ease-out;
-    -moz-transition: all 0.5s ease-out;
-    -o-transition: all 0.5s ease-out;
-    transition: all 0.5s ease-out;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70) !important;
     opacity: 0.7 !important;
 }
@@ -436,6 +442,8 @@ a img{
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
+    -webkit-transform-style:preserve-3d;
+    -webkit-backface-visibility:hidden;
 }
 .container .row .grid > a .text.hover-show{
     opacity:0;
@@ -464,7 +472,7 @@ a img{
     margin:40px auto 0;
     padding:0 10%;
     line-height:1em;
-    font-size:2.333em;
+    font-size:1.888em;
     font-weight:normal;
 }
 .container .row .grid > a .text h3{
@@ -477,8 +485,11 @@ a img{
 .container .row .grid > a .text p{
     margin:20px auto 0;
     padding:0 10%;
-    line-height:1.666em;
-    font-size:1em;
+    /*line-height:1.666em;
+    font-size:1em;*/
+    line-height:20px;
+    font-size:12px;
+    font-family:Arial,"宋体";
     font-weight:normal;
 }
 .container .row .grid > a .link{
@@ -491,17 +502,17 @@ a img{
     font-size:16px;
     background-color:#3366cc;
 }
-@media screen and (min-width: 1441px) and (max-width: 1800px){
+@media screen and (min-width: 1440px) and (max-width: 1850px){
     .container .row .grid > a .text {
         font-size: 16px;
     }
 }
-@media screen and (min-width: 1801px) and (max-width: 2200px){
+@media screen and (min-width: 1850px) and (max-width: 2200px){
     .container .row .grid > a .text {
         font-size: 20px;
     }
 }
-@media screen and (min-width: 2201px){
+@media screen and (min-width: 2200px){
     .container .row .grid > a .text {
         font-size: 24px;
     }
