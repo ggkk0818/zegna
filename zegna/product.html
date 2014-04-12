@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link href="css/jquery.jscrollpane.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
+    <link href="css/imagezoom.css" rel="stylesheet" />
     <link href="css/product.css" rel="stylesheet" />
     <script src="js/jquery-1.11.0.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
@@ -88,24 +89,224 @@
                 <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
             </div>
             <div class="grid grid-1x1">
-                <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
             </div>
             <div class="grid grid-1x1">
-                <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
             </div>
             <div class="grid grid-1x1">
-                <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content3.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
+            </div>
+            <div class="grid grid-1x1">
+                <a href="javascript:void(0);"><img src="img/content2.jpg" /></a>
+            </div>
+        </div>
+        <div class="imagezoom">
+            <div class="imagezoom-container">
+                <div class="image" style="width:560px;"></div>
+                <a href="javascript:void(0);" class="arrow-left"></a>
+                <a href="javascript:void(0);" class="arrow-right"></a>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var ImageZoom = function (settings, e) {
+            this.settings = settings;
+            this.element = e;
+            this.$container = $(this.settings.container);
+            this.initElement();
+        };
+        ImageZoom.prototype.initElement = function () {
+            if (this.$container.find("> .imagezoom").length == 0)
+                this.$container.append(this.settings.template);
+            this.$element = this.$container.find("> .imagezoom");
+            this.$imgZoomCtn = this.$element.find("> .imagezoom-container");
+            this.$image = this.$imgZoomCtn.find("> .image");
+        };
+        ImageZoom.prototype.initHandler = function () {
+            var thiz = this;
+            this.$element.unbind().bind("click", function () {
+                thiz.hide();
+            });
+            this.$imgZoomCtn.find("> .arrow-left").unbind().bind("click", function (e) {
+                if (thiz.element) {
+                    $(thiz.element).trigger("prev", thiz);
+                }
+                else if (typeof thiz.settings.onPrev === "function")
+                    thiz.settings.onPrev.call(thiz);
+                //取消冒泡
+                e.stopPropagation();
+            });
+            this.$imgZoomCtn.find("> .arrow-right").unbind().bind("click", function (e) {
+                if (thiz.element) {
+                    $(thiz.element).trigger("next", thiz);
+                }
+                else if (typeof thiz.settings.onNext === "function")
+                    thiz.settings.onNext.call(thiz);
+                //取消冒泡
+                e.stopPropagation();
+            });
+            $(window).scroll(function () {
+                thiz.$imgZoomCtn.css({ top: $(window).scrollTop() });
+            });
+            $(window).resize(function () {
+                if (thiz.$element.hasClass("active") && thiz.$image.children().length > 0) {
+                    if (thiz.$element.hasClass("loading"))
+                        thiz.$element.data("isdirty", true);
+                    else {
+                        thiz.$element.data("isdirty", false);
+                        var imgWidth = thiz.$image.children("img").data("imgWidth"),
+                            imgHeight = thiz.$image.children("img").data("imgHeight");
+                        thiz.$image.width(thiz.calcSize(imgWidth, imgHeight));
+                    }
+                }
+            });
+            if ($.fn.mousewheel && this.settings.enableMousewheel) {
+                this.$element.unmousewheel().mousewheel(function (e, delta) {
+                    if (delta < 0)
+                        thiz.$imgZoomCtn.find("> .arrow-right").click();
+                    else if (delta > 0)
+                        thiz.$imgZoomCtn.find("> .arrow-left").click();
+                    e.preventDefault();
+                });
+            }
+        };
+        ImageZoom.prototype.calcSize = function (imgWidth, imgHeight) {
+            var maxWidth = this.$element.width(),
+                maxHeight = $(window).height() - $("body > .header").height(),
+                scaleH = imgWidth / maxWidth,
+                scaleV = imgHeight / maxHeight,
+                width = imgWidth;
+            if (scaleH >= scaleV) {
+                width = maxWidth;
+            }
+            else if (scaleV > scaleH) {
+                width = imgWidth / imgHeight * maxHeight;
+            }
+            return Math.round(width);
+        };
+        ImageZoom.prototype.show = function (arg) {
+            if (this.$element.hasClass("loading"))
+                return;
+            else
+                this.$element.addClass("loading");
+            this.initHandler();
+            var src, title, desc;
+            if (typeof arg === "string")
+                src = arg;
+            else if (typeof arg === "object") {
+                src = arg.src;
+                title = arg.title;
+                desc = arg.desc;
+            }
+            var thiz = this;
+            if (src) {
+                thiz.$image.stop(true, false).addClass("loading");
+                if (!thiz.$element.hasClass("active")) {
+                    thiz.$image.children().remove();
+                    thiz.$imgZoomCtn.css({ top: $(window).scrollTop() });
+                }
+                $("<img />").load(function () {
+                    var imgWidth = Math.max($(this).width(), this.width),
+                        imgHeight = Math.max($(this).height(), this.height),
+                        width = thiz.calcSize(imgWidth, imgHeight);
+                    $(this).data("imgWidth", imgWidth).data("imgHeight", imgHeight);
+                    thiz.$image.removeClass("loading").animate({
+                        width: width
+                    });
+                    if (thiz.$image.children().length > 0 && thiz.$element.hasClass("active")) {
+                        //浮层已经显示，替换原有图片
+                        var img = $(this);
+                        thiz.$image.children().stop(true, false).fadeOut("normal", thiz.settings.easing, function () {
+                            $(this).remove();
+                            img.appendTo(thiz.$image).hide().fadeIn("normal", thiz.settings.easing, function () {
+                                thiz.$element.removeClass("loading");
+                                //动画过程中调整窗口大小，动画结束后重设图片宽度
+                                if (thiz.$element.data("isdirty")) {
+                                    thiz.$element.data("isdirty", false);
+                                    thiz.$image.width(thiz.calcSize(imgWidth, imgHeight));
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        //浮层还未显示
+                        $(this).appendTo(thiz.$image.children().remove().end()).hide().fadeIn("normal", thiz.settings.easing, function () {
+                            thiz.$element.removeClass("loading");
+                            //动画过程中调整窗口大小，动画结束后重设图片宽度
+                            if (thiz.$element.data("isdirty")) {
+                                thiz.$element.data("isdirty", false);
+                                thiz.$image.width(thiz.calcSize(imgWidth, imgHeight));
+                            }
+                        });
+                    }
+                }).attr("src", src);
+            }
+            else {
+                this.$element.removeClass("loading");
+            }
+            if (!this.$element.hasClass("active")) {
+                this.$element.stop(true, false).addClass("active").fadeIn("normal", this.settings.easing);
+            }
+        };
+        ImageZoom.prototype.hide = function () {
+            this.$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () { $(this).hide(); });
+        };
+        $.fn.imageZoom = function (settings) {
+            settings = $.extend({}, $.fn.imageZoom.defaults, settings);
+            return this.each(
+			    function () {
+			        var elem = $(this), imgZoom = elem.data('imgZoom');
+			        if (!imgZoom) {
+			            imgZoom = new ImageZoom(settings, elem);
+			            elem.data('imgZoom', imgZoom);
+			        }
+			    }
+		    );
+        };
+        $.fn.imageZoom.defaults = {
+            template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a>',
+            container: "body",
+            showNext: true,
+            showPrev: true,
+            enableMousewheel: true,
+            easing: "easeInOutCubic"
+        };
+    </script>
+    <script type="text/javascript">
+        $(".container .row .grid > a").click(function () {
+            $(this).imageZoom({container:".container"}).data("imgZoom").show({ src: $(this).children("img").attr("src") });
+        }).on("prev", function () {
+            if ($(this).parent().prev(".grid").length > 0)
+                $(this).parent().prev(".grid").children("a").click();
+        }).on("next", function () {
+            if ($(this).parent().next(".grid").length > 0)
+                $(this).parent().next(".grid").children("a").click();
+        });
+    </script>
 </body>
 </html>
