@@ -46,3 +46,7 @@
 .container .row .grid > a > .hover-img img{
     width:100%;
 }
+.imagezoom .imagezoom-container .image{
+    padding:10px;
+    background-color:#fff;
+}
