@@ -26,7 +26,8 @@
     ImageZoom.prototype.initHandler = function () {
         var thiz = this;
         this.$element.unbind().bind("click", function () {
-            thiz.hide();
+            if (thiz.settings.allowHide)
+                thiz.hide();
         });
         this.$imgZoomCtn.find("> .arrow-left").unbind().bind("click", function (e) {
             if (thiz.element) {
@@ -62,17 +63,19 @@
                     var imgWidth = thiz.$image.children("img").data("imgWidth"),
                         imgHeight = thiz.$image.children("img").data("imgHeight");
                     var size = thiz.calcSize(imgWidth, imgHeight);
-                    thiz.$image.width(size.width).height(size.height());
+                    thiz.$image.animate(size, 0);
                 }
             }
         });
         if ($.fn.mousewheel && this.settings.enableMousewheel) {
             this.$element.unmousewheel().mousewheel(function (e, delta) {
+                e.preventDefault();
+                if (thiz.$element.hasClass("loading"))
+                    return;
                 if (delta < 0)
                     thiz.$imgZoomCtn.find("> .arrow-right").click();
                 else if (delta > 0)
                     thiz.$imgZoomCtn.find("> .arrow-left").click();
-                e.preventDefault();
             });
         }
     };
@@ -82,16 +85,18 @@
             scaleH = imgWidth / maxWidth,
             scaleV = imgHeight / maxHeight,
             width = imgWidth,
-            height = imgHeight;
+            height = imgHeight,
+            marginTop = 0;
         if (scaleH >= scaleV) {
             width = maxWidth;
             height = imgHeight / imgWidth * maxWidth;
+            marginTop = Math.round((maxHeight - height) / 2);
         }
         else if (scaleV > scaleH) {
             width = imgWidth / imgHeight * maxHeight;
             height = maxHeight;
         }
-        return { width: Math.round(width), height: Math.round(height) };
+        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop };
     };
     ImageZoom.prototype.show = function (arg) {
         if (this.$element.hasClass("loading"))
@@ -119,10 +124,7 @@
                     imgHeight = Math.max($(this).height(), this.height),
                     size = thiz.calcSize(imgWidth, imgHeight);
                 $(this).data("imgWidth", imgWidth).data("imgHeight", imgHeight);
-                thiz.$image.removeClass("loading").animate({
-                    width: size.width,
-                    height: size.height
-                });
+                thiz.$image.removeClass("loading").animate(size);
                 if (thiz.$image.children("img").length > 0 && thiz.$element.hasClass("active")) {
                     //浮层已经显示，替换原有图片
                     var img = $(this);
@@ -135,7 +137,7 @@
                             if (thiz.$element.data("isdirty")) {
                                 thiz.$element.data("isdirty", false);
                                 var size = thiz.calcSize(imgWidth, imgHeight);
-                                thiz.$image.width(size.width).height(size.height);
+                                thiz.$image.animate(size, 0);
                             }
                             thiz.$element.removeClass("loading");
                         });
@@ -155,7 +157,7 @@
                         if (thiz.$element.data("isdirty")) {
                             thiz.$element.data("isdirty", false);
                             var size = thiz.calcSize(imgWidth, imgHeight);
-                            thiz.$image.width(size.width).height(size.height);
+                            thiz.$image.animate(size, 0);
                         }
                         thiz.$element.removeClass("loading");
                     });
@@ -173,9 +175,11 @@
         if (!this.$element.hasClass("active")) {
             this.$element.stop(true, false).addClass("active").fadeIn("normal", this.settings.easing);
         }
+        return this;
     };
     ImageZoom.prototype.hide = function () {
         this.$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () { $(this).hide(); });
+        return this;
     };
     $.fn.imageZoom = function (settings) {
         settings = $.extend({}, $.fn.imageZoom.defaults, settings);
@@ -196,6 +200,7 @@
         showPrev: true,
         enableMousewheel: true,
         easing: "easeInOutCubic",
-        imgPadding: 0
+        imgPadding: 0,
+        allowHide: true
     };
 }));

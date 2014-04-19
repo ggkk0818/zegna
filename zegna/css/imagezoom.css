@@ -11,7 +11,7 @@
 .imagezoom .imagezoom-container{
     position:relative;
     width:100%;
-    min-height:700px;
+    /*min-height:700px;*/
     z-index:1;
 }
 .imagezoom .imagezoom-container .image{
@@ -54,6 +54,57 @@
     font-weight:normal;
     line-height:20px;
     color:#000000;
+}
+@keyframes loading
+{
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+@-moz-keyframes loading
+{
+    from {
+        -moz-transform:rotate(0deg);
+    }
+    to {
+        -moz-transform:rotate(360deg);
+    }
+}
+@-o-keyframes loading
+{
+    from {
+        -o-transform:rotate(0deg);
+    }
+    to {
+        -o-transform:rotate(360deg);
+    }
+}
+@-webkit-keyframes loading
+{
+    from {
+        -webkit-transform:rotate(0deg);
+    }
+    to {
+        -webkit-transform:rotate(360deg);
+    }
+}
+.imagezoom .imagezoom-container .image.loading:after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:block;
+    width:64px;
+    height:64px;
+    margin: -32px 0 0 -32px;
+    background:url(../img/loading.png) no-repeat 0 0;
+    animation:loading 1.2s linear infinite;
+    -moz-animation: loading 1.2s linear infinite;
+    -webkit-animation:loading 1.2s linear infinite;
+    -o-animation: loading 1.2s linear infinite;
 }
 .imagezoom .imagezoom-container .arrow-left{
     position:absolute;
