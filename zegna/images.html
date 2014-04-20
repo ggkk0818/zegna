@@ -103,11 +103,15 @@
             var img = $(".container > img.active").length ? $(".container > img.active").first() : $(".container > img").first();
             if (img.prev("img").length)
                 imgZoom.show({ src: img.removeClass("active").prev("img").addClass("active").attr("src") });
+            else
+                imgZoom.show({ src: img.removeClass("active").parent().children("img").last().addClass("active").attr("src") });
         });
         $(".container").on("next", function () {
             var img = $(".container > img.active").length ? $(".container > img.active").first() : $(".container > img").first();
             if (img.next("img").length)
                 imgZoom.show({ src: img.removeClass("active").next("img").addClass("active").attr("src") });
+            else
+                imgZoom.show({ src: img.removeClass("active").parent().children("img").first().addClass("active").attr("src") });
         });
     </script>
 </body>

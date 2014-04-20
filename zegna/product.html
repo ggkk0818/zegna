@@ -801,9 +801,13 @@
         }).on("prev", function () {
             if ($(this).parent().prev(".grid").length > 0)
                 $(this).parent().prev(".grid").children("a").click();
+            else
+                $(".container .row .grid > a").last().click();
         }).on("next", function () {
             if ($(this).parent().next(".grid").length > 0)
                 $(this).parent().next(".grid").children("a").click();
+            else
+                $(".container .row .grid > a").first().click();
         });
     </script>
 </body>
