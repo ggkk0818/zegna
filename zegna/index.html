@@ -28,7 +28,7 @@
         <div class="menu-container">
             <div class="main-menu menu">
                 <img class="logo" src="img/logo.png" />
-                <a class="home" href="javascript:void(0);">HOME 首页</a>
+                <a class="home" href="index.html">HOME 首页</a>
                 <a class="brand vicutu active" href="javascript:void(0);"></a>
                 <ul class="aside-nav">
                     <li><a href="javascript:void(0);" data-mid="1">AD Campaign 广告大片</a></li>
@@ -68,18 +68,22 @@
             </div>
             <div class="sub-menu-container">
                 <div class="sub-menu menu" data-mid="1">
-                    <h2>READ TO WEAR  产品展示</h2>
+                    <h2>AD Campaign 广告大片</h2>
                     <h3>2014年秋冬</h3>
                     <ul class="aside-nav" style="margin-top:12px;">
-                        <li><a href="javascript:void(0);">All  全部</a></li>
-                        <li><a href="javascript:void(0);">Clothes  服装</a></li>
-                        <li><a href="javascript:void(0);">Shoes  鞋履</a></li>
-                        <li><a href="javascript:void(0);">Bags  箱包</a></li>
-                        <li><a href="javascript:void(0);">ACCESSORIES  配件</a></li>
+                        <li><a href="images.html">All  全部</a></li>
                     </ul>
                 </div>
                 <div class="sub-menu menu" data-mid="2">
                     <h2>READ TO WEAR  产品展示</h2>
+                    <h3>2014年秋冬</h3>
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <li><a href="product.html">All  全部</a></li>
+                        <li><a href="product.html">Clothes  服装</a></li>
+                        <li><a href="product.html">Shoes  鞋履</a></li>
+                        <li><a href="product.html">Bags  箱包</a></li>
+                        <li><a href="product.html">ACCESSORIES  配件</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="sub-menu-close-btn"></div>
@@ -88,14 +92,14 @@
     <div class="container">
         <div class="row">
             <div class="grid grid-3x1 clearfix">
-                <a href="javascript:void(0);" class="slider-wrapper theme-default">
+                <div class="slider-wrapper theme-default">
                     <div id="slider" class="nivoSlider">
-                        <img src="img/content1.jpg" data-thumb="img/content1.jpg" data-video="flash/vicutu.flv" data-video-preview="flash/sp_1.jpg" />
-                        <img src="img/content4.jpg" data-thumb="img/content1.jpg" />
-                        <img src="img/content1.jpg" data-thumb="img/content1.jpg" />
-                        <img src="img/content4.jpg" data-thumb="img/content1.jpg" />
+                        <a href="javascript:void(0);" data-video="flash/vicutu.flv" data-video-preview="flash/sp_1.jpg"><img src="img/content1.jpg" /></a>
+                        <a href="javascript:void(0);"><img src="img/content7.jpg" /></a>
+                        <a href="javascript:void(0);"><img src="img/content8.jpg" /></a>
+                        <a href="javascript:void(0);"><img src="img/content9.jpg" /></a>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -162,23 +166,21 @@
         });
     </script>
     <script type="text/javascript">
-        $("#slider").nivoSlider({
-            manualAdvance: true,
+        var slider = $("#slider").nivoSlider({
+            effect: "fade",
+            pauseTime: 5000,
+            manualAdvance: false,
+            prevText: 'Prev',
+            nextText: 'Next',
             afterLoad: function () {
-                $("#slider > img.nivo-main-image").click(function () {
-                    var src = $(this).attr("src");
-                    $("#slider").find("img[data-video]").each(function (i, e) {
-                        if ($(e).attr("src") === src) {
-                            showVideo(e);
-                            return false;
-                        }
-                    });
+                $("#slider a[data-video]").on("click", function () {
+                    showVideo(this);
                 });
             }
-        });
-        var showVideo = function (img) {
-            var videoPath = $(img).attr("data-video");
-            var videoPreview = $(img).attr("data-video-preview");
+        }).data('nivoslider');
+        var showVideo = function (target) {
+            var videoPath = $(target).attr("data-video");
+            var videoPreview = $(target).attr("data-video-preview");
             var flashVars = "streamName=" + encodeURIComponent(videoPath);
             if (videoPreview) {
                 flashVars += "&amp;streamPreview=" + encodeURIComponent(videoPreview);
@@ -187,12 +189,13 @@
             $(".container .video-container .video").append($(videoTemplate)).parent().unbind().bind("click", hideVideo).fadeIn("normal", EASING_NAME, function () {
                 var videoObj = $(this).children().children();
             });
+            slider.stop();
         };
         var hideVideo = function () {
             $(".container .video-container").fadeOut("normal", EASING_NAME, function () {
                 $(this).children(".video").children().remove();
+                slider.start();
             });
-
         };
     </script>
 </body>
