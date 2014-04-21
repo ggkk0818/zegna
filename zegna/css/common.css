@@ -158,6 +158,17 @@ a img{
 .aside-menu .menu-container .main-menu .brand.gornia:hover{
     background-position-y:-10px;
 }
+.aside-menu .menu-container .main-menu .vgo{
+    display:block;
+    width:100px;
+    height:42px;
+    background:url(../img/vgo.png) no-repeat 0 -42px;
+    margin:20px auto;
+}
+.aside-menu .menu-container .main-menu .vgo.active,
+.aside-menu .menu-container .main-menu .vgo:hover{
+    background-position-y:0px;
+}
 .aside-menu .menu-container .main-menu ul.aside-nav{
     display:block;
     list-style:none;
