@@ -111,8 +111,8 @@
     top:50%;
     left:6%;
     display:block;
-    width:60px;
-    height:100px;
+    width:86px;
+    height:164px;
     margin-top:-50px;
     background:url(../img/imagezoom-arrow-new.png) no-repeat 0 0;
     z-index:2;
@@ -126,10 +126,10 @@
     top:50%;
     right:6%;
     display:block;
-    width:60px;
-    height:100px;
+    width:86px;
+    height:164px;
     margin-top:-50px;
-    background:url(../img/imagezoom-arrow-new.png) no-repeat -60px 0;
+    background:url(../img/imagezoom-arrow-new.png) no-repeat -86px 0;
     z-index:2;
     opacity:0.5;
 }

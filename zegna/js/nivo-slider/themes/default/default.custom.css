@@ -49,20 +49,27 @@ Supports Thumbs: true
 
 .theme-default .nivo-directionNav a {
 	display:block;
-	width:30px;
+	/*width:30px;
 	height:30px;
-	background:url(arrows.png) no-repeat;
+	background:url(arrows.png) no-repeat;*/
+    top:50%;
+    width:86px;
+    height:164px;
+    margin-top:-82px;
+    background:url(imagezoom-arrow-new.png) no-repeat 0 0;
 	text-indent:-9999px;
 	border:0;
 	opacity: 0;
-	-webkit-transition: all 200ms ease-in-out;
+	/*-webkit-transition: all 200ms ease-in-out;
     -moz-transition: all 200ms ease-in-out;
     -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;*/
 }
-.theme-default:hover .nivo-directionNav a { opacity: 1; }
+.theme-default:hover .nivo-directionNav a { opacity: 0.5; }
+.theme-default .nivo-directionNav a:hover{ opacity: 1; }
 .theme-default a.nivo-nextNav {
-	background-position:-30px 0;
+	/*background-position:-30px 0;*/
+	background-position:-86px 0;
 	right:15px;
 }
 .theme-default a.nivo-prevNav {

@@ -56,6 +56,10 @@
     padding-bottom:40px;
     background-color:rgba(255, 255, 255, 0.6);
 }
+.container .row .auto-cover:hover > a > .text.back-color-white,
+.container .row .cover > a > .text.back-color-white{
+    background-color:rgba(255, 255, 255, 1);
+}
 .container .row .grid > a .text.font-color-white{
     color:#fff;
 }
@@ -64,13 +68,13 @@
     padding:0 10%;
     line-height:1.1em;
     font-size:3.666em;
-    font-weight:normal;
+    font-weight:bold;
 }
 .container .row .grid > a .text h2{
     margin:30px auto 0;
     padding:0 10%;
     line-height:1.1em;
-    font-size:1.888em;
+    font-size:1.666em;
     font-weight:normal;
 }
 .container .row .grid > a .text h3{

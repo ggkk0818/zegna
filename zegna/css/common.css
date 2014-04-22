@@ -291,6 +291,11 @@ a img{
     text-align:center;
     background-color:#3366cc;
 }
+.aside-menu .menu-container .main-menu .copyright{
+    text-align:center;
+    line-height:20px;
+    color:#cccccc;
+}
 /*Sub menu*/
 .aside-menu .menu-container .sub-menu-close-btn{
     position:absolute;
