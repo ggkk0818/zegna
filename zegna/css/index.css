@@ -7,6 +7,9 @@
 .container .row .grid > a > img{
     width:100%;
 }
+.container .row .grid.loading{
+    background:url(../img/loading.gif) no-repeat center center;
+}
 .container .row .auto-cover > a,
 .container .row .manual-cover > a{
     background-color:#000;

@@ -14,6 +14,7 @@
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/jquery.jscrollpane.js"></script>
     <script src="js/nivo-slider/jquery.nivo.slider.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
 </head>
 <body>
     <div class="header">
@@ -35,7 +36,7 @@
                     <li><a href="javascript:void(0);" data-mid="2">READ TO WEAR 产品展示</a></li>
                     <li><a href="javascript:void(0);">Couture  高级定制</a></li>
                     <li><a href="javascript:void(0);">Members  会员专区</a></li>
-                    <li><a href="javascript:void(0);">news  新闻资讯</a></li>
+                    <li><a href="news.html">news  新闻资讯</a></li>
                     <li><a href="shop.html">Stores 店铺信息</a></li>
                     <li><a href="javascript:void(0);">about brand  关于品牌</a></li>
                 </ul>
@@ -46,7 +47,7 @@
                     <li><a href="javascript:void(0);" data-mid="4">READ TO WEAR 产品展示</a></li>
                     <li><a href="javascript:void(0);">Couture  高级定制</a></li>
                     <li><a href="javascript:void(0);">Members  会员专区</a></li>
-                    <li><a href="javascript:void(0);">news  新闻资讯</a></li>
+                    <li><a href="news.html">news  新闻资讯</a></li>
                     <li><a href="shop.html">Stores 店铺信息</a></li>
                     <li><a href="javascript:void(0);">about brand  关于品牌</a></li>
                 </ul>
@@ -146,7 +147,7 @@
         </div>
         <div class="row">
             <div id="manualCover1" class="grid grid-1x1 manual-cover">
-                <a href="javascript:void(0);"><img src="img/content12.jpg" /></a>
+                <a href="javascript:void(0);"><img class="lazyload" src="img/content_1x1.png" data-src="img/content12.jpg" /></a>
             </div>
             <div class="grid grid-1x1" data-mid="manualCover1">
                 <a href="javascript:void(0);">
@@ -162,7 +163,7 @@
             </div>
             <div class="grid grid-1x1 auto-cover">
                 <a href="javascript:void(0);">
-                    <img src="img/content13.jpg" />
+                    <img class="lazyload" src="img/content_1x1.png" data-src="img/content13.jpg" />
                     <div class="text back-color-white">
                         <h2>盛夏的惬意</h2>
                         <h3>2014春夏皮具系列</h3>
@@ -174,7 +175,7 @@
         <div class="row">
             <div class="grid grid-2x1 auto-cover">
                 <a href="javascript:void(0);">
-                    <img src="img/content4.jpg" />
+                    <img class="lazyload" src="img/content_2x1.png" data-src="img/content4.jpg" />
                     <div class="text hover-show font-color-white" style="margin-top:-90px;">
                         <h1>2014SS AD Campaign</h1>
                         <h2>2014年春夏广告大片</h2>
@@ -196,7 +197,7 @@
         <div class="row">
             <div class="grid grid-1x1 auto-cover">
                 <a href="javascript:void(0);">
-                    <img src="img/content14.jpg" />
+                    <img class="lazyload" src="img/content_1x1.png" data-src="img/content14.jpg" />
                     <div class="text back-color-white">
                         <h2>盛夏的惬意</h2>
                         <h3>2014春夏鞋履系列</h3>
@@ -217,7 +218,7 @@
                 </a>
             </div>
             <div id="manual-cover-gornia" class="grid grid-1x1 manual-cover">
-                <a href="javascript:void(0);"><img src="img/content10.jpg" /></a>
+                <a href="javascript:void(0);"><img class="lazyload" src="img/content_1x1.png" data-src="img/content10.jpg" /></a>
             </div>
         </div>
         <div class="row">
@@ -234,7 +235,7 @@
             </div>
             <div class="grid grid-2x1 auto-cover">
                 <a href="javascript:void(0);">
-                    <img src="img/content11.jpg" />
+                    <img class="lazyload" src="img/content_2x1.png" data-src="img/content11.jpg" />
                     <div class="text hover-show font-color-white" style="margin-top:-90px;">
                         <h1>2014SS AD Campaign</h1>
                         <h2>2014年春夏广告大片</h2>
@@ -250,6 +251,7 @@
     </div>
     <script src="js/common.js"></script>
     <script type="text/javascript">
+        //鼠标悬停效果
         $(".container .grid[data-mid]").hover(function () {
             var mid = $(this).attr("data-mid");
             $("#" + mid).addClass("cover");
@@ -259,6 +261,7 @@
         });
     </script>
     <script type="text/javascript">
+        //图片轮播
         var slider = $("#slider").nivoSlider({
             effect: "fade",
             pauseTime: 5000,
@@ -290,6 +293,17 @@
                 slider.start();
             });
         };
+    </script>
+    <script type="text/javascript">
+        //分屏加载
+        $(".container .row .grid > a > img.lazyload").lazyload({
+            data_attribute: "src",
+            load: function () {
+                $(this).parent().animate({ opacity: 1 }, 1000, EASING_NAME).parent().removeClass("loading");
+            }
+        }).not(":in-viewport").each(function (i, e) {
+            $(this).parent().animate({ opacity: 0 }, 0).parent().addClass("loading");
+        });
     </script>
 </body>
 </html>

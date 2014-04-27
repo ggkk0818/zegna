@@ -392,15 +392,27 @@ a img{
     background-color:white;
     position:relative;
     font-size:0;
+    text-indent:0;
     z-index:0;
+}
+.container:before,
+.container:after{
+    content:"";
+    display:table;
+}
+.container:after{
+    clear:both;
 }
 .container .row{
     position: relative;
     width: 100%;
 }
+.container .row:before,
 .container .row:after{
-    content: "";
-    display: table;
+    content:"";
+    display:table;
+}
+.container .row:after{
     clear: both;
 }
 .container .row .grid{
