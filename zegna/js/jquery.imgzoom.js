@@ -17,13 +17,22 @@
         this.initElement();
     };
     ImageZoom.prototype.initElement = function () {
+        if (this.element) {
+            $(this.element).trigger("beforeinit", this);
+        }
         if (this.$container.find("> .imagezoom").length == 0)
             this.$container.append(this.settings.template);
         this.$element = this.$container.find("> .imagezoom");
         this.$imgZoomCtn = this.$element.find("> .imagezoom-container");
         this.$image = this.$imgZoomCtn.find("> .image");
+        if (this.element) {
+            $(this.element).trigger("afterinit", this);
+        }
     };
     ImageZoom.prototype.initHandler = function () {
+        if (this.element) {
+            $(this.element).trigger("beforeeventbound", this);
+        }
         var thiz = this;
         this.$element.unbind().bind("click", function () {
             if (thiz.settings.allowHide)
@@ -77,6 +86,9 @@
                 else if (delta > 0)
                     thiz.$imgZoomCtn.find("> .arrow-left").click();
             });
+        }
+        if (this.element) {
+            $(this.element).trigger("aftereventbound", this);
         }
     };
     ImageZoom.prototype.calcSize = function (imgWidth, imgHeight) {
@@ -178,7 +190,16 @@
         return this;
     };
     ImageZoom.prototype.hide = function () {
-        this.$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () { $(this).hide(); });
+        if (this.element) {
+            $(this.element).trigger("beforehide", this);
+        }
+        var thiz = this;
+        this.$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () {
+            $(this).hide();
+            if (thiz.element) {
+                $(thiz.element).trigger("afterhide", thiz);
+            }
+        });
         return this;
     };
     $.fn.imageZoom = function (settings) {

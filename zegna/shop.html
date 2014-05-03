@@ -140,7 +140,7 @@
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);">
-                    <img src="img/content16.jpg" />
+                    <img src="img/content15.jpg" />
                     <div class="hover-img"><img src="img/img-hover.png" /></div>
                 </a>
             </div>
@@ -152,7 +152,7 @@
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);">
-                    <img src="img/content16.jpg" />
+                    <img src="img/content15.jpg" />
                     <div class="hover-img"><img src="img/img-hover.png" /></div>
                 </a>
             </div>
@@ -164,7 +164,7 @@
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);">
-                    <img src="img/content16.jpg" />
+                    <img src="img/content15.jpg" />
                     <div class="hover-img"><img src="img/img-hover.png" /></div>
                 </a>
             </div>
@@ -176,7 +176,7 @@
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);">
-                    <img src="img/content16.jpg" />
+                    <img src="img/content15.jpg" />
                     <div class="hover-img"><img src="img/img-hover.png" /></div>
                 </a>
             </div>
@@ -188,7 +188,7 @@
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);">
-                    <img src="img/content16.jpg" />
+                    <img src="img/content15.jpg" />
                     <div class="hover-img"><img src="img/img-hover.png" /></div>
                 </a>
             </div>
@@ -200,38 +200,70 @@
             </div>
             <div class="grid grid-1x1">
                 <a href="javascript:void(0);">
-                    <img src="img/content16.jpg" />
+                    <img src="img/content15.jpg" />
                     <div class="hover-img"><img src="img/img-hover.png" /></div>
                 </a>
-            </div>
-        </div>
-        <div class="imagezoom">
-            <div class="imagezoom-container">
-                <div class="image" style="width:560px;">
-                    <div class="text">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
-                <a href="javascript:void(0);" class="arrow-left"></a>
-                <a href="javascript:void(0);" class="arrow-right"></a>
             </div>
         </div>
     </div>
     <script src="js/common.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xCj5Bo8LfriyAezvG2a21Bm0"></script>
     <script type="text/javascript">
         $(".container .row .grid > a").click(function () {
-            $(this).imageZoom({ container: ".container", imgPadding: 10 }).data("imgZoom").show({
+            $(this).imageZoom({
+                template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div><div class="map"><div class="map-container"><div style="width:100%;height:100%;"></div></div></div><a class="map-button"><img alt="" src="img/map-button.png" /></a></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a>',
+                container: ".container",
+                imgPadding: 10
+            }).data("imgZoom").show({
                 src: $(this).children("img").attr("src"),
                 title: "VICUTU威可多君太店（北京）",
                 desc: "地址：西单北大街133君太百货3层"
             });
-        }).on("prev", function () {
+        }).on("aftereventbound", function (e, imgzoom) {
+            var mapDiv = imgzoom.$image.children(".map").unbind().bind("click", function (e1) { e1.stopPropagation(); });
+            imgzoom.$image.children(".map-button").unbind().bind("click", function (e1) {
+                if (mapDiv.stop(true, false).hasClass("active")) {
+                    mapDiv.removeClass("active removing").fadeOut("normal", EASING_NAME, function () { $(this).removeClass("removing"); });
+                }
+                else {
+                    mapDiv.addClass("active").fadeIn("normal", EASING_NAME, function () {
+                        var map = $(this).data("map");
+                        if (!map) {
+                            map = new BMap.Map($(this).children().children()[0]);
+                            map.centerAndZoom(new BMap.Point(116.37984, 39.915356), 18);
+                            map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+                            $(this).data("map", map);
+                        }
+                        else {
+                            map.centerAndZoom(new BMap.Point(116.37984, 39.915356), 18);
+                        }
+                        map.clearOverlays();
+                        //创建标注
+                        var marker1 = new BMap.Marker(new BMap.Point(116.37984, 39.915356));
+                        map.addOverlay(marker1);
+                        //创建信息窗口
+                        var infoWindow1 = new BMap.InfoWindow("西单北大街133君太百货3层", { title: "VICUTU威可多君太店（北京）" });
+                        marker1.addEventListener("click", function () { this.openInfoWindow(infoWindow1); });
+                    });
+                }
+                e1.stopPropagation();
+            });
+        }).on("beforehide", function (e, imgzoom) {
+            if (imgzoom.$image.children(".map").stop(true, false).hasClass("active")) {
+                imgzoom.$image.children(".map").removeClass("active").hide();
+            }
+        }).on("prev", function (e, imgzoom) {
+            if (imgzoom.$image.children(".map").stop(true, false).hasClass("active")) {
+                imgzoom.$image.children(".map").removeClass("active").hide();
+            }
             if ($(this).parent().prev(".grid").length > 0)
                 $(this).parent().prev(".grid").children("a").click();
             else
                 $(".container .row .grid > a").last().click();
-        }).on("next", function () {
+        }).on("next", function (e, imgzoom) {
+            if (imgzoom.$image.children(".map").stop(true, false).hasClass("active")) {
+                imgzoom.$image.children(".map").removeClass("active").hide();
+            }
             if ($(this).parent().next(".grid").length > 0)
                 $(this).parent().next(".grid").children("a").click();
             else
