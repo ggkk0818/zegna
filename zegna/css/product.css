@@ -2,6 +2,10 @@
     width:20%;
     min-height:309px;
 }
+.container .row .grid-1x2{
+    width:40%;
+    min-height:309px;
+}
 .container .row .grid > a{
     position:relative;
     display:block;
