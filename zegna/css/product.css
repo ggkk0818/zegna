@@ -42,6 +42,10 @@
     -webkit-transform-style:preserve-3d;
     -webkit-backface-visibility:hidden;
 }
+.container .row .grid-2x1 > a > .hover-img{
+    width:13.392%;
+    margin:-6.696% 0 0 -6.696%;
+}
 .container .row .grid > a:hover > .hover-img,
 .container .row .grid > a.cover > .hover-img{
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100) !important;

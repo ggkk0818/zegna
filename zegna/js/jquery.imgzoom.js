@@ -136,11 +136,13 @@
                     imgHeight = Math.max($(this).height(), this.height),
                     size = thiz.calcSize(imgWidth, imgHeight);
                 $(this).data("imgWidth", imgWidth).data("imgHeight", imgHeight);
-                thiz.$image.removeClass("loading").animate(size);
+                thiz.$image.removeClass("loading");//.animate(size);
                 if (thiz.$image.children("img").length > 0 && thiz.$element.hasClass("active")) {
                     //浮层已经显示，替换原有图片
                     var img = $(this);
                     thiz.$image.children("img").first().fadeOut("normal", thiz.settings.easing, function () {
+                        //旧图片消失后立即调整宽度
+                        thiz.$image.animate(size, 0);
                         var old = $(this).hide().before(img);
                         img.fadeOut(0).fadeIn("normal", thiz.settings.easing, function () {
                             //动画结束删除旧图片防止chrome闪动
@@ -164,6 +166,7 @@
                 }
                 else {
                     //浮层还未显示
+                    thiz.$image.animate(size, 0);
                     $(this).appendTo(thiz.$image.children("img").remove().end()).hide().fadeIn("normal", thiz.settings.easing, function () {
                         //动画过程中调整窗口大小，动画结束后重设图片宽度
                         if (thiz.$element.data("isdirty")) {
