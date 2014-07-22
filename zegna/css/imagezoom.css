@@ -8,6 +8,9 @@
     z-index:1;
     display:none;
 }
+.imagezoom.removing{
+    opacity:0;
+}
 .imagezoom .imagezoom-container{
     position:relative;
     width:100%;

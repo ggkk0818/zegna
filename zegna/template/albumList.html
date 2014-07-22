@@ -13,171 +13,183 @@
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/jquery.jscrollpane.js"></script>
     <script src="js/jquery.imgzoom.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
 </head>
 <body>
-<div class="header">
-    <div class="locationInfo">您的所在位置:<span>中国</span></div>
-    <ul class="links clearfix">
-        <li><a href="javascript:void(0);" class="weibo"></a></li>
-        <li><a href="javascript:void(0);" class="weibo"></a></li>
-        <li><a href="javascript:void(0);" class="weibo"></a></li>
-    </ul>
-</div>
-<div class="aside-menu">
-    <div class="menu-container">
-        <div class="main-menu menu">
-            <img class="logo" src="img/logo.png" />
-            <a class="home" href="index.html">HOME 首页</a>
-            <a class="brand vicutu active" href="javascript:void(0);"></a>
-            <ul class="aside-nav">
-                <li><a href="javascript:void(0);" data-mid="1">AD CAMPAIGN 广告大片</a></li>
-                <li><a href="javascript:void(0);" data-mid="2">READ TO WEAR 产品展示</a></li>
-                <li><a href="javascript:void(0);">Couture  高级定制</a></li>
-                <li><a href="javascript:void(0);">Members  会员专区</a></li>
-                <li><a href="news.html">news  新闻资讯</a></li>
-                <li><a href="shop.html">Stores 店铺信息</a></li>
-                <li><a href="javascript:void(0);">about brand  关于品牌</a></li>
-            </ul>
-            <hr class="separator up" />
-            <a class="brand gornia" href="javascript:void(0);"></a>
-            <ul class="aside-nav" style="display:none;">
-                <li><a href="javascript:void(0);" data-mid="3">AD CAMPAIGN 广告大片</a></li>
-                <li><a href="javascript:void(0);" data-mid="4">READ TO WEAR 产品展示</a></li>
-                <li><a href="javascript:void(0);">Couture  高级定制</a></li>
-                <li><a href="javascript:void(0);">Members  会员专区</a></li>
-                <li><a href="news.html">news  新闻资讯</a></li>
-                <li><a href="shop.html">Stores 店铺信息</a></li>
-                <li><a href="javascript:void(0);">about brand  关于品牌</a></li>
-            </ul>
-            <hr class="separator" />
-            <a class="vgo" href="javascript:void(0);"></a>
-            <hr class="separator" />
-            <h2 class="joinus">加入我们</h2>
-            <h3 class="joinus">专享内容、活动和季节性促销信息</h3>
-            <input type="text" class="joinus" placeholder="请输入您的电子邮箱地址" />
-            <div class="checkinfo">
-                <input type="checkbox" /><a class="underline" href="javascript:void(0);">我已阅读并接受隐私条款的约定</a>
-            </div>
-            <a class="register" href="javascript:void(0);">立即注册</a>
-            <hr class="separator" />
-            <ul class="aside-nav" style="margin-top:17px;">
-                <li><a href="javascript:void(0);">Contact us  联系我们</a></li>
-                <li><a href="javascript:void(0);">Recruitment  加入我们</a></li>
-                <li><a href="javascript:void(0);">legal notice  法律声明</a></li>
-            </ul>
-            <div class="copyright">
-                版权所有 ©2011-2013 VICUTU.<br />
-                All Rights Reserved   <br />
-                京ICP备09087698号<br />
-                京公网安备110115000274号
-            </div>
-            <br class="clearfix" />
-        </div>
-        <div class="sub-menu-container">
-            <div class="sub-menu menu" data-mid="1">
-                <h2>AD CAMPAIGN 广告大片</h2>
-                <h3>VICUTU</h3>
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="images.html">2014年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2014年春夏</a></li>
-                    <li><a href="javascript:void(0);">2013年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2013年春夏</a></li>
-                    <li><a href="javascript:void(0);">2012年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2012年春夏</a></li>
-                    <li><a href="javascript:void(0);">2011年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2011年春夏</a></li>
-                    <li><a href="javascript:void(0);">2010年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2010年春夏</a></li>
-                </ul>
-            </div>
-            <div class="sub-menu menu" data-mid="2">
-                <h2>READ TO WEAR  产品展示</h2>
-                <h3>2014年秋冬</h3>
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="product.html">Clothes  服装</a></li>
-                    <li><a href="product1.html">Shoes  鞋履</a></li>
-                    <li><a href="product2.html">Bags  箱包</a></li>
-                    <li><a href="product3.html">ACCESSORIES  配件</a></li>
-                </ul>
-            </div>
-            <div class="sub-menu menu" data-mid="3">
-                <h2>AD CAMPAIGN 广告大片</h2>
-                <h3>GORNIA</h3>
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="images-gornia.html">2014年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2014年春夏</a></li>
-                    <li><a href="javascript:void(0);">2013年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2013年春夏</a></li>
-                    <li><a href="javascript:void(0);">2012年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2012年春夏</a></li>
-                    <li><a href="javascript:void(0);">2011年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2011年春夏</a></li>
-                    <li><a href="javascript:void(0);">2010年秋冬</a></li>
-                    <li><a href="javascript:void(0);">2010年春夏</a></li>
-                </ul>
-            </div>
-            <div class="sub-menu menu" data-mid="4">
-                <h2>READ TO WEAR  产品展示</h2>
-                <h3>2014年秋冬</h3>
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="product.html">Clothes  服装</a></li>
-                    <li><a href="product1.html">Shoes  鞋履</a></li>
-                    <li><a href="product2.html">Bags  箱包</a></li>
-                    <li><a href="product3.html">ACCESSORIES  配件</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="sub-menu-close-btn"></div>
+    <div class="header">
+        <div class="locationInfo">您的所在位置:<span>中国</span></div>
+        <ul class="links clearfix">
+            <li><a href="javascript:void(0);" class="weibo"></a></li>
+            <li><a href="javascript:void(0);" class="weibo"></a></li>
+            <li><a href="javascript:void(0);" class="weibo"></a></li>
+        </ul>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <!--#set(List<PageAlbum> albumList)-->
-        <!--#if(albumList)-->
-        <!--#for(PageAlbum album : albumList)-->
-        <div class="grid grid-${album.imgSize}x1">
-            <a href="javascript:void(0);">
-                <img src="${album.coverPath}" />
-                <div class="hover-img"><img src="img/img-hover.png" /></div>
-                <div class="album-photo" style="display:none;">
-                    <span data-src="${album.coverPath}"></span>
-                    <!--#if(album.photoList)-->
-                        <!--#for(Photo photo : album.photoList)-->
-                        <span data-src="${photo.path}"></span>
-                        <!--#end-->
-                    <!--#end-->
+    <div class="aside-menu">
+        <div class="menu-container">
+            <div class="main-menu menu">
+                <img class="logo" src="img/logo.png" />
+                <a class="home" href="index.html">HOME 首页</a>
+                <a class="brand vicutu active" href="javascript:void(0);"></a>
+                <ul class="aside-nav">
+                    <li><a href="javascript:void(0);" data-mid="1">AD CAMPAIGN 广告大片</a></li>
+                    <li><a href="javascript:void(0);" data-mid="2">READ TO WEAR 产品展示</a></li>
+                    <li><a href="javascript:void(0);">Couture  高级定制</a></li>
+                    <li><a href="javascript:void(0);">Members  会员专区</a></li>
+                    <li><a href="news.html">news  新闻资讯</a></li>
+                    <li><a href="shop.html">Stores 店铺信息</a></li>
+                    <li><a href="javascript:void(0);">about brand  关于品牌</a></li>
+                </ul>
+                <hr class="separator up" />
+                <a class="brand gornia" href="javascript:void(0);"></a>
+                <ul class="aside-nav" style="display:none;">
+                    <li><a href="javascript:void(0);" data-mid="3">AD CAMPAIGN 广告大片</a></li>
+                    <li><a href="javascript:void(0);" data-mid="4">READ TO WEAR 产品展示</a></li>
+                    <li><a href="javascript:void(0);">Couture  高级定制</a></li>
+                    <li><a href="javascript:void(0);">Members  会员专区</a></li>
+                    <li><a href="news.html">news  新闻资讯</a></li>
+                    <li><a href="shop.html">Stores 店铺信息</a></li>
+                    <li><a href="javascript:void(0);">about brand  关于品牌</a></li>
+                </ul>
+                <hr class="separator" />
+                <a class="vgo" href="javascript:void(0);"></a>
+                <hr class="separator" />
+                <h2 class="joinus">加入我们</h2>
+                <h3 class="joinus">专享内容、活动和季节性促销信息</h3>
+                <input type="text" class="joinus" placeholder="请输入您的电子邮箱地址" />
+                <div class="checkinfo">
+                    <input type="checkbox" /><a class="underline" href="javascript:void(0);">我已阅读并接受隐私条款的约定</a>
                 </div>
-            </a>
+                <a class="register" href="javascript:void(0);">立即注册</a>
+                <hr class="separator" />
+                <ul class="aside-nav" style="margin-top:17px;">
+                    <li><a href="javascript:void(0);">Contact us  联系我们</a></li>
+                    <li><a href="javascript:void(0);">Recruitment  加入我们</a></li>
+                    <li><a href="javascript:void(0);">legal notice  法律声明</a></li>
+                </ul>
+                <div class="copyright">
+                    版权所有 ©2011-2013 VICUTU.<br />
+                    All Rights Reserved   <br />
+                    京ICP备09087698号<br />
+                    京公网安备110115000274号
+                </div>
+                <br class="clearfix" />
+            </div>
+            <div class="sub-menu-container">
+                <div class="sub-menu menu" data-mid="1">
+                    <h2>AD CAMPAIGN 广告大片</h2>
+                    <h3>VICUTU</h3>
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <li><a href="images.html">2014年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2014年春夏</a></li>
+                        <li><a href="javascript:void(0);">2013年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2013年春夏</a></li>
+                        <li><a href="javascript:void(0);">2012年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2012年春夏</a></li>
+                        <li><a href="javascript:void(0);">2011年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2011年春夏</a></li>
+                        <li><a href="javascript:void(0);">2010年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2010年春夏</a></li>
+                    </ul>
+                </div>
+                <div class="sub-menu menu" data-mid="2">
+                    <h2>READ TO WEAR  产品展示</h2>
+                    <h3>2014年秋冬</h3>
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <li><a href="product.html">Clothes  服装</a></li>
+                        <li><a href="product1.html">Shoes  鞋履</a></li>
+                        <li><a href="product2.html">Bags  箱包</a></li>
+                        <li><a href="product3.html">ACCESSORIES  配件</a></li>
+                    </ul>
+                </div>
+                <div class="sub-menu menu" data-mid="3">
+                    <h2>AD CAMPAIGN 广告大片</h2>
+                    <h3>GORNIA</h3>
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <li><a href="images-gornia.html">2014年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2014年春夏</a></li>
+                        <li><a href="javascript:void(0);">2013年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2013年春夏</a></li>
+                        <li><a href="javascript:void(0);">2012年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2012年春夏</a></li>
+                        <li><a href="javascript:void(0);">2011年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2011年春夏</a></li>
+                        <li><a href="javascript:void(0);">2010年秋冬</a></li>
+                        <li><a href="javascript:void(0);">2010年春夏</a></li>
+                    </ul>
+                </div>
+                <div class="sub-menu menu" data-mid="4">
+                    <h2>READ TO WEAR  产品展示</h2>
+                    <h3>2014年秋冬</h3>
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <li><a href="product.html">Clothes  服装</a></li>
+                        <li><a href="product1.html">Shoes  鞋履</a></li>
+                        <li><a href="product2.html">Bags  箱包</a></li>
+                        <li><a href="product3.html">ACCESSORIES  配件</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sub-menu-close-btn"></div>
         </div>
-        <!--#end-->
-        <!--#end-->
     </div>
-</div>
-<script src="js/common.js"></script>
-<script type="text/javascript">
-    $(".container .row .grid > a").click(function () {
-        if ($(this).find(".album-photo *[data-src]").length) {
-            $(this).imageZoom({ container: ".container" })
-                    .data("imgZoom")
-                    .show({
-                        src: $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src")
-                    });
-        }
-    }).on("prev", function () {
-        var src = null;
-        if ($(this).find(".album-photo .active").prev("[data-src]").length > 0)
-            src = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active").attr("data-src");
-        else
-            src = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active").attr("data-src");
-        $(this).data("imgZoom").show({ src: src });
-    }).on("next", function () {
-        var src = null;
-        if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
-            src = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active").attr("data-src");
-        else
-            src = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src");
-        $(this).data("imgZoom").show({ src: src });
-    });
-</script>
+    <div class="container">
+        <div class="row">
+            <!--#set(List<PageAlbum> albumList)-->
+            <!--#if(albumList)-->
+            <!--#for(PageAlbum album : albumList)-->
+            <div class="grid grid-${album.imgSize}x1 loading">
+                <a href="javascript:void(0);">
+                    <img class="lazyload" src="img/content_${album.imgSize}x1.png" data-src="${album.coverPath}" />
+                    <div class="hover-img"><img src="img/img-hover.png" /></div>
+                    <div class="album-photo" style="display:none;">
+                        <span data-src="${album.coverPath}"></span>
+                        <!--#if(album.photoList)-->
+                            <!--#for(Photo photo : album.photoList)-->
+                            <span data-src="${photo.path}"></span>
+                            <!--#end-->
+                        <!--#end-->
+                    </div>
+                </a>
+            </div>
+            <!--#end-->
+            <!--#end-->
+        </div>
+    </div>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        $(".container .row .grid > a").click(function () {
+            if ($(this).find(".album-photo *[data-src]").length) {
+                $(this).imageZoom({ container: ".container" })
+                        .data("imgZoom")
+                        .show({
+                            src: $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src")
+                        });
+            }
+        }).on("prev", function () {
+            var src = null;
+            if ($(this).find(".album-photo .active").prev("[data-src]").length > 0)
+                src = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active").attr("data-src");
+            else
+                src = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active").attr("data-src");
+            $(this).data("imgZoom").show({ src: src });
+        }).on("next", function () {
+            var src = null;
+            if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
+                src = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active").attr("data-src");
+            else
+                src = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src");
+            $(this).data("imgZoom").show({ src: src });
+        });
+    </script>
+    <script type="text/javascript">
+        //分屏加载
+        $(".container .row .grid > a > img.lazyload").lazyload({
+            data_attribute: "src",
+            load: function () {
+                $(this).parent().animate({ opacity: 1 }, 1000, EASING_NAME).parent().removeClass("loading");
+            }
+        }).each(function (i, e) {
+            $(this).parent().animate({ opacity: 0 }, 0).parent().addClass("loading");
+        });
+    </script>
 </body>
 </html>

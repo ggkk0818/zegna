@@ -198,11 +198,11 @@
         }
         var thiz = this;
         this.$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () {
-            $(this).hide();
+            $(this).hide().removeClass("removing");
             if (thiz.element) {
                 $(thiz.element).trigger("afterhide", thiz);
             }
-        });
+        }).addClass("removing");
         return this;
     };
     $.fn.imageZoom = function (settings) {
