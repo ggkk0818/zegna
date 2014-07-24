@@ -1,0 +1,43 @@
+﻿.container .row table{
+    width:100%;
+    border-spacing: 0;
+    margin:0;
+    padding:0;
+}
+.container .row table td {
+    line-height: 0;
+    vertical-align: top;
+}
+.container .row table img{
+    width:100%;
+    border:none;
+    margin:0;
+    padding:0;
+}
+.container .row table a img{
+    border:none;
+}
+.zaders_index_image_link
+{
+    display:block;
+    position:relative;
+}
+    .zaders_index_image_link img
+    {
+        border:0;
+    }
+    .zaders_index_image_link .hover
+    {
+        position:absolute;
+        top:0;
+        left:0;
+        *display:none;
+        opacity:0;
+        -webkit-transition: opacity .3s;
+                transition: opacity .3s;
+    }
+    .zaders_index_image_link:hover .hover
+    {
+        *display:block;
+        opacity:1;
+    }
