@@ -137,7 +137,7 @@
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td colspan="2" style="width:40%;">
-                        <table border="0" cellspacing="0" cellpadding="0">
+                        <table id="tableCol1" border="0" cellspacing="0" cellpadding="0">
                             <tbody>
                                 <tr>
                                     <td rowspan="2" style="width:50%;">
@@ -191,7 +191,7 @@
                         </table>
                     </td>
                     <td colspan="3" style="width:60%;">
-                        <table border="0" cellspacing="0" cellpadding="0">
+                        <table id="tableCol2" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td style="width:33.3334%;">
                                     <table border="0" cellspacing="0" cellpadding="0">
@@ -244,7 +244,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <table border="0" cellspacing="0" cellpadding="0">
+                        <table id="tableCol3" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td>
                                     <a class="zaders_index_image_link" target="_blank" href="http://item.taobao.com/item.htm?spm=0.0.0.0.CvqjJv&id=36471612852">
@@ -265,7 +265,7 @@
                     </td>
                 </tr>
             </table>
-            <table border="0" cellspacing="0" cellpadding="0">
+            <table id="tableCol4" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td style="width: 60%;">
                         <a class="zaders_index_image_link" href="javascript:void(0);">
@@ -284,5 +284,15 @@
         </div>
     </div>
     <script src="js/common.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function () {
+            var ctnWidth = $(".container").width();
+            var unitWidth = Math.ceil(ctnWidth / 5);
+            $("#tableCol1").width(unitWidth * 2);
+            $("#tableCol2").width(unitWidth * 3);
+            $("#tableCol3").width(unitWidth * 3);
+            $("#tableCol4").width(unitWidth * 5);
+        }).resize();
+    </script>
 </body>
 </html>
