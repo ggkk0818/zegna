@@ -7,13 +7,46 @@
     <link href="css/jquery.jscrollpane.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
     <link href="css/imagezoom.css" rel="stylesheet" />
-    <link href="css/product.css" rel="stylesheet" />
     <script src="js/jquery-1.11.0.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/jquery.jscrollpane.js"></script>
     <script src="js/jquery.imgzoom.js"></script>
-    <script src="js/jquery.lazyload.js"></script>
+    <style type="text/css">
+        .container {
+            background: none;
+            color: #7d7d7d;
+            text-align: center;
+            font-size: 18px;
+        }
+            .container > div {
+                width: 375px;
+                margin: 0 auto;
+                padding-top: 150px;
+            } 
+            .container p {
+                margin: 0.5em 0;
+                line-height: 1.5em;
+            }
+            .container h2, .container h3 {
+                margin: 0;
+                padding: 0;
+                color: #c8c8c8;
+                font-family: Palatino, Georgia, Times, serif;
+                font-weight: normal;
+            }
+            .container h2 {
+                font-size: 85px;
+            }
+            .container h3 {
+                font-size: 35px;
+                margin-bottom: 50px;
+            }
+            .container .error-not-found-desc {
+                font-size: 12px;
+                line-height: 24px;
+            }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -130,64 +163,14 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <!--#set(List<PageAlbum> albumList)-->
-            <!--#if(albumList)-->
-            <!--#for(PageAlbum album : albumList)-->
-            <div class="grid grid-${album.imgSize}x1 loading">
-                <a href="javascript:void(0);">
-                    <img class="lazyload" src="img/content_${album.imgSize}x1.png" data-src="${album.coverPath}" />
-                    <div class="hover-img"><img src="img/img-hover.png" /></div>
-                    <div class="album-photo" style="display:none;">
-                        <span data-src="${album.coverPath}"></span>
-                        <!--#if(album.photoList)-->
-                            <!--#for(Photo photo : album.photoList)-->
-                            <span data-src="${photo.path}"></span>
-                            <!--#end-->
-                        <!--#end-->
-                    </div>
-                </a>
-            </div>
-            <!--#end-->
-            <!--#end-->
+        <div>
+            <p>曾经有一份真正的<strong>页面</strong>放在我面前，<br />我没有珍惜。<br />等我失去的时候，<br />我才后悔莫及。<br /><br />人世间最痛苦的事莫过于此。<br /><br />如果上天能够给我一个<strong>再来一次的机<br />会</strong>，我会对那个页面说三个字：</p>
+            <h2 class="http">四零四</h2>
+            <h3>页面未找到</h3>
+            <p class="error-not-found-desc">画外音：跟你说过叫你不要乱扔东西，你怎么又...你看<br />我还没说完你又把页面扔掉了！你把他扔掉会污染花花<br />草草也是不对的</p>
+            <!-- http : 404 -->
         </div>
     </div>
     <script src="js/common.js"></script>
-    <script type="text/javascript">
-        $(".container .row .grid > a").click(function () {
-            if ($(this).find(".album-photo *[data-src]").length) {
-                $(this).imageZoom({ container: ".container" })
-                        .data("imgZoom")
-                        .show({
-                            src: $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src")
-                        });
-            }
-        }).on("prev", function () {
-            var src = null;
-            if ($(this).find(".album-photo .active").prev("[data-src]").length > 0)
-                src = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active").attr("data-src");
-            else
-                src = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active").attr("data-src");
-            $(this).data("imgZoom").show({ src: src });
-        }).on("next", function () {
-            var src = null;
-            if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
-                src = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active").attr("data-src");
-            else
-                src = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src");
-            $(this).data("imgZoom").show({ src: src });
-        });
-    </script>
-    <script type="text/javascript">
-        //分屏加载
-        $(".container .row .grid > a > img.lazyload").lazyload({
-            data_attribute: "src",
-            load: function () {
-                $(this).parent().animate({ opacity: 1 }, 1000, EASING_NAME).parent().removeClass("loading");
-            }
-        }).each(function (i, e) {
-            $(this).parent().animate({ opacity: 0 }, 0).parent().addClass("loading");
-        });
-    </script>
 </body>
 </html>
