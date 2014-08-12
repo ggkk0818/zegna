@@ -6,13 +6,17 @@
     position:relative;
     margin:20px 0;
 }
+.news-container:before{
+  content: " ";
+  display: table;
+}
 .news-container.double{
     float:left;
     width:50%;
 }
 .news-container.double:after{
     content:'';
-    position:absolute;
+    position:absolute!important;
     top:0;
     right:1px;
     width:0;
@@ -61,6 +65,9 @@
 .news .news-content img{
     /*margin:1em 2em;*/
     max-width:100%;
+}
+.news .news-content p img{
+    margin-left:-2em;
 }
 /*.news .news-content img+img{
     margin-left:0;
