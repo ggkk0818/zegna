@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>页面未找到</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
+    <link href="${path}/css/common.css" rel="stylesheet" />
+    <link href="${path}/css/imagezoom.css" rel="stylesheet" />
+    <script src="${path}/js/jquery-1.11.0.js"></script>
+    <script src="${path}/js/jquery.easing.1.3.js"></script>
+    <script src="${path}/js/jquery.mousewheel.js"></script>
+    <script src="${path}/js/jquery.jscrollpane.js"></script>
+    <script src="${path}/js/jquery.imgzoom.js"></script>
+    <style type="text/css">
+        .container {
+            background: none;
+            color: #7d7d7d;
+            text-align: center;
+            font-size: 18px;
+        }
+            .container > div {
+                width: 375px;
+                margin: 0 auto;
+                padding-top: 150px;
+            } 
+            .container p {
+                margin: 0.5em 0;
+                line-height: 1.5em;
+            }
+            .container h2, .container h3 {
+                margin: 0;
+                padding: 0;
+                color: #c8c8c8;
+                font-family: Palatino, Georgia, Times, serif;
+                font-weight: normal;
+            }
+            .container h2 {
+                font-size: 85px;
+            }
+            .container h3 {
+                font-size: 35px;
+                margin-bottom: 50px;
+            }
+            .container .error-not-found-desc {
+                font-size: 12px;
+                line-height: 24px;
+            }
+    </style>
+</head>
+<body>
+    ${include("/common/header.html","UTF-8")}
+    ${include("/common/asideMenu.html","UTF-8")}
+    <div class="container">
+        <div>
+            <p>曾经有一份真正的<strong>页面</strong>放在我面前，<br />我没有珍惜。<br />等我失去的时候，<br />我才后悔莫及。<br /><br />人世间最痛苦的事莫过于此。<br /><br />如果上天能够给我一个<strong>再来一次的机<br />会</strong>，我会对那个页面说三个字：</p>
+            <h2 class="http">四零四</h2>
+            <h3>页面未找到</h3>
+            <p class="error-not-found-desc">画外音：跟你说过叫你不要乱扔东西，你怎么又...你看<br />我还没说完你又把页面扔掉了！你把他扔掉会污染花花<br />草草也是不对的</p>
+            <!-- http : 404 -->
+        </div>
+    </div>
+    ${include("/common/footer.html","UTF-8")}
+</body>
+</html>
