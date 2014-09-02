@@ -108,6 +108,12 @@
             width = imgWidth / imgHeight * maxHeight;
             height = maxHeight;
         }
+        if (width > imgWidth || height > imgHeight) {
+            //超出图片尺寸图片居中显示不拉伸
+            width = imgWidth;
+            height = imgHeight;
+            marginTop = Math.round((maxHeight - height) / 2);
+        }
         return { width: Math.round(width), height: Math.round(height), marginTop: marginTop };
     };
     ImageZoom.prototype.show = function (arg) {
