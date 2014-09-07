@@ -62,14 +62,15 @@
         };
     </script>
     <script type="text/javascript">
-        //表格宽度
-        $(window).resize(function () {
-            var ctnWidth = $(".container").width();
-            var unitWidth = Math.ceil(ctnWidth / 3);
-            $(".tableWidth1").width(unitWidth * 1);
-            $(".tableWidth2").width(unitWidth * 2);
-            $(".tableWidth3").width(unitWidth * 3);
-        }).resize();
+        //分屏加载
+        $(".container .row .grid > a > img.lazyload").lazyload({
+            data_attribute: "src",
+            load: function () {
+                $(this).parent().animate({ opacity: 1 }, 1000, EASING_NAME).parent().removeClass("loading");
+            }
+        }).each(function (i, e) {
+            $(this).parent().animate({ opacity: 0 }, 0).parent().addClass("loading");
+        });
     </script>
 </body>
 </html>
