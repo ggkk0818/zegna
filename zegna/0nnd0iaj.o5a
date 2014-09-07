@@ -148,44 +148,56 @@
         <div class="row">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td colspan="2">
-                        <a class="zaders_index_image_link tableWidth2" href="javascript:void(0);">
-                            <img src="/img/index/index_01.jpg" />
-                            <img class="hover" src="/img/index/index_01_hover.jpg" />
-                        </a>
+                    <td style="width:66.666%">
+                        <div class="tableWidth2">
+                            <a class="zaders_index_image_link" href="javascript:void(0);">
+                                <img src="/img/index/index_01.jpg" />
+                                <img class="hover" src="/img/index/index_01_hover.jpg" />
+                            </a>
+                        </div>
                     </td>
-                    <td>
-                        <a class="zaders_index_image_link tableWidth1" href="javascript:void(0);">
-                            <img src="/img/index/index_02.jpg" />
-                            <img class="hover" src="/img/index/index_02_hover.jpg" />
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <a class="zaders_index_image_link tableWidth2" href="javascript:void(0);">
-                            <img src="/img/index/index_03.jpg" />
-                            <img class="hover" src="/img/index/index_03_hover.jpg" />
-                        </a>
-                    </td>
-                    <td>
-                        <a class="zaders_index_image_link tableWidth1" href="javascript:void(0);">
-                            <img src="/img/index/index_04.jpg" />
-                            <img class="hover" src="/img/index/index_04_hover.jpg" />
-                        </a>
+                    <td style="width:33.333%">
+                        <div class="tableWidth1">
+                            <a class="zaders_index_image_link" href="javascript:void(0);">
+                                <img src="/img/index/index_02.jpg" />
+                                <img class="hover" src="/img/index/index_02_hover.jpg" />
+                            </a>
+                        </div>
                     </td>
                 </tr>
             </table>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td>
-                        <a class="zaders_index_image_link tableWidth1" href="javascript:void(0);">
-                            <img src="/img/index/index_05.jpg" />
-                            <img class="hover" src="/img/index/index_05_hover.jpg" />
-                        </a>
+                    <td style="width:66.667%">
+                        <div class="tableWidth2">
+                            <a class="zaders_index_image_link" href="javascript:void(0);">
+                                <img src="/img/index/index_03.jpg" />
+                                <img class="hover" src="/img/index/index_03_hover.jpg" />
+                            </a>
+                        </div>
                     </td>
-                    <td colspan="2">
-                        <a class="zaders_index_image_link tableWidth2" href="javascript:void(0);">
+                    <td style="width:33.333%">
+                        <div class="tableWidth1">
+                            <a class="zaders_index_image_link" href="javascript:void(0);">
+                                <img src="/img/index/index_04.jpg" />
+                                <img class="hover" src="/img/index/index_04_hover.jpg" />
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td style="width:33.333%">
+                        <div class="tableWidth1">
+                            <a class="zaders_index_image_link" href="javascript:void(0);">
+                                <img src="/img/index/index_05.jpg" />
+                                <img class="hover" src="/img/index/index_05_hover.jpg" />
+                            </a>
+                        </div>
+                    </td>
+                    <td class="tableWidth2" style="width:66.667%">
+                        <a class="zaders_index_image_link" href="javascript:void(0);">
                             <img src="/img/index/index_06.jpg" />
                             <img class="hover" src="/img/index/index_06_hover.jpg" />
                         </a>
