@@ -63,7 +63,7 @@
     width:330px;
     height:330px;
 }
-.zaders_slide_image_link .desc > img{
+.zaders_slide_image_link .desc img{
     width:330px;
     height:330px;
 }
@@ -72,7 +72,7 @@
     margin-left:330px;
     overflow:hidden;
 }
-.zaders_slide_image_link .image > img{
+.zaders_slide_image_link .image img{
     position:relative;
     top:-330px;
     max-width:1320px;
@@ -81,7 +81,7 @@
     -webkit-transition: top 1s ease-in-out;
     transition: top 1s ease-in-out;
 }
-.zaders_slide_image_link:hover .image > img{
+.zaders_slide_image_link:hover .image img{
     top:0;
 }
 .zaders_slide_image_link.right .desc{
