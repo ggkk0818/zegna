@@ -25,6 +25,12 @@
         this.$element = this.$container.find("> .imagezoom");
         this.$imgZoomCtn = this.$element.find("> .imagezoom-container");
         this.$image = this.$imgZoomCtn.find("> .image");
+        if (!this.settings.showPrev) {
+            this.$imgZoomCtn.children(".arrow-left").hide();
+        }
+        if (!this.settings.showNext) {
+            this.$imgZoomCtn.children(".arrow-right").hide();
+        }
         if (this.element) {
             $(this.element).trigger("afterinit", this);
         }

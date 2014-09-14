@@ -90,10 +90,20 @@ a img{
     width:20px;
     height:20px;
     margin:5px 0 5px 10px;
-    background:url(../img/weibo.jpg) no-repeat 0 0;
+    background:url(../img/weibo.png) no-repeat 0 0;
 }
 .header .links li a.weibo:hover{
     background-position-y:-20px;
+}
+.header .links li a.weixin{
+    width:20px;
+    height:20px;
+    margin:5px 0 5px 10px;
+    background:url(../img/weixin.png) no-repeat 0 0;
+    background-position-y:-20px;
+}
+.header .links li a.weixin:hover{
+    background-position-y:0;
 }
 /* ==========================================================================
    Aside Menu
