@@ -72,6 +72,13 @@ a img{
 .header .locationInfo span{
     color:#ffffff;
 }
+.header .locationInfo span.separator{
+    color:#cccccc;
+    padding:0 10px;
+}
+.header .locationInfo span.tel{
+    color:#f62424;
+}
 .header .links{
     display:block;
     float:right;
@@ -252,7 +259,7 @@ a img{
     margin:20px 10px 13px;
     padding:0;
     text-align:center;
-    font-size:18px;
+    font-size:16px;
     font-weight:normal;
     line-height:20px;
 }
