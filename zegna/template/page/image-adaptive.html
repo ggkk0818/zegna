@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--#set(PageCustomPage page)-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>${page.title}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
+    <link href="${path}/js/nivo-slider/themes/default/default.custom.css" rel="stylesheet" />
+    <link href="${path}/js/nivo-slider/nivo-slider.css" rel="stylesheet" />
+    <link href="${path}/css/common.css" rel="stylesheet" />
+    <link href="${path}/css/template/taobao.css" rel="stylesheet" />
+    <script src="${path}/js/jquery-1.11.0.js"></script>
+    <script src="${path}/js/jquery.easing.1.3.js"></script>
+    <script src="${path}/js/jquery.mousewheel.js"></script>
+    <script src="${path}/js/jquery.jscrollpane.js"></script>
+    <script src="${path}/js/nivo-slider/jquery.nivo.slider.js"></script>
+    <script src="${path}/js/jquery.lazyload.js"></script>
+</head>
+<body>
+    ${include("/common/header.html","UTF-8")}
+    ${include("/common/asideMenu.html","UTF-8")}
+    <div class="container">
+        <div class="row">
+            <!--#if(page)-->
+            $!{page.content}
+            <!--#end-->
+        </div>
+    </div>
+    ${include("/common/footer.html","UTF-8")}
+    <script type="text/javascript">
+        //表格宽度
+        $(window).resize(function () {
+            var ctnWidth = $(".container").width();
+            var unitWidth2 = Math.ceil(ctnWidth / 2);
+            $(".tableWidth2-1").width(unitWidth2 * 1);
+            $(".tableWidth2-2").width(unitWidth2 * 2);
+            var unitWidth3 = Math.ceil(ctnWidth / 3);
+            $(".tableWidth3-1").width(unitWidth3 * 1);
+            $(".tableWidth3-2").width(unitWidth3 * 2);
+            $(".tableWidth3-3").width(unitWidth3 * 3);
+            var unitWidth5 = Math.ceil(ctnWidth / 5);
+            $(".tableWidth5-1").width(unitWidth5 * 1);
+            $(".tableWidth5-2").width(unitWidth5 * 2);
+            $(".tableWidth5-3").width(unitWidth5 * 3);
+            $(".tableWidth5-4").width(unitWidth5 * 4);
+            $(".tableWidth5-5").width(unitWidth5 * 5);
+        }).resize();
+    </script>
+</body>
+</html>
