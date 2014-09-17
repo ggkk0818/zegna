@@ -25,6 +25,28 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "zegna", "http://localhost:3
 		DefaultWebSiteLanguage = "Visual Basic"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "history", "http://localhost:4891", "{8D322E84-A8CC-4E3D-9046-3B6269CDC011}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_4891"
+		Debug.AspNetCompiler.PhysicalPath = "history\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4891\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_4891"
+		Release.AspNetCompiler.PhysicalPath = "history\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4891\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "history\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +54,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DADADDD4-98BE-427C-9078-015B8EAD1ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DADADDD4-98BE-427C-9078-015B8EAD1ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D322E84-A8CC-4E3D-9046-3B6269CDC011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D322E84-A8CC-4E3D-9046-3B6269CDC011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
