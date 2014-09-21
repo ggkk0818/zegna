@@ -30,7 +30,7 @@
     ${include("/common/footer.html","UTF-8")}
     <script type="text/javascript">
         //表格宽度
-        $(window).resize(function () {
+        var resize = function () {
             var ctnWidth = $(".container").width();
             var unitWidth2 = Math.ceil(ctnWidth / 2);
             $(".tableWidth2-1").width(unitWidth2 * 1);
@@ -45,6 +45,14 @@
             $(".tableWidth5-3").width(unitWidth5 * 3);
             $(".tableWidth5-4").width(unitWidth5 * 4);
             $(".tableWidth5-5").width(unitWidth5 * 5);
+            resizeTimer = null;
+        };
+        var resizeTimer = null;
+        $(window).resize(function () {
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+            resizeTimer = setTimeout(resize, 200);
         }).resize();
     </script>
 </body>
