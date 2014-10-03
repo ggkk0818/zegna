@@ -48,22 +48,29 @@
                 $(this).imageZoom({ container: ".container" })
                         .data("imgZoom")
                         .show({
-                            src: $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src")
+                            src: $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src"),
+                            current: 1,
+                            total: $(this).find(".album-photo *[data-src]").length
                         });
             }
         }).on("prev", function () {
-            var src = null;
-            if ($(this).find(".album-photo .active").prev("[data-src]").length > 0)
-                src = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active").attr("data-src");
+            var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
+            if ($(this).find(".album-photo .active").prev("[data-src]").length > 0) {
+                photo = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active");
+            }
             else
-                src = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active").attr("data-src");
+                photo = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active");
+            src = photo.attr("data-src");
+            current = photo.prevAll("[data-src]").length + 1;
             $(this).data("imgZoom").show({ src: src });
         }).on("next", function () {
-            var src = null;
+            var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
             if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
-                src = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active").attr("data-src");
+                photo = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active");
             else
-                src = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src");
+                photo = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active");
+            src = photo.attr("data-src");
+            current = photo.prevAll("[data-src]").length + 1;
             $(this).data("imgZoom").show({ src: src });
         });
     </script>

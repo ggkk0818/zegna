@@ -128,13 +128,15 @@
         else
             this.$element.addClass("loading");
         this.initHandler();
-        var src, title, desc;
+        var src, title, desc, current, total;
         if (typeof arg === "string")
             src = arg;
         else if (typeof arg === "object") {
             src = arg.src;
             title = arg.title;
             desc = arg.desc;
+            current = arg.current;
+            total = arg.total;
         }
         var thiz = this;
         if (src) {
@@ -175,6 +177,12 @@
                             $(this).fadeIn("normal", thiz.settings.easing);
                         });
                     }
+                    if (typeof current !== "undefined" || typeof total !== "undefined") {
+                        thiz.$imgZoomCtn.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
+                    }
+                    else {
+                        thiz.$imgZoomCtn.children(".img-num").hide();
+                    }
                 }
                 else {
                     //浮层还未显示
@@ -192,6 +200,12 @@
                         thiz.$image.children(".text").children("h3").text(title ? title : "");
                         thiz.$image.children(".text").children("p").text(desc ? desc : "");
                         thiz.$image.children(".text").stop(true, false).hide().fadeIn("normal", thiz.settings.easing);
+                    }
+                    if (typeof current !== "undefined" || typeof total !== "undefined") {
+                        thiz.$imgZoomCtn.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
+                    }
+                    else {
+                        thiz.$imgZoomCtn.children(".img-num").hide();
                     }
                 }
             }).attr("src", src);
@@ -230,7 +244,7 @@
         );
     };
     $.fn.imageZoom.defaults = {
-        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a>',
+        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a></div></div>',
         container: "body",
         showNext: true,
         showPrev: true,

@@ -853,11 +853,21 @@
                 </a>
             </div>
         </div>
+        <div class="imagezoom">
+            <div class="imagezoom-container">
+                <div class="image">
+                    <div class="text"><h3></h3><p></p></div>
+                </div>
+                <a href="javascript:void(0);" class="arrow-left"></a>
+                <a href="javascript:void(0);" class="arrow-right"></a>
+                <div class="img-num"><span>1</span><span class="separator">/</span><span>10</span></div>
+            </div>
+        </div>
     </div>
     <script src="js/common.js"></script>
     <script type="text/javascript">
         $(".container .row .grid > a").click(function () {
-            $(this).imageZoom({container:".container"}).data("imgZoom").show({ src: $(this).children("img").attr("src") });
+            $(this).imageZoom({ container: ".container" }).data("imgZoom").show({ src: $(this).children("img").attr("src") });
         }).on("prev", function () {
             if ($(this).parent().prev(".grid").length > 0)
                 $(this).parent().prev(".grid").children("a").click();
