@@ -141,7 +141,7 @@
 .imagezoom .imagezoom-container .arrow-right:hover{
     opacity:1;
 }
-.imagezoom .imagezoom-container .img-num{
+.imagezoom .img-num{
     position:absolute;
     bottom:6%;
     left:50%;
@@ -155,6 +155,6 @@
     font-style:italic;
     font-size:48px;
 }
-.imagezoom .imagezoom-container .img-num span.separator{
+.imagezoom .img-num span.separator{
     padding:0 5px;
 }
