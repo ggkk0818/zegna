@@ -104,7 +104,8 @@
             scaleV = imgHeight / maxHeight,
             width = imgWidth,
             height = imgHeight,
-            marginTop = 0;
+            marginTop = 0,
+            marginBottom = 0;
         if (scaleH >= scaleV) {
             width = maxWidth;
             height = imgHeight / imgWidth * maxWidth;
@@ -118,9 +119,9 @@
             //超出图片尺寸图片居中显示不拉伸
             width = imgWidth;
             height = imgHeight;
-            marginTop = Math.round((maxHeight - height) / 2);
+            marginTop = marginBottom = Math.round((maxHeight - height) / 2);
         }
-        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop };
+        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop, marginBottom: marginBottom };
     };
     ImageZoom.prototype.show = function (arg) {
         if (this.$element.hasClass("loading"))
@@ -244,7 +245,7 @@
         );
     };
     $.fn.imageZoom.defaults = {
-        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a><div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div></div></div>',
+        template: '<div class="imagezoom"><div class="imagezoom-container clearfix"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a><div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div></div></div>',
         container: "body",
         showNext: true,
         showPrev: true,
