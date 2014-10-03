@@ -178,10 +178,10 @@
                         });
                     }
                     if (typeof current !== "undefined" || typeof total !== "undefined") {
-                        thiz.$imgZoomCtn.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
+                        thiz.$element.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
                     }
                     else {
-                        thiz.$imgZoomCtn.children(".img-num").hide();
+                        thiz.$element.children(".img-num").hide();
                     }
                 }
                 else {
@@ -202,10 +202,10 @@
                         thiz.$image.children(".text").stop(true, false).hide().fadeIn("normal", thiz.settings.easing);
                     }
                     if (typeof current !== "undefined" || typeof total !== "undefined") {
-                        thiz.$imgZoomCtn.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
+                        thiz.$element.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
                     }
                     else {
-                        thiz.$imgZoomCtn.children(".img-num").hide();
+                        thiz.$element.children(".img-num").hide();
                     }
                 }
             }).attr("src", src);
