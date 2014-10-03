@@ -244,7 +244,7 @@
         );
     };
     $.fn.imageZoom.defaults = {
-        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a></div></div>',
+        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a><div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div></div></div>',
         container: "body",
         showNext: true,
         showPrev: true,
