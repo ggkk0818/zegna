@@ -178,10 +178,10 @@
                         });
                     }
                     if (typeof current !== "undefined" || typeof total !== "undefined") {
-                        thiz.$element.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
+                        thiz.$imgZoomCtn.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
                     }
                     else {
-                        thiz.$element.children(".img-num").hide();
+                        thiz.$imgZoomCtn.children(".img-num").hide();
                     }
                 }
                 else {
@@ -202,10 +202,10 @@
                         thiz.$image.children(".text").stop(true, false).hide().fadeIn("normal", thiz.settings.easing);
                     }
                     if (typeof current !== "undefined" || typeof total !== "undefined") {
-                        thiz.$element.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
+                        thiz.$imgZoomCtn.children(".img-num").show().children("span").first().text(current || 0).end().last().text(total || 0);
                     }
                     else {
-                        thiz.$element.children(".img-num").hide();
+                        thiz.$imgZoomCtn.children(".img-num").hide();
                     }
                 }
             }).attr("src", src);
@@ -244,7 +244,7 @@
         );
     };
     $.fn.imageZoom.defaults = {
-        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a></div><div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div></div>',
+        template: '<div class="imagezoom"><div class="imagezoom-container"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a><div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div></div></div>',
         container: "body",
         showNext: true,
         showPrev: true,
