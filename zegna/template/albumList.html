@@ -62,7 +62,7 @@
                 photo = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active");
             src = photo.attr("data-src");
             current = photo.prevAll("[data-src]").length + 1;
-            $(this).data("imgZoom").show({ src: src });
+            $(this).data("imgZoom").show({ src: src, current: current, total: total });
         }).on("next", function () {
             var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
             if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
@@ -71,7 +71,7 @@
                 photo = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active");
             src = photo.attr("data-src");
             current = photo.prevAll("[data-src]").length + 1;
-            $(this).data("imgZoom").show({ src: src });
+            $(this).data("imgZoom").show({ src: src, current: current, total: total });
         });
     </script>
     <script type="text/javascript">
