@@ -14,6 +14,7 @@
     <script src="${path}/js/jquery.jscrollpane.js"></script>
     <script src="${path}/js/jquery.imgzoom.js"></script>
     <script src="${path}/js/jquery.lazyload.js"></script>
+    <script src="${path}/js/jquery.history.js"></script>
 </head>
 <body>
     ${include("/common/header.html","UTF-8")}
@@ -24,15 +25,15 @@
             <!--#if(albumList)-->
             <!--#for(PageAlbum album : albumList)-->
             <div class="grid grid-${album.imgSize}x1 loading">
-                <a href="javascript:void(0);">
+                <a id="album${album.id}" href="${path}/albumList/${albumType}/${album.id}" data-name="${album.name}">
                     <img class="lazyload" src="${path}/img/content_${album.imgSize}x1.png" data-src="${path}${album.thumbnailPath}" />
                     <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
                     <div class="album-photo" style="display:none;">
                         <span data-src="${path}${album.coverPath}"></span>
                         <!--#if(album.photoList)-->
-                            <!--#for(Photo photo : album.photoList)-->
-                            <span data-src="${path}${photo.path}"></span>
-                            <!--#end-->
+                        <!--#for(Photo photo : album.photoList)-->
+                        <span data-src="${path}${photo.path}"></span>
+                        <!--#end-->
                         <!--#end-->
                     </div>
                 </a>
@@ -43,36 +44,49 @@
     </div>
     ${include("/common/footer.html","UTF-8")}
     <script type="text/javascript">
-        $(".container .row .grid > a").click(function () {
-            if ($(this).find(".album-photo *[data-src]").length) {
-                $(this).imageZoom({ container: ".container" })
-                        .data("imgZoom")
-                        .show({
-                            src: $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src"),
-                            current: 1,
-                            total: $(this).find(".album-photo *[data-src]").length
-                        });
-            }
-        }).on("prev", function () {
-            var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
-            if ($(this).find(".album-photo .active").prev("[data-src]").length > 0) {
-                photo = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active");
-            }
-            else
-                photo = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active");
-            src = photo.attr("data-src");
-            current = photo.prevAll("[data-src]").length + 1;
-            $(this).data("imgZoom").show({ src: src, current: current, total: total });
-        }).on("next", function () {
-            var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
-            if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
-                photo = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active");
-            else
-                photo = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active");
-            src = photo.attr("data-src");
-            current = photo.prevAll("[data-src]").length + 1;
-            $(this).data("imgZoom").show({ src: src, current: current, total: total });
-        });
+        var imgZoom = function (id) {
+            var target = $(id);
+            target.on("prev", function () {
+                var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
+                if ($(this).find(".album-photo .active").prev("[data-src]").length > 0) {
+                    photo = $(this).find(".album-photo .active").removeClass("active").prev("[data-src]").addClass("active");
+                }
+                else
+                    photo = $(this).find(".album-photo *[data-src]").removeClass("active").last().addClass("active");
+                src = photo.attr("data-src");
+                current = photo.prevAll("[data-src]").length + 1;
+                $(this).data("imgZoom").show({ src: src, current: current, total: total });
+            }).on("next", function () {
+                var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
+                if ($(this).find(".album-photo .active").next("[data-src]").length > 0)
+                    photo = $(this).find(".album-photo .active").removeClass("active").next("[data-src]").addClass("active");
+                else
+                    photo = $(this).find(".album-photo *[data-src]").removeClass("active").first().addClass("active");
+                src = photo.attr("data-src");
+                current = photo.prevAll("[data-src]").length + 1;
+                $(this).data("imgZoom").show({ src: src, current: current, total: total });
+            }).imageZoom({ container: ".container" })
+                .data("imgZoom")
+                .show({
+                    src: target.find(".album-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src"),
+                    current: 1,
+                    total: target.find(".album-photo *[data-src]").length
+                });
+        };
+        <!--#if(currentAlbum)-->
+        imgZoom("#${currentAlbum.id}");
+        <!--#end-->
+        if(window.History.enabled){
+            $(".container .row .grid > a").click(function (e) {
+                e.preventDefault();
+                History.pushState({ id: this.id }, $(this).attr("name") || null, $(this).attr("href"));
+            });
+            $(window).bind("statechange", function () {
+                var target = $("#" + History.getState().data.id);
+                if (target.find(".album-photo *[data-src]").length)
+                    imgZoom(target);
+            });
+        }
     </script>
     <script type="text/javascript">
         //分屏加载
