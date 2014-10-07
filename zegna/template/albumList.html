@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!--#set(List<PageAlbum> albumList)-->
+<!--#set(PageAlbum currentAlbum)-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>${pagetitle}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
     <link href="${path}/css/common.css" rel="stylesheet" />
@@ -21,11 +23,13 @@
     ${include("/common/asideMenu.html","UTF-8")}
     <div class="container">
         <div class="row">
-            <!--#set(List<PageAlbum> albumList)-->
             <!--#if(albumList)-->
+                <!--#if(websiteName)-->
+                <!--#set(albumNameSuffix = " - " + websiteName)-->
+                <!--#end-->
             <!--#for(PageAlbum album : albumList)-->
             <div class="grid grid-${album.imgSize}x1 loading">
-                <a id="album${album.id}" href="${path}/albumList/${albumType}/${album.id}" data-name="${album.name}">
+                <a id="album${album.id}" href="${path}/albumList/${albumType}/${album.id}" data-name="${album.name}${albumNameSuffix}">
                     <img class="lazyload" src="${path}/img/content_${album.imgSize}x1.png" data-src="${path}${album.thumbnailPath}" />
                     <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
                     <div class="album-photo" style="display:none;">
@@ -46,6 +50,9 @@
     <script type="text/javascript">
         var imgZoom = function (id) {
             var target = $(id);
+            if(!target.length)
+                return;
+            $(".container .row .grid > a").off("prev next");
             target.on("prev", function () {
                 var src = null, current = null, total = $(this).find(".album-photo *[data-src]").length, photo = null;
                 if ($(this).find(".album-photo .active").prev("[data-src]").length > 0) {
@@ -74,12 +81,17 @@
                 });
         };
         <!--#if(currentAlbum)-->
-        imgZoom("#${currentAlbum.id}");
+        imgZoom("#album${currentAlbum.id}");
         <!--#end-->
         if(window.History.enabled){
             $(".container .row .grid > a").click(function (e) {
                 e.preventDefault();
-                History.pushState({ id: this.id }, $(this).attr("name") || null, $(this).attr("href"));
+                if($(this).attr("href") == window.location.pathname){
+                    imgZoom(this);
+                }
+                else{
+                    History.pushState({ id: this.id }, $(this).data("name") || null, $(this).attr("href"));
+                }
             });
             $(window).bind("statechange", function () {
                 var target = $("#" + History.getState().data.id);
