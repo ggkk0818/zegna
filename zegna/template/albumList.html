@@ -33,7 +33,9 @@
                     <img class="lazyload" src="${path}/img/content_${album.imgSize}x1.png" data-src="${path}${album.thumbnailPath}" />
                     <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
                     <div class="album-photo" style="display:none;">
+                        <!--#if(showCover)-->
                         <span data-src="${path}${album.coverPath}"></span>
+                        <!--#end-->
                         <!--#if(album.photoList)-->
                         <!--#for(Photo photo : album.photoList)-->
                         <span data-src="${path}${photo.path}"></span>
