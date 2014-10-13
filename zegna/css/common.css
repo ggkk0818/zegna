@@ -342,7 +342,7 @@ a img{
     left:30px;
     width:200px;
     height:100%;
-    background-color:#fff;
+    background-color:#eeeeee;
     z-index:1;
     -moz-transition: left 1s ease-in-out;
     -o-transition: left 1s ease-in-out;
