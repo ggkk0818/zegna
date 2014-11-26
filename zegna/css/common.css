@@ -156,8 +156,8 @@ a img{
 .aside-menu .menu-container .main-menu .brand.vicutu{
     display:block;
     width:100px;
-    height:88px;
-    background:url(../img/langdun.png) no-repeat 0 -88px;
+    height:18px;
+    background:url(../img/langdun.png) no-repeat 0 -18px;
     margin:30px auto;
 }
 .aside-menu .menu-container .main-menu .brand.vicutu.active,
