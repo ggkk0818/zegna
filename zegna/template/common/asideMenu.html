@@ -1,0 +1,82 @@
+<!--#set(Map<String, List<Menu>> asideMenu)-->
+<div class="aside-menu">
+    <div class="menu-container">
+        <div class="main-menu menu">
+            <img class="logo" src="${path}/img/logo.png" />
+            <a class="home" href="http://zaders.com">HOME 首页</a>
+            <a class="brand vicutu active" href="javascript:void(0);"></a>
+            <ul class="aside-nav">
+                <!--#if(asideMenu.localhost)-->
+                <!--#for(Menu menu : asideMenu.localhost)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>${menu.name}</a></li>
+                <!--#end-->
+                <!--#end-->
+            </ul>
+            <hr class="separator up" />
+            <a class="brand gornia" href="javascript:void(0);"></a>
+            <ul class="aside-nav" style="display:none;">
+                <!--#if(asideMenu.lundon)-->
+                <!--#for(Menu menu : asideMenu.lundon)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="lundon-${menu.id}" #end>${menu.name}</a></li>
+                <!--#end-->
+                <!--#end-->
+            </ul>
+            <hr class="separator" />
+            <!--<a class="vgo" href="javascript:void(0);"></a>
+            <hr class="separator" />-->
+            <h2 class="joinus">快速预约</h2>
+            <h3 class="joinus">不必注册也可以预约我们的服务</h3>
+            <input type="text" class="joinus" placeholder="请输入您的常用联系电话" />
+            <div class="checkinfo">
+                <input type="checkbox" /><a class="underline" href="javascript:void(0);">我已阅读并接受隐私条款的约定</a>
+            </div>
+            <a class="register" href="${path}/page/coming-soon">立即预约</a>
+            <hr class="separator" />
+            <ul class="aside-nav" style="margin-top:17px;">
+                <li><a href="${path}/page/coming-soon">Contact us  联系我们</a></li>
+                <li><a href="${path}/page/coming-soon">Recruitment  加入我们</a></li>
+                <li><a href="${path}/page/coming-soon">legal notice  法律声明</a></li>
+            </ul>
+            <div class="copyright">
+                版权所有 ©2011-2014 Zaders.com<br />
+                All Rights Reserved   <br />
+                京ICP备12011654号<br />
+                京公网安备110105014708769号
+            </div>
+            <br class="clearfix" />
+        </div>
+        <div class="sub-menu-container">
+            <!--#if(asideMenu.localhost)-->
+            <!--#for(Menu menu : asideMenu.localhost)-->
+            <!--#if(menu.menus)-->
+            <div class="sub-menu menu" data-mid="${menu.id}">
+                <h2>${menu.subname1||menu.name}</h2>
+                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
+                <ul class="aside-nav" style="margin-top:12px;">
+                    <!--#for(Menu subMenu : menu.menus)-->
+                    <li><a href="${parseMenuUrl(subMenu.url,path)}">${subMenu.name}</a></li>
+                    <!--#end-->
+                </ul>
+            </div>
+            <!--#end-->
+            <!--#end-->
+            <!--#end-->
+            <!--#if(asideMenu.lundon)-->
+            <!--#for(Menu menu : asideMenu.lundon)-->
+            <!--#if(menu.menus)-->
+            <div class="sub-menu menu" data-mid="lundon-${menu.id}">
+                <h2>${menu.subname1||menu.name}</h2>
+                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
+                <ul class="aside-nav" style="margin-top:12px;">
+                    <!--#for(Menu subMenu : menu.menus)-->
+                    <li><a href="${subMenu.url}">${subMenu.name}</a></li>
+                    <!--#end-->
+                </ul>
+            </div>
+            <!--#end-->
+            <!--#end-->
+            <!--#end-->
+        </div>
+        <div class="sub-menu-close-btn"></div>
+    </div>
+</div>
