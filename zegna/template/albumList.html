@@ -38,7 +38,7 @@
                         <!--#end-->
                         <!--#if(album.photoList)-->
                         <!--#for(Photo photo : album.photoList)-->
-                        <span data-src="${path}${photo.path}"></span>
+                        <span data-src="${path}${photo.thumbnailPath||photo.path}"></span>
                         <!--#end-->
                         <!--#end-->
                     </div>
