@@ -34,7 +34,7 @@
                     <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
                     <div class="album-photo" style="display:none;">
                         <!--#if(showCover)-->
-                        <span data-src="${path}${album.coverPath}"></span>
+                        <span data-src="${path}${album.thumbnailPathLarge||album.coverPath}"></span>
                         <!--#end-->
                         <!--#if(album.photoList)-->
                         <!--#for(Photo photo : album.photoList)-->

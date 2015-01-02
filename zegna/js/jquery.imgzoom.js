@@ -34,6 +34,7 @@
         if (this.element) {
             $(this.element).trigger("afterinit", this);
         }
+        return this;
     };
     ImageZoom.prototype.initHandler = function () {
         if (this.element) {
@@ -66,10 +67,10 @@
             //取消冒泡
             e.stopPropagation();
         });
-        $(window).scroll(function () {
+        $(window).unbind("scroll.imagezoom").bind("scroll.imagezoom", function () {
             thiz.$imgZoomCtn.css({ top: $(window).scrollTop() });
         });
-        $(window).resize(function () {
+        $(window).unbind("resize.imagezoom").bind("resize.imagezoom", function () {
             if (thiz.$element.hasClass("active") && thiz.$image.children().length > 0) {
                 if (thiz.$element.hasClass("loading"))
                     thiz.$element.data("isdirty", true);
@@ -96,6 +97,18 @@
         if (this.element) {
             $(this.element).trigger("aftereventbound", this);
         }
+        return this;
+    };
+    ImageZoom.prototype.unbindHandler = function () {
+        this.$element.unbind();
+        this.$imgZoomCtn.find("> .arrow-left").unbind();
+        this.$imgZoomCtn.find("> .arrow-right").unbind();
+        this.$image.find(".text").unbind();
+        $(window).unbind("scroll.imagezoom resize.imagezoom");
+        if ($.fn.mousewheel) {
+            this.$element.unmousewheel();
+        }
+        return this;
     };
     ImageZoom.prototype.calcSize = function (imgWidth, imgHeight) {
         var maxWidth = this.$element.width() - this.settings.imgPadding * 2,
@@ -224,7 +237,7 @@
             $(this.element).trigger("beforehide", this);
         }
         var thiz = this;
-        this.$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () {
+        this.unbindHandler().$element.removeClass("active loading").fadeOut("normal", this.settings.easing, function () {
             $(this).hide().removeClass("removing");
             if (thiz.element) {
                 $(thiz.element).trigger("afterhide", thiz);
@@ -245,7 +258,15 @@
         );
     };
     $.fn.imageZoom.defaults = {
-        template: '<div class="imagezoom"><div class="imagezoom-container clearfix"><div class="image"><div class="text"><h3></h3><p></p></div></div><a href="javascript:void(0);" class="arrow-left"></a><a href="javascript:void(0);" class="arrow-right"></a><div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div></div></div>',
+        template: '<div class="imagezoom">'
+            + '<div class="imagezoom-container clearfix">'
+            + '<div class="image"><div class="text"><h3></h3><p></p></div></div>'
+            + '<a href="javascript:void(0);" class="arrow-left"></a>'
+            + '<a href="javascript:void(0);" class="arrow-right"></a>'
+            + '<a href="javascript:void(0);" class="btn-close"></a>'
+            + '<div class="img-num"><span>0</span><span class="separator">/</span><span>0</span></div>'
+            + '</div>'
+            + '</div>',
         container: "body",
         showNext: true,
         showPrev: true,
