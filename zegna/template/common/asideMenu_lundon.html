@@ -1,3 +1,4 @@
+<!--#set(Map<String, List<Menu>> asideMenu)-->
 <div class="aside-menu">
     <div class="menu-container">
         <div class="main-menu menu">
@@ -5,19 +6,20 @@
             <a class="home" href="http://zaders.com">HOME 首页</a>
             <a class="brand vicutu active" href="javascript:void(0);"></a>
             <ul class="aside-nav">
-                <li><a href="${path}/news.do">NEWS 赞美新闻</a></li>
-                <li><a href="javascript:void(0);" data-mid="1">OUR WORK 赞美作品</a></li>
-                <li><a href="${path}/page/price">SERVICE PRICE 服务报价</a></li>
-                <!--<li><a href="javascript:void(0);">CAREERS 职业发展</a></li>-->
-                <li><a href="${path}/page/coming-soon">ABOUT US 关于赞美</a></li>
+                <!--#if(asideMenu.localhost)-->
+                <!--#for(Menu menu : asideMenu.localhost)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>${menu.name}</a></li>
+                <!--#end-->
+                <!--#end-->
             </ul>
             <hr class="separator up" />
             <a class="brand gornia" href="javascript:void(0);"></a>
             <ul class="aside-nav" style="display:none;">
-                <li><a href="javascript:void(0);" data-mid="2">MODELS 模特</a></li>
-                <li><a href="javascript:void(0);" data-mid="3">PHOTOGRAPHERS 摄影师</a></li>
-                <li><a href="javascript:void(0);" data-mid="4">TOP VISION 顶级视觉</a></li>
-                <li><a href="http://www.zaders.com/page/coming-soon">ABOUT ZADERS 关于赞达人</a></li>
+                <!--#if(asideMenu.zaders)-->
+                <!--#for(Menu menu : asideMenu.zaders)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zaders-${menu.id}" #end>${menu.name}</a></li>
+                <!--#end-->
+                <!--#end-->
             </ul>
             <hr class="separator" />
             <!--<a class="vgo" href="javascript:void(0);"></a>
@@ -44,57 +46,36 @@
             <br class="clearfix" />
         </div>
         <div class="sub-menu-container">
-            <div class="sub-menu menu" data-mid="1">
-                <h2>OUR WORK 赞美作品</h2>
-                <!--<h3>LUNDON</h3>-->
+            <!--#if(asideMenu.localhost)-->
+            <!--#for(Menu menu : asideMenu.localhost)-->
+            <!--#if(menu.menus)-->
+            <div class="sub-menu menu" data-mid="${menu.id}">
+                <h2>${menu.subname1||menu.name}</h2>
+                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
                 <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="${path}/albumList/">查看全部</a></li>
-                    <li><a href="${path}/albumList/2">MEN 男装</a></li>
-                    <li><a href="${path}/albumList/3">WOMEN 女装</a></li>
-                    <li><a href="${path}/albumList/4">BAGS 箱包</a></li>
-                    <li><a href="${path}/albumList/5">SHOES 鞋履</a></li>
-                    <li><a href="${path}/albumList/6">FRAGRANCE&BEAUTY 香氛及美妆</a></li>
-                    <li><a href="${path}/albumList/7">FOOD 美食特产</a></li>
-                    <li><a href="${path}/albumList/8">JEWELLERY 珠宝</a></li>
-                    <li><a href="${path}/albumList/9">DIGITAL 数码</a></li>
-                    <li><a href="${path}/albumList/10">ACCESSORIES 服饰配件</a></li>
-                    <li><a href="${path}/albumList/11">FURNITURE 家具建材</a></li>
+                    <!--#for(Menu subMenu : menu.menus)-->
+                    <li><a href="${parseMenuUrl(subMenu.url,path)}">${subMenu.name}</a></li>
+                    <!--#end-->
                 </ul>
             </div>
-            <div class="sub-menu menu" data-mid="2">
-                <h2>MODELS 模特</h2>
-                <!--<h3>ZADERS</h3>-->
+            <!--#end-->
+            <!--#end-->
+            <!--#end-->
+            <!--#if(asideMenu.zaders)-->
+            <!--#for(Menu menu : asideMenu.zaders)-->
+            <!--#if(menu.menus)-->
+            <div class="sub-menu menu" data-mid="zaders-${menu.id}">
+                <h2>${menu.subname1||menu.name}</h2>
+                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
                 <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="javascript:void(0);">查看全部</a></li>
-                    <li><a href="javascript:void(0);">TOP MODELS 顶级超模</a></li>
-                    <li><a href="javascript:void(0);">CHINA MODELS 中国模特</a></li>
+                    <!--#for(Menu subMenu : menu.menus)-->
+                    <li><a href="${subMenu.url}">${subMenu.name}</a></li>
+                    <!--#end-->
                 </ul>
             </div>
-            <div class="sub-menu menu" data-mid="3">
-                <h2>PHOTOGRAPHERS 摄影师</h2>
-                <!--<h3>ZADERS</h3>-->
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="javascript:void(0);">查看全部</a></li>
-                    <li><a href="javascript:void(0);">TOP PHOTOGRAPHERS 顶级摄影师</a></li>
-                    <li><a href="javascript:void(0);">CHINA PHOTOGRAPHERS 中国摄影师</a></li>
-                </ul>
-            </div>
-            <div class="sub-menu menu" data-mid="4">
-                <h2>TOP VISION 顶级视觉</h2>
-                <!--<h3>ZADERS</h3>-->
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <li><a href="http://zaders.com/albumList/14_15_16_19_20_21_22_23_24">查看全部</a></li>
-                    <li><a href="http://zaders.com/albumList/14">AD CAMPAIGN 品牌广告</a></li>
-                    <li><a href="http://zaders.com/albumList/15">EDITORIAL 杂志大片</a></li>
-                    <li><a href="http://zaders.com/albumList/16">CREATIVITY 创意灵感</a></li>
-                    <li><a href="http://zaders.com/albumList/19">UNDERWEAR & SWIMWEAR 内衣及泳衣</a></li>
-                    <li><a href="http://zaders.com/albumList/20">MEN 男装</a></li>
-                    <li><a href="http://zaders.com/albumList/21">WOMEN 女装</a></li>
-                    <li><a href="http://zaders.com/albumList/22">JEWELLERY 珠宝</a></li>
-                    <li><a href="http://zaders.com/albumList/23">ACCESSORIES 配件</a></li>
-                    <li><a href="http://zaders.com/albumList/24">KIDS 童装</a></li>
-                </ul>
-            </div>
+            <!--#end-->
+            <!--#end-->
+            <!--#end-->
         </div>
         <div class="sub-menu-close-btn"></div>
     </div>
