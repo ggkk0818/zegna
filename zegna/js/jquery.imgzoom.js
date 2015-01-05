@@ -31,6 +31,9 @@
         if (!this.settings.showNext) {
             this.$imgZoomCtn.children(".arrow-right").hide();
         }
+        if (!this.settings.allowHide) {
+            this.$imgZoomCtn.children(".btn-close").hide();
+        }
         if (this.element) {
             $(this.element).trigger("afterinit", this);
         }
