@@ -8,7 +8,7 @@
             <ul class="aside-nav" style="display:none;">
                 <!--#if(asideMenu.zami)-->
                 <!--#for(Menu menu : asideMenu.zami)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="zami-${menu.id}" #end>${menu.name}</a></li>
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="zami-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -17,7 +17,7 @@
             <ul class="aside-nav">
                 <!--#if(asideMenu.localhost)-->
                 <!--#for(Menu menu : asideMenu.localhost)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zaders-${menu.id}" #end>${menu.name}</a></li>
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zaders-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -50,11 +50,11 @@
             <!--#for(Menu menu : asideMenu.zami)-->
             <!--#if(menu.menus)-->
             <div class="sub-menu menu" data-mid="zami-${menu.id}">
-                <h2>${menu.subname1||menu.name}</h2>
-                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
+                <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                 <ul class="aside-nav" style="margin-top:12px;">
                     <!--#for(Menu subMenu : menu.menus)-->
-                    <li><a href="${parseMenuUrl(subMenu.url,path)}">${subMenu.name}</a></li>
+                    <li><a href="${parseMenuUrl(subMenu.url,path)}">$!{text2html(subMenu.name)}</a></li>
                     <!--#end-->
                 </ul>
             </div>
@@ -65,11 +65,11 @@
             <!--#for(Menu menu : asideMenu.localhost)-->
             <!--#if(menu.menus)-->
             <div class="sub-menu menu" data-mid="zaders-${menu.id}">
-                <h2>${menu.subname1||menu.name}</h2>
-                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
+                <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                 <ul class="aside-nav" style="margin-top:12px;">
                     <!--#for(Menu subMenu : menu.menus)-->
-                    <li><a href="${subMenu.url}">${subMenu.name}</a></li>
+                    <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
                     <!--#end-->
                 </ul>
             </div>

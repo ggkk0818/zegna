@@ -6,18 +6,18 @@
             <a class="home" href="http://zaders.com">HOME 首页</a>
             <a class="brand vicutu active" href="javascript:void(0);"></a>
             <ul class="aside-nav">
-                <!--#if(asideMenu.localhost)-->
-                <!--#for(Menu menu : asideMenu.localhost)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>${menu.name}</a></li>
+                <!--#if(asideMenu.zami)-->
+                <!--#for(Menu menu : asideMenu.zami)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="zami-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
             <hr class="separator up" />
             <a class="brand gornia" href="javascript:void(0);"></a>
             <ul class="aside-nav" style="display:none;">
-                <!--#if(asideMenu.lundon)-->
-                <!--#for(Menu menu : asideMenu.lundon)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="lundon-${menu.id}" #end>${menu.name}</a></li>
+                <!--#if(asideMenu.localhost)-->
+                <!--#for(Menu menu : asideMenu.localhost)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zaders-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -46,30 +46,30 @@
             <br class="clearfix" />
         </div>
         <div class="sub-menu-container">
-            <!--#if(asideMenu.localhost)-->
-            <!--#for(Menu menu : asideMenu.localhost)-->
+            <!--#if(asideMenu.zami)-->
+            <!--#for(Menu menu : asideMenu.zami)-->
             <!--#if(menu.menus)-->
-            <div class="sub-menu menu" data-mid="${menu.id}">
-                <h2>${menu.subname1||menu.name}</h2>
-                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
+            <div class="sub-menu menu" data-mid="zami-${menu.id}">
+                <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                 <ul class="aside-nav" style="margin-top:12px;">
                     <!--#for(Menu subMenu : menu.menus)-->
-                    <li><a href="${parseMenuUrl(subMenu.url,path)}">${subMenu.name}</a></li>
+                    <li><a href="${parseMenuUrl(subMenu.url,path)}">$!{text2html(subMenu.name)}</a></li>
                     <!--#end-->
                 </ul>
             </div>
             <!--#end-->
             <!--#end-->
             <!--#end-->
-            <!--#if(asideMenu.lundon)-->
-            <!--#for(Menu menu : asideMenu.lundon)-->
+            <!--#if(asideMenu.localhost)-->
+            <!--#for(Menu menu : asideMenu.localhost)-->
             <!--#if(menu.menus)-->
-            <div class="sub-menu menu" data-mid="lundon-${menu.id}">
-                <h2>${menu.subname1||menu.name}</h2>
-                #if(menu.subname2)<h3>${menu.subname2}</h3>#end
+            <div class="sub-menu menu" data-mid="zaders-${menu.id}">
+                <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                 <ul class="aside-nav" style="margin-top:12px;">
                     <!--#for(Menu subMenu : menu.menus)-->
-                    <li><a href="${subMenu.url}">${subMenu.name}</a></li>
+                    <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
                     <!--#end-->
                 </ul>
             </div>
