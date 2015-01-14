@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!--#set(List<PageAlbum> albumList)-->
 <!--#set(PageAlbum currentAlbum)-->
+<!--#set(boolean showCover)-->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>${pagetitle}</title>
@@ -29,7 +30,7 @@
                 <!--#end-->
             <!--#for(PageAlbum album : albumList)-->
             <div class="grid grid-${album.imgSize}x1 loading">
-                <a id="album${album.id}" href="${path}/albumList/${albumType}/${album.id}" data-name="${album.name}${albumNameSuffix}">
+                <a id="album${album.id}" href="${path}/albumList/${albumType}/${album.id}#if(!showCover)?cover=false#end" data-name="${album.name}${albumNameSuffix}">
                     <img class="lazyload" src="${path}/img/content_${album.imgSize}x1.png" data-src="${path}${album.thumbnailPath||album.coverPath}" />
                     <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
                     <div class="album-photo" style="display:none;">
