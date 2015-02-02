@@ -147,7 +147,7 @@ a img{
 }
 .aside-menu .menu-container .main-menu .home{
     display:block;
-    background-color:#3366cc;
+    background-color:#f62424;
     padding:20px;
     line-height:20px;
     color:white;
@@ -255,7 +255,7 @@ a img{
     background-position-y:-5px;
 }
 .aside-menu .menu-container .main-menu h2.joinus{
-    color:#3366cc;
+    color:#f62424;
     margin:20px 10px 13px;
     padding:0;
     text-align:center;
@@ -306,7 +306,7 @@ a img{
     margin:30px auto;
     font-size:16px;
     text-align:center;
-    background-color:#3366cc;
+    background-color:#000000;
 }
 .aside-menu .menu-container .main-menu .copyright{
     text-align:center;
@@ -359,7 +359,7 @@ a img{
     height:100%;
 }
 .aside-menu .menu-container .sub-menu-container .sub-menu h2{
-    color:#3366cc;
+    color:#999999;
     margin:40px 0 27px 0;
     padding:0 10px;
     font-size:12px;
