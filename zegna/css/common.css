@@ -374,7 +374,7 @@ a img{
     font-weight:normal;
     text-align:center;
 }
-.aside-menu .menu-container .sub-menu-container .sub-menu h3:before{
+/*.aside-menu .menu-container .sub-menu-container .sub-menu h3:before{
     content:"----";
     font-family:"宋体";
     padding-right:5px;
@@ -383,7 +383,7 @@ a img{
     content:"----";
     font-family:"宋体";
     padding-left:5px;
-}
+}*/
 .aside-menu .menu-container .sub-menu-container .sub-menu ul.aside-nav{
     display:block;
     list-style:none;
