@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--#set(List<PageModel> modelList)-->
+<!--#set(PageModel currentModel)-->
+<!--#set(boolean showCover)-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>${pagetitle}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
+    <link href="${path}/css/common.css" rel="stylesheet" />
+    <link href="${path}/css/imagezoom.css" rel="stylesheet" />
+    <link href="${path}/css/product.css" rel="stylesheet" />
+    <script src="${path}/js/jquery-1.11.1.min.js"></script>
+    <script src="${path}/js/jquery.easing.1.3.js"></script>
+    <script src="${path}/js/jquery.mousewheel.js"></script>
+    <script src="${path}/js/jquery.jscrollpane.js"></script>
+    <script src="${path}/js/jquery.imgzoom.js"></script>
+    <script src="${path}/js/jquery.lazyload.js"></script>
+    <script src="${path}/js/jquery.history.js"></script>
+</head>
+<body>
+    ${include("/common/header.html","UTF-8")}
+    ${include("/common/asideMenu.html","UTF-8")}
+    <div class="container">
+        <div class="row">
+            <!--#if(modelList)-->
+                <!--#if(websiteName)-->
+                <!--#set(modelNameSuffix = " - " + websiteName)-->
+                <!--#end-->
+            <!--#for(PageModel model : modelList)-->
+            <div class="grid grid-${model.imgSize}x1 loading">
+                <a id="model${model.id}" href="${path}/modelList/${modelType}/${model.id}#if(showCover)?cover=true#end" data-name="${model.name}${modelNameSuffix}">
+                    <img class="lazyload" src="${path}/img/content_${model.imgSize}x1.png" data-src="${path}${model.thumbnailPath||model.path}" />
+                    <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
+                    <div class="model-photo" style="display:none;">
+                        <!--#if(showCover)-->
+                        <span data-src="${path}${model.thumbnailPathLarge||model.path}"></span>
+                        <!--#end-->
+                        <!--#if(model.modelPhotos)-->
+                        <!--#for(ModelPhoto photo : model.modelPhotos)-->
+                        <span data-src="${path}${photo.thumbnailPath||photo.path}"></span>
+                        <!--#end-->
+                        <!--#end-->
+                    </div>
+                </a>
+            </div>
+            <!--#end-->
+            <!--#end-->
+        </div>
+    </div>
+    ${include("/common/footer.html","UTF-8")}
+    <script type="text/javascript">
+        var imgZoom = function (id) {
+            var target = $(id);
+            if(!target.length)
+                return;
+            $(".container .row .grid > a").off("prev next");
+            target.on("prev", function () {
+                var src = null, current = null, total = $(this).find(".model-photo *[data-src]").length, photo = null;
+                if ($(this).find(".model-photo .active").prev("[data-src]").length > 0) {
+                    photo = $(this).find(".model-photo .active").removeClass("active").prev("[data-src]").addClass("active");
+                }
+                else
+                    photo = $(this).find(".model-photo *[data-src]").removeClass("active").last().addClass("active");
+                src = photo.attr("data-src");
+                current = photo.prevAll("[data-src]").length + 1;
+                $(this).data("imgZoom").show({ src: src, current: current, total: total });
+            }).on("next", function () {
+                var src = null, current = null, total = $(this).find(".model-photo *[data-src]").length, photo = null;
+                if ($(this).find(".model-photo .active").next("[data-src]").length > 0)
+                    photo = $(this).find(".model-photo .active").removeClass("active").next("[data-src]").addClass("active");
+                else
+                    photo = $(this).find(".model-photo *[data-src]").removeClass("active").first().addClass("active");
+                src = photo.attr("data-src");
+                current = photo.prevAll("[data-src]").length + 1;
+                $(this).data("imgZoom").show({ src: src, current: current, total: total });
+            }).imageZoom({ container: ".container" })
+                .data("imgZoom")
+                .show({
+                    src: target.find(".model-photo *[data-src]").removeClass("active").first().addClass("active").attr("data-src"),
+                    current: 1,
+                    total: target.find(".model-photo *[data-src]").length
+                });
+        };
+        <!--#if(currentModel)-->
+        imgZoom("#model${currentModel.id}");
+        <!--#end-->
+        if(window.History.enabled){
+            $(".container .row .grid > a").click(function (e) {
+                e.preventDefault();
+                if($(this).attr("href") == window.location.pathname){
+                    imgZoom(this);
+                }
+                else{
+                    History.pushState({ id: this.id }, $(this).data("name") || null, $(this).attr("href"));
+                }
+            });
+            $(window).bind("statechange", function () {
+                var target = $("#" + History.getState().data.id);
+                if (target.find(".model-photo *[data-src]").length)
+                    imgZoom(target);
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        //分屏加载
+        $(".container .row .grid > a > img.lazyload").lazyload({
+            data_attribute: "src",
+            load: function () {
+                $(this).parent().animate({ opacity: 1 }, 1000, EASING_NAME).parent().removeClass("loading");
+            }
+        }).each(function (i, e) {
+            $(this).parent().animate({ opacity: 0 }, 0).parent().addClass("loading");
+        });
+    </script>
+</body>
+</html>
