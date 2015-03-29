@@ -13,6 +13,7 @@
     <script src="${path}/js/jquery.mousewheel.js"></script>
     <script src="${path}/js/jquery.jscrollpane.js"></script>
     <script src="${path}/js/jquery.imgzoom.js"></script>
+    <script src="${path}/js/jquery.lazyload.js"></script>
 </head>
 <body>
     ${include("/common/header.html","UTF-8")}
@@ -51,6 +52,12 @@
             else
                 $(".container .news-container").removeClass("double");
         }).resize();
+    </script>
+    <script type="text/javascript">
+        //分屏加载
+        $(".container .news .news-content img[data-src]").lazyload({
+            data_attribute: "src"
+        });
     </script>
 </body>
 </html>
