@@ -35,7 +35,12 @@
     <script type="text/javascript">
         //分屏加载
         $(".container .news .news-content img[data-src]").lazyload({
-            data_attribute: "src"
+            data_attribute: "src",
+            load: function () {
+                $(this).animate({ opacity: 1 }, 1000, EASING_NAME);
+            }
+        }).each(function (i, e) {
+            $(this).css({ opacity: 0 }, 0);
         });
         if ($(".container > .news").length) {
             var ctn1 = $('<div class="news-container double"></div>'),
