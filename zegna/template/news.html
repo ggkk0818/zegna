@@ -33,9 +33,13 @@
     </div>
     ${include("/common/footer.html","UTF-8")}
     <script type="text/javascript">
+        //分屏加载
+        $(".container .news .news-content img[data-src]").lazyload({
+            data_attribute: "src"
+        });
         if ($(".container > .news").length) {
-            var ctn1 = $('<div class="news-container"></div>'),
-                ctn2 = $('<div class="news-container"></div>'),
+            var ctn1 = $('<div class="news-container double"></div>'),
+                ctn2 = $('<div class="news-container double"></div>'),
                 count = 0;
             while ($(".container > .news").length) {
                 if (count % 2 == 0)
@@ -46,18 +50,12 @@
             }
             $(".container").append(ctn1).append(ctn2);
         }
-        $(window).resize(function () {
-            if ($(window).width() >= 1850)
-                $(".container .news-container").addClass("double");
-            else
-                $(".container .news-container").removeClass("double");
-        }).resize();
-    </script>
-    <script type="text/javascript">
-        //分屏加载
-        $(".container .news .news-content img[data-src]").lazyload({
-            data_attribute: "src"
-        });
+        //$(window).resize(function () {
+        //    if ($(window).width() >= 1850)
+        //        $(".container .news-container").addClass("double");
+        //    else
+        //        $(".container .news-container").removeClass("double");
+        //}).resize();
     </script>
 </body>
 </html>
