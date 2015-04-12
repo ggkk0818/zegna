@@ -10,7 +10,7 @@
     <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
     <link href="${path}/css/common.css" rel="stylesheet" />
     <link href="${path}/css/imagezoom.css" rel="stylesheet" />
-    <link href="${path}/css/product.css" rel="stylesheet" />
+    <link href="${path}/css/model.css" rel="stylesheet" />
     <script src="${path}/js/jquery-1.11.1.min.js"></script>
     <script src="${path}/js/jquery.easing.1.3.js"></script>
     <script src="${path}/js/jquery.mousewheel.js"></script>
@@ -33,6 +33,29 @@
                 <a id="model${model.id}" href="${path}/modelList/${modelType}/${model.id}#if(showCover)?cover=true#end" data-name="${model.name}${modelNameSuffix}">
                     <img class="lazyload" src="${path}/img/content_${model.imgSize}x1.png" data-src="${path}${model.thumbnailPath||model.path}" />
                     <div class="hover-img"><img src="${path}/img/img-hover.png" /></div>
+                    <div class="hover-text">
+                        <!--#if(model.modelHeight)-->
+                        身高 / Height : ${model.modelHeight}cm<br />
+                        <!--#end-->
+                        <!--#if(model.bust)-->
+                        胸围 / Bust : ${model.bust}cm<br />
+                        <!--#end-->
+                        <!--#if(model.waistline)-->
+                        腰围 / Waist : ${model.waistline}cm<br />
+                        <!--#end-->
+                        <!--#if(model.hipline)-->
+                        臀围 / Hips : ${model.hipline}cm<br />
+                        <!--#end-->
+                        <!--#if(model.shoesSize)-->
+                        鞋码 / Shoes : ${model.shoesSize}<br />
+                        <!--#end-->
+                        <!--#if(model.hairColor)-->
+                        头发 / Hair : ${model.hairColor}<br />
+                        <!--#end-->
+                        <!--#if(model.eyesColor)-->
+                        眼睛 / Eyes : ${model.eyesColor}<br />
+                        <!--#end-->
+                    </div>
                     <div class="model-photo" style="display:none;">
                         <!--#if(showCover)-->
                         <span data-src="${path}${model.thumbnailPathLarge||model.path}"></span>
