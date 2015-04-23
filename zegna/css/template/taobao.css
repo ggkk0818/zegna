@@ -39,14 +39,14 @@
         position:absolute;
         top:0;
         left:0;
-        *display:none;
+        filter:alpha(opacity=0);
         opacity:0;
         -webkit-transition: opacity .3s;
                 transition: opacity .3s;
     }
     .zaders_index_image_link:hover .hover
     {
-        *display:block;
+        filter:alpha(opacity=100);
         opacity:1;
     }
 .zaders_slide_image_link{
