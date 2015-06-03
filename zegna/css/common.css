@@ -156,8 +156,8 @@ a img{
 .aside-menu .menu-container .main-menu .brand.vicutu{
     display:block;
     width:100px;
-    height:77px;
-    background:url(../img/zami.png) no-repeat 0 -77px;
+    height:71px;
+    background:url(../img/zami.png) no-repeat 0 -71px;
     margin:30px auto;
 }
 .aside-menu .menu-container .main-menu .brand.vicutu.active,
