@@ -4,19 +4,19 @@
         <div class="main-menu menu">
             <img class="logo" src="${path}/img/logo.png" />
             <a class="home" href="http://zaders.com">HOME 首页</a>
-            <a class="brand vicutu active" href="javascript:void(0);"></a>
-            <ul class="aside-nav">
-                <!--#if(asideMenu.localhost)-->
-                <!--#for(Menu menu : asideMenu.localhost)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>$!{text2html(menu.name)}</a></li>
+            <a class="brand vicutu" href="javascript:void(0);"></a>
+            <ul class="aside-nav" style="display:none;">
+                <!--#if(asideMenu.zami)-->
+                <!--#for(Menu menu : asideMenu.zami)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zami-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
             <hr class="separator up" />
-            <a class="brand children" href="javascript:void(0);"></a>
-            <ul class="aside-nav" style="display:none;">
-                <!--#if(asideMenu.children)-->
-                <!--#for(Menu menu : asideMenu.children)-->
+            <a class="brand children active" href="javascript:void(0);"></a>
+            <ul class="aside-nav">
+                <!--#if(asideMenu.localhost)-->
+                <!--#for(Menu menu : asideMenu.localhost)-->
                 <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->

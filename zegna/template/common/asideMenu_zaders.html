@@ -13,6 +13,15 @@
                 <!--#end-->
             </ul>
             <hr class="separator down" />
+            <a class="brand children" href="javascript:void(0);"></a>
+            <ul class="aside-nav" style="display:none;">
+                <!--#if(asideMenu.children)-->
+                <!--#for(Menu menu : asideMenu.children)-->
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>$!{text2html(menu.name)}</a></li>
+                <!--#end-->
+                <!--#end-->
+            </ul>
+            <hr class="separator up" />
             <a class="brand gornia active" href="javascript:void(0);"></a>
             <ul class="aside-nav">
                 <!--#if(asideMenu.localhost)-->

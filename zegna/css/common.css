@@ -186,6 +186,17 @@ a img{
 .aside-menu .menu-container .main-menu .vgo:hover{
     background-position-y:0px;
 }
+.aside-menu .menu-container .main-menu .children{
+    display:block;
+    width:100px;
+    height:95px;
+    background:url(../img/zami-children.png) no-repeat 0 -95px;
+    margin:20px auto;
+}
+.aside-menu .menu-container .main-menu .children.active,
+.aside-menu .menu-container .main-menu .children:hover{
+    background-position-y:0px;
+}
 .aside-menu .menu-container .main-menu ul.aside-nav{
     display:block;
     list-style:none;
