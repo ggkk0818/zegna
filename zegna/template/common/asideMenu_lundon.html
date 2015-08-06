@@ -17,7 +17,7 @@
             <ul class="aside-nav" style="display:none;">
                 <!--#if(asideMenu.children)-->
                 <!--#for(Menu menu : asideMenu.children)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>$!{text2html(menu.name)}</a></li>
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="children-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -55,36 +55,51 @@
             <br class="clearfix" />
         </div>
         <div class="sub-menu-container">
-            <!--#if(asideMenu.localhost)-->
+        <!--#if(asideMenu.localhost)-->
             <!--#for(Menu menu : asideMenu.localhost)-->
-            <!--#if(menu.menus)-->
-            <div class="sub-menu menu" data-mid="${menu.id}">
-                <h2>$!{text2html(menu.subname1||menu.name)}</h2>
-                #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <!--#for(Menu subMenu : menu.menus)-->
-                    <li><a href="${parseMenuUrl(subMenu.url,path)}">$!{text2html(subMenu.name)}</a></li>
-                    <!--#end-->
-                </ul>
-            </div>
+                <!--#if(menu.menus)-->
+                <div class="sub-menu menu" data-mid="${menu.id}">
+                    <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                    #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <!--#for(Menu subMenu : menu.menus)-->
+                        <li><a href="${parseMenuUrl(subMenu.url,path)}">$!{text2html(subMenu.name)}</a></li>
+                        <!--#end-->
+                    </ul>
+                </div>
+                <!--#end-->
             <!--#end-->
+        <!--#end-->
+        <!--#if(asideMenu.children)-->
+            <!--#for(Menu menu : asideMenu.children)-->
+                <!--#if(menu.menus)-->
+                <div class="sub-menu menu" data-mid="children-${menu.id}">
+                    <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                    #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <!--#for(Menu subMenu : menu.menus)-->
+                        <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
+                        <!--#end-->
+                    </ul>
+                </div>
+                <!--#end-->
             <!--#end-->
-            <!--#end-->
-            <!--#if(asideMenu.zaders)-->
+        <!--#end-->
+        <!--#if(asideMenu.zaders)-->
             <!--#for(Menu menu : asideMenu.zaders)-->
-            <!--#if(menu.menus)-->
-            <div class="sub-menu menu" data-mid="zaders-${menu.id}">
-                <h2>$!{text2html(menu.subname1||menu.name)}</h2>
-                #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
-                <ul class="aside-nav" style="margin-top:12px;">
-                    <!--#for(Menu subMenu : menu.menus)-->
-                    <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
-                    <!--#end-->
-                </ul>
-            </div>
+                <!--#if(menu.menus)-->
+                <div class="sub-menu menu" data-mid="zaders-${menu.id}">
+                    <h2>$!{text2html(menu.subname1||menu.name)}</h2>
+                    #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
+                    <ul class="aside-nav" style="margin-top:12px;">
+                        <!--#for(Menu subMenu : menu.menus)-->
+                        <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
+                        <!--#end-->
+                    </ul>
+                </div>
+                <!--#end-->
             <!--#end-->
-            <!--#end-->
-            <!--#end-->
+        <!--#end-->
         </div>
         <div class="sub-menu-close-btn"></div>
     </div>
