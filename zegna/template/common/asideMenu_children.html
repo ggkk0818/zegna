@@ -8,7 +8,7 @@
             <ul class="aside-nav" style="display:none;">
                 <!--#if(asideMenu.zami)-->
                 <!--#for(Menu menu : asideMenu.zami)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zami-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zami-${menu.id}" #end #if(!menu.menus && menu.blank)target="_blank" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -17,7 +17,7 @@
             <ul class="aside-nav">
                 <!--#if(asideMenu.localhost)-->
                 <!--#for(Menu menu : asideMenu.localhost)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end>$!{text2html(menu.name)}</a></li>
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(menu.menus)data-mid="${menu.id}" #end #if(!menu.menus && menu.blank)target="_blank" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -26,7 +26,7 @@
             <ul class="aside-nav" style="display:none;">
                 <!--#if(asideMenu.zaders)-->
                 <!--#for(Menu menu : asideMenu.zaders)-->
-                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zaders-${menu.id}" #end>$!{text2html(menu.name)}</a></li>
+                <li><a href="#if(menu.menus)javascript:void(0);#else()${menu.url}#end" #if(menu.menus)data-mid="zaders-${menu.id}" #end #if(!menu.menus && menu.blank)target="_blank" #end>$!{text2html(menu.name)}</a></li>
                 <!--#end-->
                 <!--#end-->
             </ul>
@@ -63,7 +63,7 @@
                     #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                     <ul class="aside-nav" style="margin-top:12px;">
                         <!--#for(Menu subMenu : menu.menus)-->
-                        <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
+                        <li><a href="${subMenu.url}" #if(!subMenu.menus && subMenu.blank)target="_blank" #end>$!{text2html(subMenu.name)}</a></li>
                         <!--#end-->
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
                     #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                     <ul class="aside-nav" style="margin-top:12px;">
                         <!--#for(Menu subMenu : menu.menus)-->
-                        <li><a href="${parseMenuUrl(subMenu.url,path)}">$!{text2html(subMenu.name)}</a></li>
+                        <li><a href="${parseMenuUrl(subMenu.url,path)}" #if(!subMenu.menus && subMenu.blank)target="_blank" #end>$!{text2html(subMenu.name)}</a></li>
                         <!--#end-->
                     </ul>
                 </div>
@@ -93,7 +93,7 @@
                     #if(menu.subname2)<h3>$!{text2html(menu.subname2)}</h3>#end
                     <ul class="aside-nav" style="margin-top:12px;">
                         <!--#for(Menu subMenu : menu.menus)-->
-                        <li><a href="${subMenu.url}">$!{text2html(subMenu.name)}</a></li>
+                        <li><a href="${subMenu.url}" #if(!subMenu.menus && subMenu.blank)target="_blank" #end>$!{text2html(subMenu.name)}</a></li>
                         <!--#end-->
                     </ul>
                 </div>
