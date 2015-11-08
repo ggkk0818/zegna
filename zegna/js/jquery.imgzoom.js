@@ -137,7 +137,8 @@
             height = imgHeight;
             marginTop = marginBottom = Math.round((maxHeight - height) / 2);
         }
-        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop, marginBottom: marginBottom };
+        //return { width: Math.round(width), height: Math.round(height), marginTop: marginTop, marginBottom: marginBottom };
+        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop };
     };
     ImageZoom.prototype.show = function (arg) {
         if (this.$element.hasClass("loading"))
