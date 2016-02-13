@@ -6,6 +6,9 @@
     padding:0;
     min-width:1280px;
 }
+body.no-scroll{
+    overflow:hidden;
+}
 a{
     text-decoration:none;
 }
@@ -111,6 +114,113 @@ a img{
 }
 .header .links li a.weixin:hover{
     background-position-y:0;
+}
+/* ==========================================================================
+   Navigator Mobile
+   ========================================================================== */
+.header-m{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:50px;
+    background:#fff;
+    text-align:center;
+    z-index:1;
+}
+.header-m a.logo{
+    display:inline-block;
+    margin-top: 15.5px;
+}
+.header-m a.logo img{
+    width: 124px; 
+    height: 18.25px;
+}
+.header-m a.menu{
+    position:absolute;
+    top:15px;
+    left:17.5px;
+    width:15px;
+    height:20px;
+}
+.header-m a.menu img{
+    width:100%;
+}
+.header-m a.camera{
+    position:absolute;
+    top:15px;
+    right:12.5px;
+    width:27.5px;
+    height:20px;
+}
+.header-m a.camera img{
+    width:100%;
+}
+/* ==========================================================================
+   Menu Mobile
+   ========================================================================== */
+.menu-m{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#000;
+    overflow:auto;
+    z-index:5;
+}
+.menu-m .menu-header{
+    width:100%;
+    height:50px;
+    margin:0 0 25px 0;
+    text-align:center;
+}
+.menu-m .menu-header a.logo{
+    display:inline-block;
+}
+.menu-m .menu-header a.close{
+    position:absolute;
+    top:15px;
+    left:15px;
+    width:17.5px;
+    height:20px;
+}
+.menu-m .menu-header a.close img{
+    width:100%;
+}
+.menu-m ul.menu-content{
+    display:block;
+    list-style:none;
+    margin:0 50px;
+    padding:0;
+}
+.menu-m ul.menu-content li{
+    display:block;
+    border-bottom:1px solid #333333;
+}
+.menu-m ul.menu-content li a{
+    display:block;
+    height:40.75px;
+    line-height:40.75px;
+    margin-top:9.25px;
+    overflow:hidden;
+    color:#fff;
+    font-size:14px;
+    font-family:"微软雅黑";
+    text-decoration:none;
+}
+.menu-m ul.menu-content li a span{
+    display:block;
+}
+.menu-m ul.menu-content li a span.left{
+    float:left;
+    margin-left:5px;
+}
+.menu-m ul.menu-content li a span.right{
+    float:right;
+    margin-right:5px;
 }
 /* ==========================================================================
    Aside Menu
@@ -459,4 +569,21 @@ a img{
 .container .row .grid-3x1{
     width:100%;
     min-height:515px;
+}
+@media (max-width: 1068px) {
+    .header{
+        display:none;
+    }
+    .header-m{
+        display:block;
+    }
+    .menu-m.open{
+        display:block;
+    }
+    .aside-menu{
+        display:none;
+    }
+    .container{
+        margin:50px 0 0 0;
+    }
 }

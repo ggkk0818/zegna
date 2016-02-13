@@ -31,27 +31,31 @@ Supports Thumbs: true
 	text-align: center;
 	padding: 0;
 	position:relative;
-	margin-top:-22px;
+    height:100px;
+	margin-top:-100px;
 	z-index:9;
 }
 .theme-default .nivo-controlNav a {
 	display:inline-block;
-	width:22px;
-	height:22px;
-	background:url(bullets.png) no-repeat;
+	width:12px;
+	height:13px;
+	background:url(slide-ctrl.png) no-repeat;
+    background-size:cover;
 	text-indent:-9999px;
 	border:0;
-	margin: 0 2px;
+	margin: 18px 25px 0;
+    vertical-align:top;
 }
 .theme-default .nivo-controlNav a.active {
-	background-position:0 -22px;
+	width:52px;
+	height:50px;
+	background:url(slide-ctrl-active.png) no-repeat;
+    background-size:cover;
+	margin: 0 25px 0 10px;
 }
 
 .theme-default .nivo-directionNav a {
 	display:block;
-	/*width:30px;
-	height:30px;
-	background:url(arrows.png) no-repeat;*/
     top:50%;
     width:86px;
     height:164px;
@@ -60,15 +64,10 @@ Supports Thumbs: true
 	text-indent:-9999px;
 	border:0;
 	opacity: 0;
-	/*-webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;*/
 }
 .theme-default:hover .nivo-directionNav a { opacity: 0.5; }
 .theme-default .nivo-directionNav a:hover{ opacity: 1; }
 .theme-default a.nivo-nextNav {
-	/*background-position:-30px 0;*/
 	background-position:-86px 0;
 	right:15px;
 }
@@ -100,4 +99,30 @@ Supports Thumbs: true
 	display: block;
 	width: 120px;
 	height: auto;
+}
+@media (max-width: 1068px) {
+    .theme-default .nivo-controlNav {
+        height:50px;
+	    margin-top:-50px;
+    }
+    .theme-default .nivo-controlNav a {
+	    display:inline-block;
+	    width:6px;
+	    height:6.5px;
+	    margin: 9px 12.5px 0;
+    }
+    .theme-default .nivo-controlNav a.active {
+	    width:26px;
+	    height:25px;
+	    margin: 0 12.5px 0 5px;
+    }
+    .theme-default .nivo-directionNav a {
+        width:43px;
+        height:82px;
+        margin-top:-41px;
+        background-size:86px 82px;
+    }
+    .theme-default a.nivo-nextNav {
+	    background-position:-44px 0;
+    }
 }

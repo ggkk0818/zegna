@@ -1,0 +1,43 @@
+﻿body{
+    min-width:300px;
+}
+.container .row .grid-3x1{
+    min-height:inherit;
+}
+.index-images{
+    margin:10px 5px;
+}
+.index-col4{
+    float:left;
+    position:relative;
+    width:25%;
+}
+.index-col4 .img-ctn{
+    margin:0 5px;
+}
+.index-col4 .img-ctn img{
+    width:100%;
+}
+@media (max-width: 1068px) {
+    .index-images{
+        margin:10px 5px 0 5px;
+    }
+    .index-col4{
+        width:50%;
+        margin-bottom:10px;
+    }
+}
+@media (max-width: 735px) {
+    .index-images{
+        margin:0 5px;
+    }
+    .index-col4{
+        float:none;
+        width:100%;
+        margin-bottom:0;
+    }
+    .index-col4 .img-ctn{
+        margin:5px 0;
+    }
+
+}
