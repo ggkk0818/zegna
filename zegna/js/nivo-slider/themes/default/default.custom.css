@@ -51,7 +51,7 @@ Supports Thumbs: true
 	height:50px;
 	background:url(slide-ctrl-active.png) no-repeat;
     background-size:cover;
-	margin: 0 25px 0 10px;
+	margin: 0 25px 0 -15px;
 }
 
 .theme-default .nivo-directionNav a {

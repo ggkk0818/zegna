@@ -195,16 +195,20 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="grid grid-3x1 clearfix">
-                <div class="slider-wrapper theme-default">
-                    <div id="slider" class="nivoSlider">
-                        <a href="javascript:void(0);"><img src="http://zamikids.zaders.com/album/155/%E9%A6%96%E9%A1%B5_01.jpg" /></a>
-                        <a href="javascript:void(0);"><img src="http://zamikids.zaders.com/album/155/%E9%A6%96%E9%A1%B5_01.jpg" /></a>
-                        <a href="javascript:void(0);"><img src="http://zamikids.zaders.com/album/155/%E9%A6%96%E9%A1%B5_01.jpg" /></a>
-                    </div>
-                </div>
+        <div class="index-slider">
+            <div class="slider">
+                <img src="img/index2016/626a73f53e04f0fcf3d3853a.jpg" style="display:block;width:100%;" />
+                <img src="img/index2016/626a73f53e04f0fcf3d3853a.jpg" />
+                <img src="img/index2016/626a73f53e04f0fcf3d3853a.jpg" />
             </div>
+            <div class="controls">
+                <a href="javascript:void(0);"></a>
+                <a href="javascript:void(0);" class="active"></a>
+                <a href="javascript:void(0);"></a>
+                <a href="javascript:void(0);"></a>
+            </div>
+            <a class="prev" href="javascript:void(0);"></a>
+            <a class="next" href="javascript:void(0);"></a>
         </div>
         <div class="index-images clearfix">
             <div class="index-col4">
@@ -224,48 +228,17 @@
     <script src="js/common.js"></script>
     <script type="text/javascript">
         //图片轮播
-        var slider = $("#slider").nivoSlider({
-            effect: "fade",
-            pauseTime: 5000,
-            manualAdvance: false,
-            prevText: 'Prev',
-            nextText: 'Next',
-            afterLoad: function () {
-                $("#slider a[data-video]").on("click", function () {
-                    showVideo(this);
-                });
+        var $indexSlider = $(".index-slider"),
+            $indexImages = $(".index-images");
+        $(window).resize(function () {
+            if ($(window).width() > 1051) {
+                var h = $(window).height() - $indexSlider.position().top - $indexImages.height() - 20;
+                $indexSlider.height(Math.max(h, 100));
             }
-        }).data('nivoslider');
-        var showVideo = function (target) {
-            var videoPath = $(target).attr("data-video");
-            var videoPreview = $(target).attr("data-video-preview");
-            var flashVars = "streamName=" + encodeURIComponent(videoPath);
-            if (videoPreview) {
-                flashVars += "&amp;streamPreview=" + encodeURIComponent(videoPreview);
+            else {
+                $indexSlider.height($(window).width());
             }
-            var videoTemplate = '<embed width="653" height="400" flashvars="' + flashVars + '" pluginspage="http://www.adobe.com/go/getflashplayer" src="vp_small.swf" type="application/x-shockwave-flash" allowscriptaccess="always" wmode="transparent" name="" allowfullscreen="false" />';
-            $(".container .video-container .video").append($(videoTemplate)).parent().unbind().bind("click", hideVideo).fadeIn("normal", EASING_NAME, function () {
-                var videoObj = $(this).children().children();
-            });
-            slider.stop();
-        };
-        var hideVideo = function () {
-            $(".container .video-container").fadeOut("normal", EASING_NAME, function () {
-                $(this).children(".video").children().remove();
-                slider.start();
-            });
-        };
-    </script>
-    <script type="text/javascript">
-        //分屏加载
-        $(".container .row .grid > a > img.lazyload").lazyload({
-            data_attribute: "src",
-            load: function () {
-                $(this).parent().animate({ opacity: 1 }, 1000, EASING_NAME).parent().removeClass("loading");
-            }
-        }).each(function (i, e) {
-            $(this).parent().animate({ opacity: 0 }, 0).parent().addClass("loading");
-        });
+        }).resize();
     </script>
     <script type="text/javascript">
         //移动端菜单
