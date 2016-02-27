@@ -198,8 +198,9 @@
         <div class="index-slider">
             <div class="slider">
                 <img src="img/index2016/626a73f53e04f0fcf3d3853a.jpg" style="display:block;width:100%;" />
+                <img src="img/index2016/50783622_p0_master1200.jpg" />
                 <img src="img/index2016/626a73f53e04f0fcf3d3853a.jpg" />
-                <img src="img/index2016/626a73f53e04f0fcf3d3853a.jpg" />
+                <img src="img/index2016/50783622_p0_master1200.jpg" />
             </div>
             <div class="controls">
                 <a href="javascript:void(0);"></a>
@@ -230,15 +231,113 @@
         //图片轮播
         var $indexSlider = $(".index-slider"),
             $indexImages = $(".index-images");
+        var resizeImages = function (target) {
+            if (!target) {
+                target = $indexSlider.find("img");
+            }
+            var w = $indexSlider.width(),
+                h = $indexSlider.height();
+            target.each(function (i, e) {
+                var $img = $(e);
+                if ($(window).width() > 1051) {
+                    $img.width(w).height("auto");
+                    $img.css({
+                        top: "50%",
+                        marginTop: -$img.height() / 2
+                    });
+                }
+                else {
+                    $img.width(w).height(h);
+                    $img.css({
+                        top: 0,
+                        marginTop: 0
+                    });
+                }
+            });
+        };
+        var changeImage = function (next) {
+            var current = $indexSlider.find(".slider img.active");
+            if (!next || current.is(next))
+                return;
+            if (current) {
+                current.removeClass("active").fadeTo("normal", 0, EASING_NAME, function () { $(this).hide(); });
+            }
+            next.addClass("active").fadeTo("normal", 1, EASING_NAME);
+            $indexSlider.find(".controls a").eq(next.prevAll("img").length).addClass("active").siblings().removeClass("active");
+        };
+        var nextImage = function () {
+            var current = $indexSlider.find(".slider img.active"),
+                next = current.length && current.next("img").length ? current.next("img") : $indexSlider.find(".slider img").length ? $indexSlider.find(".slider img").first() : null;
+            changeImage(next);
+        };
+        var prevImage = function () {
+            var current = $indexSlider.find(".slider img.active"),
+                next = current.length && current.prev("img").length ? current.prev("img") : $indexSlider.find(".slider img").length ? $indexSlider.find(".slider img").last() : null;
+            changeImage(next);
+        };
+        var indexSliderTimer = null;
+        var initialize = function () {
+            var prevBtnTemplate = '<a class="prev" href="javascript:void(0);"></a>',
+                nextBtnTemplate = '<a class="next" href="javascript:void(0);"></a>',
+                controlsTemplate = '<div class="controls"></div>',
+                controlBtnTemplate = '<a href="javascript:void(0);"></a>';
+            //Elements
+            if (!$indexSlider.children("a.prev").length) {
+                $indexSlider.append(prevBtnTemplate);
+            }
+            if (!$indexSlider.children("a.next").length) {
+                $indexSlider.append(nextBtnTemplate);
+            }
+            if (!$indexSlider.children(".controls").length) {
+                $indexSlider.append(controlsTemplate);
+            }
+            else {
+                $indexSlider.children(".controls").children().remove();
+            }
+            if ($indexSlider.find(".slider img").length) {
+                $indexSlider.find(".slider img").each(function (i, e) {
+                    $(e).load(function () {
+                        resizeImages($(this));
+                    });
+                    $indexSlider.children(".controls").append(controlBtnTemplate);
+                });
+                $indexSlider.find(".slider img").first().addClass("active").show();
+                $indexSlider.find(".controls a").first().addClass("active");
+            }
+            //Events
+            $indexSlider.children("a.prev").off().click(prevImage);
+            $indexSlider.children("a.next").off().click(nextImage);
+            $indexSlider.find(".controls a").off().click(function () {
+                changeImage($indexSlider.find(".slider img").eq($(this).prevAll().length));
+            });
+            $indexSlider.off("mouseenter.indexSlider mouseleave.indexSlider").on({
+                "mouseenter.indexSlider": function () {
+                    if (indexSliderTimer) {
+                        clearInterval(indexSliderTimer);
+                        indexSliderTimer = null;
+                    }
+                },
+                "mouseleave.indexSlider": function () {
+                    if (!indexSliderTimer) {
+                        indexSliderTimer = setInterval(nextImage, 5000);
+                    }
+                }
+            }).mouseleave();
+        };
         $(window).resize(function () {
             if ($(window).width() > 1051) {
                 var h = $(window).height() - $indexSlider.position().top - $indexImages.height() - 20;
-                $indexSlider.height(Math.max(h, 100));
+                if (h < 100) {
+                    h = 100;
+                }
+                $indexSlider.height(h);
             }
             else {
                 $indexSlider.height($(window).width());
             }
+            resizeImages();
         }).resize();
+        initialize();
     </script>
     <script type="text/javascript">
         //移动端菜单
