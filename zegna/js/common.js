@@ -92,3 +92,14 @@ $(".aside-menu .menu-container .main-menu .separator").click(function () {
     else if ($(this).hasClass("down"))
         $(this).prev("ul.aside-nav").prev("a.brand").click();
 });
+//移动端菜单
+var $header_m = $(".header-m"),
+    $menu_m = $(".menu-m");
+$header_m.find("a.menu").click(function () {
+    $menu_m.addClass("open");
+    $("body").addClass("no-scroll");
+});
+$menu_m.find("a.close").click(function () {
+    $menu_m.removeClass("open");
+    $("body").removeClass("no-scroll");
+});
