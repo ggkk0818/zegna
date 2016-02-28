@@ -55,28 +55,35 @@
 	position:absolute;
     bottom:0;
     width:100%;
-    height:75px;
+    /*height:75px;*/
+    height:50px;
     text-align: center;
 	padding: 0;
 	z-index:9;
 }
 .container .index-slider .controls a {
 	display:inline-block;
-	width:12px;
+	/*width:12px;
 	height:13px;
+	margin: 18px 25px 0;*/
+	width:6px;
+	height:6.5px;
+	margin: 9px 12.5px 0;
 	background:url(../../img/slide-ctrl.png) no-repeat;
     background-size:cover;
 	text-indent:-9999px;
 	border:0;
-	margin: 18px 25px 0;
     vertical-align:top;
 }
 .container .index-slider .controls a.active {
-	width:52px;
+	/*width:52px;
 	height:50px;
+	margin: 0 25px 0 -15px;*/
+	width:26px;
+	height:25px;
+	margin: 0 12.5px 0 5px;
 	background:url(../../img/slide-ctrl-active.png) no-repeat;
     background-size:cover;
-	margin: 0 25px 0 -15px;
 }
 /*底部广告图*/
 .index-images{
@@ -98,7 +105,6 @@
         height:50px;
     }
     .container .index-slider .controls a {
-	    display:inline-block;
 	    width:6px;
 	    height:6.5px;
 	    margin: 9px 12.5px 0;

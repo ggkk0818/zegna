@@ -262,8 +262,8 @@
             if (current) {
                 current.removeClass("active").fadeTo("normal", 0, EASING_NAME, function () { $(this).hide(); });
             }
-            next.addClass("active").fadeTo("normal", 1, EASING_NAME);
-            $indexSlider.find(".controls a").eq(next.prevAll("img").length).addClass("active").siblings().removeClass("active");
+            next.stop(true, false).addClass("active").fadeTo("normal", 1, EASING_NAME);
+            $indexSlider.find(".controls a").eq(next.prevAll("img").length).stop(true, false).addClass("active").siblings().removeClass("active");
         };
         var nextImage = function () {
             var current = $indexSlider.find(".slider img.active"),
