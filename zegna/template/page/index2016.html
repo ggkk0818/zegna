@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--#set(PageCustomPage page)-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>${page.title} - ${websiteName}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
+    <link href="${path}/js/nivo-slider/themes/default/default.custom.css" rel="stylesheet" />
+    <link href="${path}/js/nivo-slider/nivo-slider.css" rel="stylesheet" />
+    <link href="${path}/css/common.css" rel="stylesheet" />
+    <link href="${path}/css/template/index2016.css" rel="stylesheet" />
+    <script src="${path}/js/jquery-1.11.1.min.js"></script>
+    <script src="${path}/js/jquery.easing.1.3.js"></script>
+    <script src="${path}/js/jquery.mousewheel.js"></script>
+    <script src="${path}/js/jquery.jscrollpane.js"></script>
+    <script src="${path}/js/nivo-slider/jquery.nivo.slider.js"></script>
+    <script src="${path}/js/jquery.lazyload.js"></script>
+</head>
+<body>
+    ${include("/common/header.html","UTF-8")}
+    ${include("/common/asideMenu.html","UTF-8")}
+    <div class="container">
+        <!--#if(page)-->
+        $!{page.content}
+        <!--#end-->
+    </div>
+    ${include("/common/footer.html","UTF-8")}
+    <script type="text/javascript">
+        //图片轮播
+        var $indexSlider = $(".index-slider"),
+            $indexImages = $(".index-images");
+        var resizeImages = function (target) {
+            if (!target) {
+                target = $indexSlider.find("img");
+            }
+            var w = $indexSlider.width(),
+                h = $indexSlider.height();
+            target.each(function (i, e) {
+                var $img = $(e);
+                if ($(window).width() > 1051) {
+                    $img.width(w).height("auto");
+                    $img.css({
+                        top: "50%",
+                        marginTop: -$img.height() / 2
+                    });
+                }
+                else {
+                    $img.width(w).height(h);
+                    $img.css({
+                        top: 0,
+                        marginTop: 0
+                    });
+                }
+            });
+        };
+        var changeImage = function (next) {
+            var current = $indexSlider.find(".slider img.active");
+            if (!next || current.is(next))
+                return;
+            if (current) {
+                current.removeClass("active").fadeTo("normal", 0, EASING_NAME, function () { $(this).hide(); });
+            }
+            next.stop(true, false).addClass("active").fadeTo("normal", 1, EASING_NAME);
+            $indexSlider.find(".controls a").eq(next.prevAll("img").length).stop(true, false).addClass("active").siblings().removeClass("active");
+        };
+        var nextImage = function () {
+            var current = $indexSlider.find(".slider img.active"),
+                next = current.length && current.next("img").length ? current.next("img") : $indexSlider.find(".slider img").length ? $indexSlider.find(".slider img").first() : null;
+            changeImage(next);
+        };
+        var prevImage = function () {
+            var current = $indexSlider.find(".slider img.active"),
+                next = current.length && current.prev("img").length ? current.prev("img") : $indexSlider.find(".slider img").length ? $indexSlider.find(".slider img").last() : null;
+            changeImage(next);
+        };
+        var indexSliderTimer = null;
+        var initialize = function () {
+            var prevBtnTemplate = '<a class="prev" href="javascript:void(0);"></a>',
+                nextBtnTemplate = '<a class="next" href="javascript:void(0);"></a>',
+                controlsTemplate = '<div class="controls"></div>',
+                controlBtnTemplate = '<a href="javascript:void(0);"></a>';
+            //Elements
+            if (!$indexSlider.children("a.prev").length) {
+                $indexSlider.append(prevBtnTemplate);
+            }
+            if (!$indexSlider.children("a.next").length) {
+                $indexSlider.append(nextBtnTemplate);
+            }
+            if (!$indexSlider.children(".controls").length) {
+                $indexSlider.append(controlsTemplate);
+            }
+            else {
+                $indexSlider.children(".controls").children().remove();
+            }
+            if ($indexSlider.find(".slider img").length) {
+                $indexSlider.find(".slider img").each(function (i, e) {
+                    $(e).load(function () {
+                        resizeImages($(this));
+                    });
+                    $indexSlider.children(".controls").append(controlBtnTemplate);
+                });
+                $indexSlider.find(".slider img").first().addClass("active").show();
+                $indexSlider.find(".controls a").first().addClass("active");
+            }
+            //Events
+            $indexSlider.children("a.prev").off().click(prevImage);
+            $indexSlider.children("a.next").off().click(nextImage);
+            $indexSlider.find(".controls a").off().click(function () {
+                changeImage($indexSlider.find(".slider img").eq($(this).prevAll().length));
+            });
+            $indexSlider.off("mouseenter.indexSlider mouseleave.indexSlider").on({
+                "mouseenter.indexSlider": function () {
+                    if (indexSliderTimer) {
+                        clearInterval(indexSliderTimer);
+                        indexSliderTimer = null;
+                    }
+                },
+                "mouseleave.indexSlider": function () {
+                    if (!indexSliderTimer) {
+                        indexSliderTimer = setInterval(nextImage, 5000);
+                    }
+                }
+            }).mouseleave();
+        };
+        $(window).resize(function () {
+            if ($(window).width() > 1051) {
+                var h = $(window).height() - $indexSlider.position().top - $indexImages.height() - 20;
+                if (h < 100) {
+                    h = 100;
+                }
+                $indexSlider.height(h);
+            }
+            else {
+                $indexSlider.height($(window).width());
+            }
+            resizeImages();
+        }).resize();
+        initialize();
+    </script>
+</body>
+</html>

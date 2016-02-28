@@ -34,7 +34,7 @@
 	text-indent:-9999px;
 	border:0;
 	opacity: 0;
-    z-index:9;
+    z-index:1;
 }
 .container .index-slider:hover a.prev, 
 .container .index-slider:hover a.next { 
@@ -59,7 +59,7 @@
     height:50px;
     text-align: center;
 	padding: 0;
-	z-index:9;
+	z-index:1;
 }
 .container .index-slider .controls a {
 	display:inline-block;

@@ -104,3 +104,21 @@
         <div class="sub-menu-close-btn"></div>
     </div>
 </div>
+<div class="menu-m">
+    <div class="menu-header">
+        <a class="close" href="javascript:void(0);"><img src="${path}/img/menu_close.png" /></a>
+        <a class="logo" href="javascript:void(0);" style="margin-top:15.5px;"><img src="${path}/img/menu_logo.png" style="width: 124px; height: 18.25px;" /></a>
+    </div>
+    <ul class="menu-content">
+        <!--#if(asideMenu.localhost)-->
+        <!--#for(Menu menu : asideMenu.localhost)-->
+        <li>
+            <a href="#if(menu.menus)javascript:void(0);#else()${parseMenuUrl(menu.url,path)}#end" #if(!menu.menus && menu.blank)target="_blank" #end>
+                <span class="left">$!{text2html(menu.name)}</span>
+                <!--<span class="right">$!{text2html(menu.name)}</span>-->
+            </a>
+        </li>
+        <!--#end-->
+        <!--#end-->
+    </ul>
+</div>
