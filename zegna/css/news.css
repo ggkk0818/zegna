@@ -18,7 +18,7 @@
     content:'';
     position:absolute!important;
     top:0;
-    right:1px;
+    right:0px;
     width:0;
     height:100%;
     border-right:1px solid #cccccc;
@@ -72,3 +72,8 @@
 /*.news .news-content img+img{
     margin-left:0;
 }*/
+@media (max-width: 1068px) {
+    .news{
+        margin:5px 10px;
+    }
+}
