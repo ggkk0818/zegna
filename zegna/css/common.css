@@ -560,15 +560,16 @@ a img{
 }
 .container .row .grid-1x1{
     width:33.333%;
-    min-height:515px;
+    /*min-height:515px;*/
+    min-height:150px;
 }
 .container .row .grid-2x1{
     width:66.666%;
-    min-height:515px;
+    min-height:150px;
 }
 .container .row .grid-3x1{
     width:100%;
-    min-height:515px;
+    min-height:150px;
 }
 @media (max-width: 1068px) {
     .header{

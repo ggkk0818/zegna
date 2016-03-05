@@ -1,10 +1,12 @@
 ﻿.container .row .grid-1x1{
     width:20%;
-    min-height:309px;
+    /*min-height:309px;*/
+    min-height:150px;
 }
 .container .row .grid-2x1{
     width:40%;
-    min-height:309px;
+    /*min-height:309px;*/
+    min-height:150px;
 }
 .container .row .grid.loading{
     background:url(../img/loading.gif) no-repeat center center;
@@ -87,4 +89,21 @@
 .container .row .grid > a.cover > .hover-text{
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100) !important;
     opacity: 1 !important;
+}
+@media (max-width: 1068px) {
+    .container .row .grid{
+        float:none;
+    }
+    .container .row .grid-1x1{
+        width:100%;
+        min-height:0;
+    }
+    .container .row .grid-2x1{
+        width:100%;
+        min-height:0;
+    }
+    .container .row .grid-3x1{
+        width:100%;
+        min-height:0;
+    }
 }
