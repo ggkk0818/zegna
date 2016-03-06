@@ -76,4 +76,10 @@
     .news{
         margin:5px 10px;
     }
+    .news > h2{
+        word-break:break-all;
+    }
+    .news > h2 small{
+        display:block;
+    }
 }

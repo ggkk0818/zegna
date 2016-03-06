@@ -1,5 +1,6 @@
 ﻿body {
-    background: url("../img/bg.jpg") 0 0 repeat;
+    /*background: url("../img/bg.jpg") 0 0 repeat;*/
+    background-color:#000;
     font-family: Arial,"宋体";
     font-size:12px;
     margin:0;
@@ -127,7 +128,7 @@ a img{
     height:50px;
     background:#fff;
     text-align:center;
-    z-index:1;
+    z-index:4;
 }
 .header-m a.logo{
     display:inline-block;
