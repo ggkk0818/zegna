@@ -60,6 +60,7 @@
             var current = $indexSlider.find(".slider img.active");
             if (!next || current.is(next))
                 return;
+            resizeImages(next);
             if (current) {
                 current.removeClass("active").fadeTo("normal", 0, EASING_NAME, function () { $(this).hide(); });
             }
@@ -125,7 +126,7 @@
                 }
             }).mouseleave();
         };
-        $(window).resize(function () {
+        var onWindowResize = function () {
             if ($(window).width() > 1051) {
                 var h = $(window).height() - $indexSlider.position().top - $indexImages.height() - 20;
                 if (h < 100) {
@@ -137,7 +138,11 @@
                 $indexSlider.height($(window).width());
             }
             resizeImages();
-        }).resize();
+        };
+        $indexImages.find("img").load(function () {
+            onWindowResize();
+        });
+        $(window).resize(onWindowResize).resize();
         initialize();
     </script>
 </body>
