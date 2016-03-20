@@ -210,6 +210,9 @@
             </div>
             <a class="prev" href="javascript:void(0);"></a>
             <a class="next" href="javascript:void(0);"></a>
+            <svg class="loading" width="40" height="40" viewbox="0 0 40 40">
+                <polygon points="0 0 0 40 40 40 40 0" class="rect" />
+            </svg>
         </div>
         <div class="index-images clearfix">
             <div class="index-col4">
@@ -281,7 +284,8 @@
             var prevBtnTemplate = '<a class="prev" href="javascript:void(0);"></a>',
                 nextBtnTemplate = '<a class="next" href="javascript:void(0);"></a>',
                 controlsTemplate = '<div class="controls"></div>',
-                controlBtnTemplate = '<a href="javascript:void(0);"></a>';
+                controlBtnTemplate = '<a href="javascript:void(0);"></a>',
+                svgLoadingTemplate = '<svg class="loading" width="40" height="40" viewbox="0 0 40 40"><polygon points="0 0 0 40 40 40 40 0" class="rect" /></svg>';
             //Elements
             if (!$indexSlider.children("a.prev").length) {
                 $indexSlider.append(prevBtnTemplate);
@@ -302,6 +306,9 @@
                     });
                     $indexSlider.children(".controls").append(controlBtnTemplate);
                 });
+            }
+            if (!$indexSlider.children("svg.loading").length) {
+                $indexSlider.append(svgLoadingTemplate);
             }
             //Events
             $indexSlider.children("a.prev").off().click(prevImage);
@@ -341,6 +348,7 @@
         });
         var indexSliderImgLoadingTimeout = setTimeout(function () {
             $indexSlider.find(".slider img").removeClass("loading");
+            $indexSlider.children("svg.loading").hide();
         }, 60000);
         $indexSlider.find(".slider img").addClass("loading").load(function () {
             var $img = $(this);
@@ -352,6 +360,7 @@
             if ($indexSlider.find(".slider img.active").length == 0) {
                 nextImage();
             }
+            $indexSlider.children("svg.loading").hide();
         });
         $(window).resize(onWindowResize).resize();
         initialize();

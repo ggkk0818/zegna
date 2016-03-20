@@ -85,6 +85,33 @@
 	background:url(../../img/slide-ctrl-active.png) no-repeat;
     background-size:cover;
 }
+.container .index-slider > svg.loading{
+    position:absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    margin:auto;
+    z-index:2;
+}
+.container .index-slider > svg.loading .rect {
+  fill: none;
+  stroke-width: 8px;
+  stroke: black;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 50%;
+  -webkit-animation: movedash 1.5s forwards 0s infinite;
+          animation: movedash 1.5s forwards 0s infinite;
+}
+
+@-webkit-keyframes movedash {
+  to {
+    stroke-dashoffset: 250%;
+  }
+}
+
+@keyframes movedash {
+  to {
+    stroke-dashoffset: 250%;
+  }
+}
 /*底部广告图*/
 .index-images{
     margin:10px 5px;
