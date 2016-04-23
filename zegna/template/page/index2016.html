@@ -148,6 +148,7 @@
             $indexSlider.find(".slider img").removeClass("loading");
             $indexSlider.children("svg.loading").hide();
         }, 45000);
+        var allLoaded = true;
         $indexSlider.find(".slider img").addClass("loading").load(function () {
             var $img = $(this);
             $img.removeClass("loading");
@@ -159,9 +160,22 @@
                 nextImage();
             }
             $indexSlider.children("svg.loading").hide();
+        }).each(function (i, e) {
+            //判断图片是否全部加载
+            if (e.width == 0 || e.height == 0) {
+                allLoaded = false;
+                return false;
+            }
         });
         $(window).resize(onWindowResize).resize();
         initialize();
+        if (allLoaded) {
+            $indexSlider.find(".slider img").removeClass("loading");
+            $indexSlider.children("svg.loading").hide();
+            clearTimeout(indexSliderImgLoadingTimeout);
+            indexSliderImgLoadingTimeout = null;
+            nextImage();
+        }
     </script>
 </body>
 </html>
