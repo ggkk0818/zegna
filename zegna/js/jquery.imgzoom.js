@@ -115,7 +115,8 @@
     };
     ImageZoom.prototype.calcSize = function (imgWidth, imgHeight) {
         var maxWidth = this.$element.width() - this.settings.imgPadding * 2,
-            maxHeight = $(window).height() - $("body > .header").height() - this.settings.imgPadding * 2,
+            headerHeight = $("body > .header-m:visible").length ? $("body > .header-m").height() : $("body > .header").height(),
+            maxHeight = $(window).height() - headerHeight - this.settings.imgPadding * 2,
             scaleH = imgWidth / maxWidth,
             scaleV = imgHeight / maxHeight,
             width = imgWidth,

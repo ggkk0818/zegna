@@ -1,10 +1,10 @@
 ﻿.container .row .grid-1x1{
     width:20%;
-    min-height:309px;
+    /*min-height:309px;*/
 }
 .container .row .grid-2x1{
     width:40%;
-    min-height:309px;
+    /*min-height:309px;*/
 }
 .container .row .grid.loading{
     background:url(../img/loading.gif) no-repeat center center;
