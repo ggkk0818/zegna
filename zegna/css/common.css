@@ -172,6 +172,9 @@ a img{
     overflow:auto;
     z-index:5;
 }
+.menu-m.white{
+    background:#fff;
+}
 .menu-m .menu-header{
     width:100%;
     height:50px;
@@ -211,6 +214,9 @@ a img{
     font-size:14px;
     font-family:"微软雅黑";
     text-decoration:none;
+}
+.menu-m.white ul.menu-content li a{
+    color:#000;
 }
 .menu-m ul.menu-content li a span{
     display:block;
