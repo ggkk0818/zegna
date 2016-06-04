@@ -94,10 +94,11 @@ $(".aside-menu .menu-container .main-menu .separator").click(function () {
 });
 //移动端菜单
 var $header_m = $(".header-m"),
-    $menu_m = $(".menu-m").not(".white"),
-    $menu_camera = $(".menu-m.white");
+    $menu_m = $(".menu-m").not(".m-right"),
+    $menu_camera = $(".menu-m.m-right");
 $header_m.find("a.menu").click(function () {
     $menu_m.addClass("open");
+    $menu_camera.removeClass("open");
     $("body").addClass("no-scroll");
 });
 $menu_m.find("a.close").click(function () {
@@ -106,6 +107,7 @@ $menu_m.find("a.close").click(function () {
 });
 if ($menu_camera.length) {
     $header_m.find("a.camera").click(function () {
+        $menu_m.removeClass("open");
         $menu_camera.addClass("open");
         $("body").addClass("no-scroll");
     });

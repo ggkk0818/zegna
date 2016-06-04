@@ -172,7 +172,7 @@ a img{
     overflow:auto;
     z-index:5;
 }
-.menu-m.white{
+.menu-m.m-right{
     background:#fff;
 }
 .menu-m .menu-header{
@@ -190,6 +190,10 @@ a img{
     left:15px;
     width:17.5px;
     height:20px;
+}
+.menu-m.m-right .menu-header a.close{
+    left: auto;
+    right: 15px;
 }
 .menu-m .menu-header a.close img{
     width:100%;
@@ -215,7 +219,7 @@ a img{
     font-family:"微软雅黑";
     text-decoration:none;
 }
-.menu-m.white ul.menu-content li a{
+.menu-m.m-right ul.menu-content li a{
     color:#000;
 }
 .menu-m ul.menu-content li a span{
@@ -228,6 +232,25 @@ a img{
 .menu-m ul.menu-content li a span.right{
     float:right;
     margin-right:5px;
+}
+.menu-m a.menu-btn{
+    display:block;
+    width:214px;
+    margin:25px auto;
+    padding:14px;
+    color:#fff;
+    font-size:16px;
+    font-family:"微软雅黑";
+    line-height:16px;
+    text-decoration:none;
+    text-align:center;
+    background:#000000;
+}
+.menu-m a.menu-btn img{
+    display:inline-block;
+    height:16px;
+    margin-right:8px;
+    vertical-align:bottom;
 }
 /* ==========================================================================
    Aside Menu
