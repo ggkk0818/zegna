@@ -98,12 +98,24 @@
             });
         }
         if (typeof Hammer !== "undefined") {
-            var hammerObj = new Hammer(this.$imgZoomCtn.get(0));
-            hammerObj.on("swipeleft", function () {
-                thiz.$imgZoomCtn.find("> .arrow-left").click();
+            this.hammerObj = new Hammer(this.$imgZoomCtn.get(0));
+            this.hammerObj.on("swipeleft", function () {
+                console.log("swipeleft");
+                if (thiz.hammerTimer) {
+                    clearTimeout(thiz.hammerTimer);
+                }
+                thiz.hammerTimer = setTimeout(function () {
+                    thiz.$imgZoomCtn.find("> .arrow-right").click();
+                }, 50);
             });
-            hammerObj.on("swiperight", function () {
-                thiz.$imgZoomCtn.find("> .arrow-right").click();
+            this.hammerObj.on("swiperight", function () {
+                console.log("swiperight");
+                if (thiz.hammerTimer) {
+                    clearTimeout(thiz.hammerTimer);
+                }
+                thiz.hammerTimer = setTimeout(function () {
+                    thiz.$imgZoomCtn.find("> .arrow-left").click();
+                }, 50);
             });
         }
         if (this.element) {
@@ -119,6 +131,11 @@
         $(window).unbind("scroll.imagezoom resize.imagezoom");
         if ($.fn.mousewheel) {
             this.$element.unmousewheel();
+        }
+        if (this.hammerObj) {
+            this.hammerObj.off("swipeleft swiperight");
+            this.hammerObj.destroy();
+            delete this.hammerObj;
         }
         return this;
     };
@@ -147,8 +164,8 @@
             height = imgHeight;
             marginTop = marginBottom = Math.round((maxHeight - height) / 2);
         }
-        //return { width: Math.round(width), height: Math.round(height), marginTop: marginTop, marginBottom: marginBottom };
-        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop };
+        return { width: Math.round(width), height: Math.round(height), marginTop: marginTop, marginBottom: marginTop };
+        //return { width: Math.round(width), height: Math.round(height), marginTop: marginTop };
     };
     ImageZoom.prototype.show = function (arg) {
         if (this.$element.hasClass("loading"))
