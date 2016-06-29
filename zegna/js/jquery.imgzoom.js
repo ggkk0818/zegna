@@ -97,6 +97,15 @@
                     thiz.$imgZoomCtn.find("> .arrow-left").click();
             });
         }
+        if (typeof Hammer !== "undefined") {
+            var hammerObj = new Hammer(this.$imgZoomCtn.get(0));
+            hammerObj.on("swipeleft", function () {
+                thiz.$imgZoomCtn.find("> .arrow-left").click();
+            });
+            hammerObj.on("swiperight", function () {
+                thiz.$imgZoomCtn.find("> .arrow-right").click();
+            });
+        }
         if (this.element) {
             $(this.element).trigger("aftereventbound", this);
         }
