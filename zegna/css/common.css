@@ -307,8 +307,8 @@ a img{
 .aside-menu .menu-container .main-menu .brand.gornia{
     display:block;
     width:100px;
-    height:33px;
-    background:url(../img/zaders.png) no-repeat 0 -33px;
+    height:95px;
+    background:url(../img/Ms.logo.png) no-repeat 0 -0px;
     margin:20px auto;
 }
 .aside-menu .menu-container .main-menu .brand.gornia.active,
