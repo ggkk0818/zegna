@@ -1,0 +1,28 @@
+﻿body{
+    min-width:300px;
+}
+.index-container > a{
+    float:left;
+    position:relative;
+    width:33.333%;
+    height:100%;
+    display:block;
+}
+.index-container > a.color-red{
+    background-color:#f62424;
+}
+.index-container > a.color-white{
+    background-color:#ffffff;
+}
+.index-container > a.color-black{
+    background-color:#000000;
+}
+.index-container > a img{
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:block;
+    width:36.36%;
+    margin-left:-18.18%;
+    margin-top:-4vw;
+}
