@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--#set(PageCustomPage page)-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>${page.title} - ${websiteName}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="${path}/css/jquery.jscrollpane.css" rel="stylesheet" />
+    <link href="${path}/js/nivo-slider/themes/default/default.custom.css" rel="stylesheet" />
+    <link href="${path}/js/nivo-slider/nivo-slider.css" rel="stylesheet" />
+    <link href="${path}/css/common.css" rel="stylesheet" />
+    <link href="${path}/css/template/index2017.css" rel="stylesheet" />
+    <script src="${path}/js/jquery-1.11.1.min.js"></script>
+    <script src="${path}/js/jquery.easing.1.3.js"></script>
+    <script src="${path}/js/jquery.mousewheel.js"></script>
+    <script src="${path}/js/jquery.jscrollpane.js"></script>
+    <script src="${path}/js/nivo-slider/jquery.nivo.slider.js"></script>
+    <script src="${path}/js/jquery.lazyload.js"></script>
+</head>
+<body>
+    ${include("/common/header.html","UTF-8")}
+    ${include("/common/asideMenu.html","UTF-8")}
+    <div class="container">
+        <!--#if(page)-->
+        $!{page.content}
+        <!--#end-->
+    </div>
+    ${include("/common/footer.html","UTF-8")}
+    <script type="text/javascript">
+        var $indexContainer = $(".container .index-container");
+        var onWindowResize = function () {
+            if ($(window).width() > 1051) {
+                var h = $(window).height() - $(".header").outerHeight();
+                if (h < 100) {
+                    h = 100;
+                }
+                $indexContainer.height(h);
+            }
+            else {
+                $indexContainer.height($(window).width());
+            }
+        };
+        $(window).resize(onWindowResize).resize();
+    </script>
+</body>
+</html>
