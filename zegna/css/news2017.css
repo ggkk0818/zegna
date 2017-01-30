@@ -1,0 +1,92 @@
+﻿body{
+    background-color: #fff;
+}
+.image-container{
+    padding: 5px 5px 0 0;
+}
+.image-container .image{
+    position: relative;
+    display: inline-block;
+    width:calc(25% - 5px);
+    margin: 0 0 5px 5px;
+    background-size:cover;
+}
+.image-container .image:before{
+    content: "";
+    display:inline-block;
+    padding-bottom: 100%;
+    vertical-align: middle;
+}
+.image-container .image .button-ok{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 22%;
+    background: url(../img/news2017/round_check.png) no-repeat 0 0;
+    background-size: cover;
+}
+.image-container .image .button-ok:before{
+    content: "";
+    display:inline-block;
+    padding-bottom: 100%;
+    vertical-align: middle;
+}
+.image-container .image.selected .button-ok{
+    background-image:url(../img/news2017/round_check_fill.png);
+}
+.bottom-bar{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 44px;
+    padding: 0 20px;
+    border-top: 1px solid #bfbfbf;
+    background: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Microsoft YaHei';
+}
+.bottom-bar a,
+.bottom-bar a:visited,
+.bottom-bar a:hover{
+    color: #000;
+    text-decoration: none;
+}
+.bottom-bar .left{
+    float: left;
+    padding: 12px 0;
+}
+.bottom-bar .left > *{
+    margin-left: 10px;
+}
+.bottom-bar .left > *:first-child{
+    margin-left: 0;
+}
+.bottom-bar .right{
+    float: right;
+    padding: 12px 0;
+}
+.bottom-bar .right > *{
+    margin-left: 5px;
+}
+.bottom-bar .right .num{
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 20px;
+    background: #09bb07;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.bottom-bar .right .finish{
+    color: #13ae24;
+}
+.bottom-bar div > *{
+    display: inline-block;
+}
+.bottom-bar div > *.disable{
+    opacity: 0.4;
+}
