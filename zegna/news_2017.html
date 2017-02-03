@@ -7,12 +7,17 @@
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link href="css/jquery.jscrollpane.css" rel="stylesheet" />
+    <link href="js/photoswipe/photoswipe.css" rel="stylesheet" />
+    <link href="js/photoswipe/default-skin/default-skin.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
     <link href="css/news2017.css" rel="stylesheet" />
     <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/jquery.mobile/jquery.mobile-1.4.5.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/jquery.jscrollpane.js"></script>
+    <script src="js/photoswipe/photoswipe.js"></script>
+    <script src="js/photoswipe/photoswipe-ui-default.js"></script>
 </head>
 <body>
     <div class="header">
@@ -256,9 +261,101 @@
             </div>
         </div>
     </div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <script src="js/common.js"></script>
     <script type="text/javascript">
-        
+        var event_click = window.navigator.userAgent.indexOf("Mobile") ? "tap" : "click";
+        $(".container .image-container .image").bind(event_click, function () {
+            var $this = $(this),
+                $imageContainer = $this.parent(),
+                index = 0,
+                items = [];
+            $imageContainer.children(".image").each(function (i, e) {
+                var $el = $(e),
+                    url = /url\("?(.*?)"?\)/.exec($el.css("background-image"))[1];
+                if ($this.is($el)) {
+                    index = i;
+                }
+                items.push({
+                    src: url,
+                    w: 560,
+                    h: 840
+                });
+            });
+            var options = {
+                // optionName: 'option value'
+                // for example:
+                index: index // start at first slide
+            };
+
+            // Initializes and opens PhotoSwipe
+            var gallery = new PhotoSwipe($(".pswp").get(0), PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        });
     </script>
 </body>
 </html>
