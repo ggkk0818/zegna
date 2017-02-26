@@ -40,7 +40,7 @@
     right: 0;
     bottom: 0;
     height: 44px;
-    padding: 0 20px;
+    padding: 0 10px;
     border-top: 1px solid #bfbfbf;
     background: #fff;
     font-size: 16px;
@@ -88,5 +88,89 @@
     display: inline-block;
 }
 .bottom-bar div > *.disable{
+    opacity: 0.4;
+}
+/*
+    pswp
+*/
+.pswp__top-bar{
+    background: #191919!important;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Microsoft YaHei';
+}
+.pswp__top-bar .pswp__counter{
+    display: none;
+}
+.pswp__top-bar .pswp__button--close{
+    float: left;
+}
+.pswp__top-bar .button-ok{
+    /*margin-right: 8px;*/
+    background: url(../img/news2017/round_check.png) no-repeat center center;
+    background-size: 30px 30px;
+}
+.pswp__top-bar .button-ok.selected{
+    opacity: 1!important;
+    background-image:url(../img/news2017/round_check_fill.png);
+}
+.pswp__bottom-bar{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display:block;
+    height: 44px;
+    width: 100%;
+    padding: 0 10px;
+    background: #191919!important;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Microsoft YaHei';
+}
+.pswp__bottom-bar .pswp__caption__center{
+    display: none;
+}
+.pswp__bottom-bar a,
+.pswp__bottom-bar a:visited,
+.pswp__bottom-bar a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.pswp__bottom-bar .left{
+    float: left;
+    padding: 12px 0;
+}
+.pswp__bottom-bar .left > *{
+    margin-left: 10px;
+}
+.pswp__bottom-bar .left > *:first-child{
+    margin-left: 0;
+}
+.pswp__bottom-bar .right{
+    float: right;
+    padding: 12px 0;
+}
+.pswp__bottom-bar .right > *{
+    margin-left: 5px;
+}
+.pswp__bottom-bar .right .num{
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 20px;
+    background: #09bb07;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.pswp__bottom-bar .right .finish{
+    color: #13ae24;
+}
+.pswp__bottom-bar div > *{
+    display: inline-block;
+}
+.pswp__bottom-bar div > *.disable{
     opacity: 0.4;
 }
