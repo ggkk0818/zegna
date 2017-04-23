@@ -137,6 +137,12 @@
     color: #fff;
     text-decoration: none;
 }
+.pswp__bottom-bar div > button{
+    border: none;
+    background: none;
+    color: #fff;
+    padding: 0;
+}
 .pswp__bottom-bar .left{
     float: left;
     padding: 12px 0;
@@ -173,4 +179,33 @@
 }
 .pswp__bottom-bar div > *.disable{
     opacity: 0.4;
+}
+.pswp__comment-bar{
+    position: absolute;
+    left: 0;
+    bottom: 44px;
+    display:block;
+    height: 44px;
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Microsoft YaHei';
+}
+.pswp__comment-bar input{
+    display: block;
+    width: 100%;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    background: none;
+}
+.pswp__comment-bar input::-webkit-input-placeholder, 
+.pswp__comment-bar input:-moz-placeholder, 
+.pswp__comment-bar input:-ms-input-placeholder {
+    color: #999;
 }

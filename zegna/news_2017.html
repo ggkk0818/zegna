@@ -312,14 +312,17 @@
                 <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
                 <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
 
+                <div class="pswp__comment-bar" style="display:none;">
+                    <input type="text" placeholder="点击添加备注" />
+                </div>
                 <div class="pswp__caption pswp__bottom-bar">
                     <div class="pswp__caption__center"></div>
                     <div class="left">
-                        <a class="disable" href="javascript:void(0);">编辑</a>
+                        <button class="disable" href="javascript:void(0);">编辑</button>
                     </div>
                     <div class="right">
                         <span class="num">3</span>
-                        <a class="finish" href="javascript:void(0);">完成</a>
+                        <button class="finish" href="javascript:void(0);">完成</button>
                     </div>
                 </div>
 
@@ -364,6 +367,10 @@
                 //TO DO
             });
             pswp.init();
+        });
+        $(".container .image-container .image .button-ok, .pswp__comment-bar").bind(event_click, function (e) {
+            e.preventDefault();
+            e.stopPropagation();
         });
     </script>
 </body>
